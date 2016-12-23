@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "BottleChart";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_PurchasingPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+
+        <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".tt").each(function () {
+                    var t = $(this).text().replace(',', '.');
+                    $(this).text(t);
+                })});
+        </script>
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Purchasing > Bottle Chart</h4>
+                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Purchasing", new { param = "BottleAdd" })'">Add</button>
+                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("ExportBottle", "Purchasing")'">Export</button>
+                <p style="text-align:right; font-size:14px">Page:1 Records:@ViewBag.Bottles.Count</p>
+            </div>
+            <table class="table" id="table1">
+                <thead>
+                    <tr style="font-size:14px">
+                        <th>Id</th>
+                        <th id="hiddingEls">Item Key</th>
+                        <th id="hiddingElm">Description</th>
+                        <th>Small Tray</th>
+                        <th id="hiddingEll">Changed Date</th>
+                        <th id="hiddingEls">Bottle Cubic Inches</th>
+                        <th>Picture</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Bottles)
+                {
+                        <tr style="font-size:14px">
+                            <td>@item.BottleId</td>
+                            <td id="hiddingEls">@item.BottleItemKey</td>
+                            <td id="hiddingElm">@item.BottleDescription</td>
+                            <td>@item.BottlesSmallTray</td>
+                            <td id="hiddingEll">@item.BottleChangedDate.ToString("MM'/'dd'/'yyyy")</td>
+                            <td id="hiddingEls" class="tt">@item.BottleCubicInches</td>
+                            <td><img src="~/src/img/no-image_130px.jpg" height="40"/></td>
+                            <td>@Html.ActionLink("Edit", "BottleEdit", "Purchasing", new { bottleId = item.BottleId.ToString() }, null)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </aside>
+    <footer>
+        <p style="text-align:center; font-size:14px">Total Pages:1 Records:@ViewBag.Bottles.Count</p>
+    </footer>
+}

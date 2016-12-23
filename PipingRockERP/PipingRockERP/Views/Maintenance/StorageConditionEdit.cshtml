@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "StorageConditionEdit";
+}
+@Html.Partial("_MaintenancePartial")
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_MaintenancePartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Maintenance > Edit Storage Condition</h4>
+            </div>
+            <button style="margin-left:18px; max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("StorageConditions", "Maintenance")'">To the List</button>
+            @using (Html.BeginForm("SubmitStorageConditionUpdate", "Maintenance", new { scId = @ViewBag.StorageCondition[0].StorageConditionId }, FormMethod.Post, null))
+            {
+                <input style="margin-left:18px; margin-top:2px; width:90px" class="btn btn-success" type="submit" id="SubmitStorageConditionUpdate" value="Save" />
+                <table>
+                    <tr>
+                        <td>Storage Condition ID</td>
+                        <td><div id="scId" name="scId">@ViewBag.StorageCondition[0].StorageConditionId</div></td>
+                    </tr>
+                    <tr>
+                        <td>Storage Condition Name</td>
+                        <td><input class="form-control" type="text" id="scname" name="scname" value="@ViewBag.StorageCondition[0].StorageCondition1" /></td>
+                    </tr>
+                    <tr>
+                        <td>Storage Condition Description</td>
+                        <td><input class="form-control" type="text" id="scdesc" name="scdesc" value="@ViewBag.StorageCondition[0].StorageConditionDescription" /></td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </aside>
+}

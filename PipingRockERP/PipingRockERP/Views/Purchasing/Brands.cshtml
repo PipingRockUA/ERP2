@@ -1,0 +1,45 @@
+﻿@model List<Brand> 
+@{
+    ViewBag.Title = "Brands";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_PurchasingPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Purchasing > Brand Code Chart</h4>
+                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Purchasing", new { param = "BrandAdd" })'">Add</button>
+                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("ExportBrand", "Purchasing")'">Export</button>
+                <p style="text-align:right; font-size:14px">Page:1 Records:@Model.Count</p>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr style="font-size:14px">
+                        <th>ID</th>
+                        <th>Brand Name</th>
+                        <th>Brand Code</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                {
+                        <tr style="font-size:14px">
+                            <td width="10%">@item.BrandID</td>
+                            <td width="25%">@item.Brand1</td>
+                            <td width="25%">@item.BrandCode</td>
+                            <td width="20%">@Html.ActionLink("Edit", "BrandEdit", "Purchasing", new { brandId = item.BrandID.ToString() }, null)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </aside>
+    <footer>
+        <p style="text-align:center; font-size:14px">Total Pages:1 Records:@Model.Count</p>
+    </footer>
+}

@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "BrandAdd";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_PurchasingPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Purchasing > Add Brand</h4>
+            </div>
+            <button style="margin-left:18px; max-width:90px; font-family:'Roboto'" class="btn btn-success1" onclick="location.href='@Url.Action("Brands", "Purchasing")'">Back</button>
+            @using (Html.BeginForm("SubmitBrandAdd", "Purchasing"))
+            {
+                <input style="margin-left:18px; margin-top:2px; width:90px" class="btn btn-success" type="submit" id="SubmitBrandAdd" value="Save" />
+                <table>
+                    <tr>
+                        <td>Brand ID</td>
+                        <td><div id="brandId" name="brandId">New</div></td>
+                    </tr>
+                    <tr>
+                        <td>Brand Name</td>
+                        <td><input class="form-control" type="text" id="brandName" name="brandName" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>Brand Code</td>
+                        <td><input class="form-control" type="text" id="brandCode" name="brandCode" value="N/A" /></td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </aside>
+}
+

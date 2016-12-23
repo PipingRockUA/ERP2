@@ -1,0 +1,7 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_PurchasingPartial")
+}

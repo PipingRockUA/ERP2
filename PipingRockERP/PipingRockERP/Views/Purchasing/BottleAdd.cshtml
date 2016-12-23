@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "BottleAdd";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_PurchasingPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+        <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="~/App/Scripts/DimensionsUtils.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                handleDimensionsUpdate($("#BottleLengthInches"), $("#BottleWidthInches"), $("#BottleHieghtInches"), $("#BottleCubicInches"), $("#BottleLengthCm"), $("#BottleWidthCm"), $("#BottleHieghtCm"), $("#BottleCubicCm"));
+                handleDimensionsUpdate($("#BottleLengthWrappedInches"), $("#BottleWidthWrappedInches"), $("#BottleDepthWrappedInches"), $("#BottleCubicInchWrappedInches"), $("#BottleLengthWrappedCm"), $("#BottleWidthWrappedCm"), $("#BottleDepthWrappedCm"), $("#BottleCubicInchWrappedCm"));
+                //handleDimensionsUpdate($("#BottleLengthInches"), $("#BottleWidthInches"), $("#BottleHieghtInches"), $("#BottleCubicInches"));
+                //handleDimensionsUpdate($("#BottleLengthWrappedInches"), $("#BottleWidthWrappedInches"), $("#BottleDepthWrappedInches"), $("#BottleCubicInchWrappedInches"));
+                //handleDimensionsUpdate($("#BottleLengthCm"), $("#BottleWidthCm"), $("#BottleHieghtCm"), $("#BottleCubicCm"));
+                //handleDimensionsUpdate($("#BottleLengthWrappedCm"), $("#BottleWidthWrappedCm"), $("#BottleDepthWrappedCm"), $("#BottleCubicInchWrappedCm"));
+
+                //handleDimensionsInput($("#BottleLengthInches"), $("#BottleLengthCm"));
+            });
+            function checkInt(input) {
+                var value = input.value;
+                var rep = /[-\,\.;":'a-zA-Zа-яА-Я]/;
+                if (rep.test(value)) {
+                    value = value.replace(rep, '');
+                    input.value = value;
+                }
+            }
+            function checkDec(input) {
+                var value = input.value;
+                var rep = /[-;":'a-zA-Zа-яА-Я]/;
+                if (rep.test(value)) {
+                    value = value.replace(rep, '');
+                    input.value = value;
+                }
+            }
+        </script>
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Purchasing > Add New Bottle</h4>
+            </div>
+            <button style="margin-left:18px; max-width:90px" class="btn btn-success1" onclick="location.href='@Url.Action("BottleChart", "Purchasing")'">Back</button>
+            @using (Html.BeginForm("SubmitBottleAdd", "Purchasing"))
+            {
+                <input style="margin-left:18px; margin-top:2px; width:90px" class="btn btn-success" type="submit" id="SubmitBottleAdd" value="Save" />
+                <table>
+                    <tr>
+                        <td>Bottle Item Key</td>
+                        <td><input class="form-control" type="text" id="BottleItemKey" name="BottleItemKey" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Description</td>
+                        <td><input class="form-control" type="text" id="BottleDescription" name="BottleDescription" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottles Small Tray</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="BottlesSmallTray" name="BottlesSmallTray" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottles Large Tray</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="BottlesLargeTray" name="BottlesLargeTray" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Wrapped Bottles Tray Small</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="WrappedBottlesTraySmall" name="WrappedBottlesTraySmall" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Wrapped Bottles Tray Large</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="WrappedBottlesTrayLarge" name="WrappedBottlesTrayLarge" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Layers Unwrapped</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="[0-9]+" id="LayersUnWrapped" name="LayersUnWrapped" value="0" /></td>
+                        <td>Layers Wrapped</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="[0-9]+" id="LayersWrapped" name="LayersWrapped" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Length In</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.][0-9]{1,3})?" id="BottleLengthInches" name="BottleLengthInches" value="0" /></td>
+                        <td>Bottle Length Cm</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.][0-9]{1,3})?" id="BottleLengthCm" name="BottleLengthCm" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Width In</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleWidthInches" name="BottleWidthInches" value="0" /></td>
+                        <td>Bottle Width Cm</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleWidthCm" name="BottleWidthCm" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Hieght In</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleHieghtInches" name="BottleHieghtInches" value="0" /></td>
+                        <td>Bottle Hieght Cm</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleHieghtCm" name="BottleHieghtCm" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Cubic In</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleCubicInches" name="BottleCubicInches" value="0" readonly="readonly"/></td>
+                        <td>Bottle Cubic Cm</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleCubicCm" name="BottleCubicCm" value="0" readonly="readonly" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Length Wrapped In</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" step="0.001" id="BottleLengthWrappedInches" name="BottleLengthWrappedInches" value="0" /></td>
+                        <td>Bottle Length Wrapped Cm</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" step="0.001" id="BottleLengthWrappedCm" name="BottleLengthWrappedCm" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Width Wrapped In</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleWidthWrappedInches" name="BottleWidthWrappedInches" value="0" /></td>
+                        <td>Bottle Width Wrapped Cm</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleWidthWrappedCm" name="BottleWidthWrappedCm" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Depth Wrapped Im</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleDepthWrappedInches" name="BottleDepthWrappedInches" value="0" /></td>
+                        <td>Bottle Depth Wrapped Cm</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleDepthWrappedCm" name="BottleDepthWrappedCm" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Cubic Wrapped In</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleCubicInchWrappedInches" name="BottleCubicInchWrappedInches" value="0" readonly="readonly"/></td>
+                        <td>Bottle Cubic Wrapped Cm</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleCubicInchWrappedCm" name="BottleCubicInchWrappedCm" value="0" readonly="readonly" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Label Square In</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleLabelSquareInches" name="BottleLabelSquareInches" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Label Square In</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="LabelSquareInches" name="LabelSquareInches" value="0"/></td>
+                        <td>Label Square Cm</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="LabelSquareCm" name="LabelSquareCm" value="0"/></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Size</td>
+                        <td><input class="form-control" type="text" id="BottleSize" name="BottleSize" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>Print Frames</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="PrintFrames" name="PrintFrames" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Number of Print Position</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="NumberOfPrintingPositions" name="NumberOfPrintingPositions" value="0" /></td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </aside>
+}

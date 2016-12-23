@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "QuarantineEdit";
+}
+
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_PurchasingPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Purchasing > Edit Quarantine Type</h4>
+            </div>
+            <button style="margin-left:18px; max-width:90px" class="btn btn-success1" onclick="location.href='@Url.Action("Quarantines", "Purchasing")'">Back</button>
+            @using (Html.BeginForm("SubmitQuarantineUpdate", "Purchasing", new { qtId = @ViewBag.Quarantine[0].QuarantineId }, FormMethod.Post, null))
+            {
+                <input style="margin-left:18px; margin-top:2px; width:90px" class="btn btn-success" type="submit" id="SubmitQuarantineUpdate" value="Save" />
+                <table>
+                    <tr>
+                        <td>Quarantine Type ID</td>
+                        <td><div id="qtId" name="qtId">@ViewBag.Quarantine[0].QuarantineId</div></td>
+                    </tr>
+                    <tr>
+                        <td>Quarantine Type</td>
+                        <td><input class="form-control" type="text" id="qtname" name="qtname" value="@ViewBag.Quarantine[0].Quarantine1" /></td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </aside>
+}

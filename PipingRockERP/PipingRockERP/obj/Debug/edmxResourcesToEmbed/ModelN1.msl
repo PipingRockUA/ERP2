@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PipingRockModelNewStoreContainer" CdmEntityContainer="PipingRockEntitiesNew">
+    <EntitySetMapping Name="Alergens">
+      <EntityTypeMapping TypeName="PipingRockModelNew.Alergen">
+        <MappingFragment StoreEntitySet="Alergen">
+          <ScalarProperty Name="AlergenID" ColumnName="AlergenID" />
+          <ScalarProperty Name="Alergen1" ColumnName="Alergen" />
+          <ScalarProperty Name="AlergenAddedDate" ColumnName="AlergenAddedDate" />
+          <ScalarProperty Name="AlergenChangedDate" ColumnName="AlergenChangedDate" />
+          <ScalarProperty Name="AlergenDeletedDate" ColumnName="AlergenDeletedDate" />
+          <ScalarProperty Name="AlergenModifiedById" ColumnName="AlergenModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bottles">
+      <EntityTypeMapping TypeName="PipingRockModelNew.Bottle">
+        <MappingFragment StoreEntitySet="Bottle">
+          <ScalarProperty Name="BottleId" ColumnName="BottleId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="BottleLength" ColumnName="BottleLength" />
+          <ScalarProperty Name="BottleWidth" ColumnName="BottleWidth" />
+          <ScalarProperty Name="BottleHieght" ColumnName="BottleHieght" />
+          <ScalarProperty Name="BottleCubicInches" ColumnName="BottleCubicInches" />
+          <ScalarProperty Name="BottleLengthWrapped" ColumnName="BottleLengthWrapped" />
+          <ScalarProperty Name="BottleWidthWrapped" ColumnName="BottleWidthWrapped" />
+          <ScalarProperty Name="BottleDepthWrapped" ColumnName="BottleDepthWrapped" />
+          <ScalarProperty Name="BottleCubicInchWrapped" ColumnName="BottleCubicInchWrapped" />
+          <ScalarProperty Name="BottlesLargeTray" ColumnName="BottlesLargeTray" />
+          <ScalarProperty Name="BottlesSmallTray" ColumnName="BottlesSmallTray" />
+          <ScalarProperty Name="WrappedBottlesTrayLarge" ColumnName="WrappedBottlesTrayLarge" />
+          <ScalarProperty Name="WrappedBottlesTraySmall" ColumnName="WrappedBottlesTraySmall" />
+          <ScalarProperty Name="BottleLabelSquareInches" ColumnName="BottleLabelSquareInches" />
+          <ScalarProperty Name="BottleAddedDate" ColumnName="BottleAddedDate" />
+          <ScalarProperty Name="BottleChangedDate" ColumnName="BottleChangedDate" />
+          <ScalarProperty Name="BottleDeletedDate" ColumnName="BottleDeletedDate" />
+          <ScalarProperty Name="BottleModifiedById" ColumnName="BottleModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brands">
+      <EntityTypeMapping TypeName="PipingRockModelNew.Brand">
+        <MappingFragment StoreEntitySet="Brand">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="BrandCode" ColumnName="BrandCode" />
+          <ScalarProperty Name="Brand1" ColumnName="Brand" />
+          <ScalarProperty Name="BrandAddedDate" ColumnName="BrandAddedDate" />
+          <ScalarProperty Name="BrandChangedDate" ColumnName="BrandChangedDate" />
+          <ScalarProperty Name="BrandDeletedDate" ColumnName="BrandDeletedDate" />
+          <ScalarProperty Name="BrandModifiedById" ColumnName="BrandModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FinishedGoods">
+      <EntityTypeMapping TypeName="PipingRockModelNew.FinishedGood">
+        <MappingFragment StoreEntitySet="FinishedGood">
+          <ScalarProperty Name="FinishedGoodId" ColumnName="FinishedGoodId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="BulkItemId" ColumnName="BulkItemId" />
+          <ScalarProperty Name="ReportSortId" ColumnName="ReportSortId" />
+          <ScalarProperty Name="PackagingLevelId" ColumnName="PackagingLevelId" />
+          <ScalarProperty Name="IsPurchasable" ColumnName="IsPurchasable" />
+          <ScalarProperty Name="ChainPrice" ColumnName="ChainPrice" />
+          <ScalarProperty Name="SRP" ColumnName="SRP" />
+          <ScalarProperty Name="MasterCaseCost" ColumnName="MasterCaseCost" />
+          <ScalarProperty Name="EachUPC" ColumnName="EachUPC" />
+          <ScalarProperty Name="MasterCaseUPC" ColumnName="MasterCaseUPC" />
+          <ScalarProperty Name="InnerUPC" ColumnName="InnerUPC" />
+          <ScalarProperty Name="EachHeightInches" ColumnName="EachHeightInches" />
+          <ScalarProperty Name="EachWidthInches" ColumnName="EachWidthInches" />
+          <ScalarProperty Name="EachDepthInches" ColumnName="EachDepthInches" />
+          <ScalarProperty Name="EachWeightOz" ColumnName="EachWeightOz" />
+          <ScalarProperty Name="EachWeightGrams" ColumnName="EachWeightGrams" />
+          <ScalarProperty Name="MasterCaseQuantity" ColumnName="MasterCaseQuantity" />
+          <ScalarProperty Name="MasterCaseHightInches" ColumnName="MasterCaseHightInches" />
+          <ScalarProperty Name="MasterCaseWidthInches" ColumnName="MasterCaseWidthInches" />
+          <ScalarProperty Name="MasterCaseDepthInches" ColumnName="MasterCaseDepthInches" />
+          <ScalarProperty Name="MasterCaseCubicFeet" ColumnName="MasterCaseCubicFeet" />
+          <ScalarProperty Name="MasterCaseWeightLbs" ColumnName="MasterCaseWeightLbs" />
+          <ScalarProperty Name="MasterCaseWeightKg" ColumnName="MasterCaseWeightKg" />
+          <ScalarProperty Name="MasterCaseCode" ColumnName="MasterCaseCode" />
+          <ScalarProperty Name="InnerQuantity" ColumnName="InnerQuantity" />
+          <ScalarProperty Name="InnerHeightInches" ColumnName="InnerHeightInches" />
+          <ScalarProperty Name="InnerWidthInches" ColumnName="InnerWidthInches" />
+          <ScalarProperty Name="InnerDepthInches" ColumnName="InnerDepthInches" />
+          <ScalarProperty Name="InnerWeightOz" ColumnName="InnerWeightOz" />
+          <ScalarProperty Name="InnerWeightGrams" ColumnName="InnerWeightGrams" />
+          <ScalarProperty Name="Tie" ColumnName="Tie" />
+          <ScalarProperty Name="High" ColumnName="High" />
+          <ScalarProperty Name="CasesPerPallet" ColumnName="CasesPerPallet" />
+          <ScalarProperty Name="PalletCubicFeet" ColumnName="PalletCubicFeet" />
+          <ScalarProperty Name="PalletHeightInches" ColumnName="PalletHeightInches" />
+          <ScalarProperty Name="PalletWidthInches" ColumnName="PalletWidthInches" />
+          <ScalarProperty Name="PalletDepthInches" ColumnName="PalletDepthInches" />
+          <ScalarProperty Name="FinishedGoodMakeBuy" ColumnName="FinishedGoodMakeBuy" />
+          <ScalarProperty Name="isTaxableNYS" ColumnName="isTaxableNYS" />
+          <ScalarProperty Name="isTaxableCanada" ColumnName="isTaxableCanada" />
+          <ScalarProperty Name="FinishedGoodAddedDate" ColumnName="FinishedGoodAddedDate" />
+          <ScalarProperty Name="FinishedGoodChangedDate" ColumnName="FinishedGoodChangedDate" />
+          <ScalarProperty Name="FinishedGoodDeletedDate" ColumnName="FinishedGoodDeletedDate" />
+          <ScalarProperty Name="FinishedGoodModifiedById" ColumnName="FinishedGoodModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="PipingRockModelNew.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ItemKey" ColumnName="ItemKey" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="ItemTypeDetailId" ColumnName="ItemTypeDetailId" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemDescriptionShort" ColumnName="ItemDescriptionShort" />
+          <ScalarProperty Name="ItemDescriptionLong" ColumnName="ItemDescriptionLong" />
+          <ScalarProperty Name="ItemStatusId" ColumnName="ItemStatusId" />
+          <ScalarProperty Name="PurchaseUnitOfMeasureId" ColumnName="PurchaseUnitOfMeasureId" />
+          <ScalarProperty Name="StockUnitOfMeasureId" ColumnName="StockUnitOfMeasureId" />
+          <ScalarProperty Name="ProductionUnitOfMeasureId" ColumnName="ProductionUnitOfMeasureId" />
+          <ScalarProperty Name="SaleUnitOfMeasureId" ColumnName="SaleUnitOfMeasureId" />
+          <ScalarProperty Name="ItemFormId" ColumnName="ItemFormId" />
+          <ScalarProperty Name="ReceivingBoxLabelsRequired" ColumnName="ReceivingBoxLabelsRequired" />
+          <ScalarProperty Name="StorageConditionId" ColumnName="StorageConditionId" />
+          <ScalarProperty Name="QcTestId" ColumnName="QcTestId" />
+          <ScalarProperty Name="ExpirationMonths" ColumnName="ExpirationMonths" />
+          <ScalarProperty Name="RetestingMonths" ColumnName="RetestingMonths" />
+          <ScalarProperty Name="PctOfLifeForRetesting" ColumnName="PctOfLifeForRetesting" />
+          <ScalarProperty Name="QuarantineTypeId" ColumnName="QuarantineTypeId" />
+          <ScalarProperty Name="ItemAddedDate" ColumnName="ItemAddedDate" />
+          <ScalarProperty Name="ItemChangedDate" ColumnName="ItemChangedDate" />
+          <ScalarProperty Name="ItemDeletedDate" ColumnName="ItemDeletedDate" />
+          <ScalarProperty Name="ItemModifiedById" ColumnName="ItemModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemForms">
+      <EntityTypeMapping TypeName="PipingRockModelNew.ItemForm">
+        <MappingFragment StoreEntitySet="ItemForm">
+          <ScalarProperty Name="ItemFormId" ColumnName="ItemFormId" />
+          <ScalarProperty Name="ItemForm1" ColumnName="ItemForm" />
+          <ScalarProperty Name="ItemFormDescription" ColumnName="ItemFormDescription" />
+          <ScalarProperty Name="ItemFormAddedDate" ColumnName="ItemFormAddedDate" />
+          <ScalarProperty Name="ItemFormChangedDate" ColumnName="ItemFormChangedDate" />
+          <ScalarProperty Name="ItemFormDeletedDate" ColumnName="ItemFormDeletedDate" />
+          <ScalarProperty Name="ItemFormModifiedById" ColumnName="ItemFormModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemStatus">
+      <EntityTypeMapping TypeName="PipingRockModelNew.ItemStatu">
+        <MappingFragment StoreEntitySet="ItemStatus">
+          <ScalarProperty Name="ItemStatusId" ColumnName="ItemStatusId" />
+          <ScalarProperty Name="ItemStatus" ColumnName="ItemStatus" />
+          <ScalarProperty Name="ItemStatusDescription" ColumnName="ItemStatusDescription" />
+          <ScalarProperty Name="ItemStatusAddedDate" ColumnName="ItemStatusAddedDate" />
+          <ScalarProperty Name="ItemStatusChangedDate" ColumnName="ItemStatusChangedDate" />
+          <ScalarProperty Name="ItemStatusDeletedDate" ColumnName="ItemStatusDeletedDate" />
+          <ScalarProperty Name="ItemStatusModifiedById" ColumnName="ItemStatusModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemTypes">
+      <EntityTypeMapping TypeName="PipingRockModelNew.ItemType">
+        <MappingFragment StoreEntitySet="ItemType">
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="ItemType1" ColumnName="ItemType" />
+          <ScalarProperty Name="ItemTypeCode" ColumnName="ItemTypeCode" />
+          <ScalarProperty Name="ItemTypeDescription" ColumnName="ItemTypeDescription" />
+          <ScalarProperty Name="ItemTypeAddedDate" ColumnName="ItemTypeAddedDate" />
+          <ScalarProperty Name="ItemTypeChangedDate" ColumnName="ItemTypeChangedDate" />
+          <ScalarProperty Name="ItemTypeDeletedDate" ColumnName="ItemTypeDeletedDate" />
+          <ScalarProperty Name="ItemTypeModifiedById" ColumnName="ItemTypeModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemTypeDetails">
+      <EntityTypeMapping TypeName="PipingRockModelNew.ItemTypeDetail">
+        <MappingFragment StoreEntitySet="ItemTypeDetail">
+          <ScalarProperty Name="ItemTypeDetailId" ColumnName="ItemTypeDetailId" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="ItemTypeDetail1" ColumnName="ItemTypeDetail" />
+          <ScalarProperty Name="ItemTypeDetailDescription" ColumnName="ItemTypeDetailDescription" />
+          <ScalarProperty Name="LossFactorInventory" ColumnName="LossFactorInventory" />
+          <ScalarProperty Name="LossFactorCost" ColumnName="LossFactorCost" />
+          <ScalarProperty Name="ItemTypeDetailAddedDate" ColumnName="ItemTypeDetailAddedDate" />
+          <ScalarProperty Name="ItemTypeDetailChangedDate" ColumnName="ItemTypeDetailChangedDate" />
+          <ScalarProperty Name="ItemTypeDetailDeletedDate" ColumnName="ItemTypeDetailDeletedDate" />
+          <ScalarProperty Name="ItemTypeDetailModifiedById" ColumnName="ItemTypeDetailModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackagingLevels">
+      <EntityTypeMapping TypeName="PipingRockModelNew.PackagingLevel">
+        <MappingFragment StoreEntitySet="PackagingLevel">
+          <ScalarProperty Name="PackagingLevelId" ColumnName="PackagingLevelId" />
+          <ScalarProperty Name="PackagingLevel1" ColumnName="PackagingLevel" />
+          <ScalarProperty Name="PackagingLevelAbbreviation" ColumnName="PackagingLevelAbbreviation" />
+          <ScalarProperty Name="PackagingLevelDesc" ColumnName="PackagingLevelDesc" />
+          <ScalarProperty Name="PackagingLevelAddedDate" ColumnName="PackagingLevelAddedDate" />
+          <ScalarProperty Name="PackagingLevelChangedDate" ColumnName="PackagingLevelChangedDate" />
+          <ScalarProperty Name="PackagingLevelDeletedDate" ColumnName="PackagingLevelDeletedDate" />
+          <ScalarProperty Name="PackagingLevelModifiedById" ColumnName="PackagingLevelModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QcTests">
+      <EntityTypeMapping TypeName="PipingRockModelNew.QcTest">
+        <MappingFragment StoreEntitySet="QcTest">
+          <ScalarProperty Name="QcTestId" ColumnName="QcTestId" />
+          <ScalarProperty Name="QcTest1" ColumnName="QcTest" />
+          <ScalarProperty Name="QcTestParentId" ColumnName="QcTestParentId" />
+          <ScalarProperty Name="QcTestAddedDate" ColumnName="QcTestAddedDate" />
+          <ScalarProperty Name="QcTestChangedDate" ColumnName="QcTestChangedDate" />
+          <ScalarProperty Name="QcTestDeletedDate" ColumnName="QcTestDeletedDate" />
+          <ScalarProperty Name="QcTestModifiedById" ColumnName="QcTestModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuarantineTypes">
+      <EntityTypeMapping TypeName="PipingRockModelNew.QuarantineType">
+        <MappingFragment StoreEntitySet="QuarantineType">
+          <ScalarProperty Name="QuarantineTypeId" ColumnName="QuarantineTypeId" />
+          <ScalarProperty Name="QuarantineType1" ColumnName="QuarantineType" />
+          <ScalarProperty Name="QuarantineTypeAddedDate" ColumnName="QuarantineTypeAddedDate" />
+          <ScalarProperty Name="QuarantineTypeChangedDate" ColumnName="QuarantineTypeChangedDate" />
+          <ScalarProperty Name="QuarantineTypeDeletedDate" ColumnName="QuarantineTypeDeletedDate" />
+          <ScalarProperty Name="QuarantineTypeModifiedById" ColumnName="QuarantineTypeModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ref_GDSN_UoM">
+      <EntityTypeMapping TypeName="PipingRockModelNew.Ref_GDSN_UoM">
+        <MappingFragment StoreEntitySet="Ref_GDSN_UoM">
+          <ScalarProperty Name="Ref_GDSN_UoMId" ColumnName="Ref_GDSN_UoMId" />
+          <ScalarProperty Name="isUsedAtPipingRock" ColumnName="isUsedAtPipingRock" />
+          <ScalarProperty Name="GDSN_Code" ColumnName="GDSN_Code" />
+          <ScalarProperty Name="GDSN_Value" ColumnName="GDSN_Value" />
+          <ScalarProperty Name="GDSN_Definition" ColumnName="GDSN_Definition" />
+          <ScalarProperty Name="GDSN_Group" ColumnName="GDSN_Group" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportSorts">
+      <EntityTypeMapping TypeName="PipingRockModelNew.ReportSort">
+        <MappingFragment StoreEntitySet="ReportSort">
+          <ScalarProperty Name="ReportSortId" ColumnName="ReportSortId" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="ReportSortName" ColumnName="ReportSortName" />
+          <ScalarProperty Name="ReportSortAddedDate" ColumnName="ReportSortAddedDate" />
+          <ScalarProperty Name="ReportSortChangedDate" ColumnName="ReportSortChangedDate" />
+          <ScalarProperty Name="ReportSortDeletedDate" ColumnName="ReportSortDeletedDate" />
+          <ScalarProperty Name="ReportSortModifiedById" ColumnName="ReportSortModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StorageConditions">
+      <EntityTypeMapping TypeName="PipingRockModelNew.StorageCondition">
+        <MappingFragment StoreEntitySet="StorageCondition">
+          <ScalarProperty Name="StorageConditionId" ColumnName="StorageConditionId" />
+          <ScalarProperty Name="StorageCondition1" ColumnName="StorageCondition" />
+          <ScalarProperty Name="StorageConditionDescription" ColumnName="StorageConditionDescription" />
+          <ScalarProperty Name="StorageConditionAddedDate" ColumnName="StorageConditionAddedDate" />
+          <ScalarProperty Name="StorageConditionChangedDate" ColumnName="StorageConditionChangedDate" />
+          <ScalarProperty Name="StorageConditionDeletedDate" ColumnName="StorageConditionDeletedDate" />
+          <ScalarProperty Name="StorageConditionModifiedById" ColumnName="StorageConditionModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnitOfMeasures">
+      <EntityTypeMapping TypeName="PipingRockModelNew.UnitOfMeasure">
+        <MappingFragment StoreEntitySet="UnitOfMeasure">
+          <ScalarProperty Name="UnitOfMeasureId" ColumnName="UnitOfMeasureId" />
+          <ScalarProperty Name="UnitOfMeasure1" ColumnName="UnitOfMeasure" />
+          <ScalarProperty Name="UnitOfMeasureAbbreviation" ColumnName="UnitOfMeasureAbbreviation" />
+          <ScalarProperty Name="Ref_GDSN_UoMId" ColumnName="Ref_GDSN_UoMId" />
+          <ScalarProperty Name="UnitOfMeasureAddedDate" ColumnName="UnitOfMeasureAddedDate" />
+          <ScalarProperty Name="UnitOfMeasureChangedDate" ColumnName="UnitOfMeasureChangedDate" />
+          <ScalarProperty Name="UnitOfMeasureDeletedDate" ColumnName="UnitOfMeasureDeletedDate" />
+          <ScalarProperty Name="UnitOfMeasureModifiedById" ColumnName="UnitOfMeasureModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="PipingRockModelNew.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserLastLoginDate" ColumnName="UserLastLoginDate" />
+          <ScalarProperty Name="UserAddedDate" ColumnName="UserAddedDate" />
+          <ScalarProperty Name="UserChangedDate" ColumnName="UserChangedDate" />
+          <ScalarProperty Name="UserDeletedDate" ColumnName="UserDeletedDate" />
+          <ScalarProperty Name="UserModifiedById" ColumnName="UserModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_UserRole">
+      <EntityTypeMapping TypeName="PipingRockModelNew.User_UserRole">
+        <MappingFragment StoreEntitySet="User_UserRole">
+          <ScalarProperty Name="User_UserRoleId" ColumnName="User_UserRoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+          <ScalarProperty Name="User_UserRoleAddedDate" ColumnName="User_UserRoleAddedDate" />
+          <ScalarProperty Name="User_UserRoleChangedDate" ColumnName="User_UserRoleChangedDate" />
+          <ScalarProperty Name="User_UserRoleDeletedDate" ColumnName="User_UserRoleDeletedDate" />
+          <ScalarProperty Name="User_UserRoleModifiedById" ColumnName="User_UserRoleModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="PipingRockModelNew.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+          <ScalarProperty Name="UserRoleName" ColumnName="UserRoleName" />
+          <ScalarProperty Name="UserRoleAddedDate" ColumnName="UserRoleAddedDate" />
+          <ScalarProperty Name="UserRoleChangedDate" ColumnName="UserRoleChangedDate" />
+          <ScalarProperty Name="UserRoleDeletedDate" ColumnName="UserRoleDeletedDate" />
+          <ScalarProperty Name="UserRoleModifiedById" ColumnName="UserRoleModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRole_UserRoleAuthority">
+      <EntityTypeMapping TypeName="PipingRockModelNew.UserRole_UserRoleAuthority">
+        <MappingFragment StoreEntitySet="UserRole_UserRoleAuthority">
+          <ScalarProperty Name="UserRole_UserRoleAuthorityId" ColumnName="UserRole_UserRoleAuthorityId" />
+          <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+          <ScalarProperty Name="UserRoleAuthorityId" ColumnName="UserRoleAuthorityId" />
+          <ScalarProperty Name="UserRole_UserRoleAuthorityAddedDate" ColumnName="UserRole_UserRoleAuthorityAddedDate" />
+          <ScalarProperty Name="UserRole_UserRoleAuthorityChangedDate" ColumnName="UserRole_UserRoleAuthorityChangedDate" />
+          <ScalarProperty Name="UserRole_UserRoleAuthorityDeletedDate" ColumnName="UserRole_UserRoleAuthorityDeletedDate" />
+          <ScalarProperty Name="UserRole_UserRoleAuthorityModifiedById" ColumnName="UserRole_UserRoleAuthorityModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoleAuthorities">
+      <EntityTypeMapping TypeName="PipingRockModelNew.UserRoleAuthority">
+        <MappingFragment StoreEntitySet="UserRoleAuthority">
+          <ScalarProperty Name="UserRoleAuthorityId" ColumnName="UserRoleAuthorityId" />
+          <ScalarProperty Name="FeatureParentId" ColumnName="FeatureParentId" />
+          <ScalarProperty Name="FeatureName" ColumnName="FeatureName" />
+          <ScalarProperty Name="FeatureDescription" ColumnName="FeatureDescription" />
+          <ScalarProperty Name="CanView" ColumnName="CanView" />
+          <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+          <ScalarProperty Name="CanCreate" ColumnName="CanCreate" />
+          <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+          <ScalarProperty Name="CanUnDelete" ColumnName="CanUnDelete" />
+          <ScalarProperty Name="CanDoAll" ColumnName="CanDoAll" />
+          <ScalarProperty Name="UserRoleAuthorityAddedDate" ColumnName="UserRoleAuthorityAddedDate" />
+          <ScalarProperty Name="UserRoleAuthorityChangedDate" ColumnName="UserRoleAuthorityChangedDate" />
+          <ScalarProperty Name="UserRoleAuthorityDeletedDate" ColumnName="UserRoleAuthorityDeletedDate" />
+          <ScalarProperty Name="UserRoleAuthorityModifiedById" ColumnName="UserRoleAuthorityModifiedById" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemViews">
+      <EntityTypeMapping TypeName="PipingRockModelNew.ItemView">
+        <MappingFragment StoreEntitySet="ItemView">
+          <ScalarProperty Name="ItemKey" ColumnName="ItemKey" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="ItemTypeCode" ColumnName="ItemTypeCode" />
+          <ScalarProperty Name="ItemTypeDetail" ColumnName="ItemTypeDetail" />
+          <ScalarProperty Name="ItemStatus" ColumnName="ItemStatus" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemDescriptionShort" ColumnName="ItemDescriptionShort" />
+          <ScalarProperty Name="ItemDescriptionLong" ColumnName="ItemDescriptionLong" />
+          <ScalarProperty Name="ReceivingBoxLabelsRequired" ColumnName="ReceivingBoxLabelsRequired" />
+          <ScalarProperty Name="ExpirationMonths" ColumnName="ExpirationMonths" />
+          <ScalarProperty Name="RetestingMonths" ColumnName="RetestingMonths" />
+          <ScalarProperty Name="PctOfLifeForRetesting" ColumnName="PctOfLifeForRetesting" />
+          <ScalarProperty Name="Purchase_UnitOfMeasure" ColumnName="Purchase_UnitOfMeasure" />
+          <ScalarProperty Name="Purchase_UnitOfMeasureAbbreviation" ColumnName="Purchase_UnitOfMeasureAbbreviation" />
+          <ScalarProperty Name="Stock_UnitOfMeasure" ColumnName="Stock_UnitOfMeasure" />
+          <ScalarProperty Name="Stock_UnitOfMeasureAbbreviation" ColumnName="Stock_UnitOfMeasureAbbreviation" />
+          <ScalarProperty Name="Production_UnitOfMeasure" ColumnName="Production_UnitOfMeasure" />
+          <ScalarProperty Name="Production_UnitOfMeasureAbbreviation" ColumnName="Production_UnitOfMeasureAbbreviation" />
+          <ScalarProperty Name="Sale_UnitOfMeasure" ColumnName="Sale_UnitOfMeasure" />
+          <ScalarProperty Name="Sale_UnitOfMeasureAbbreviation" ColumnName="Sale_UnitOfMeasureAbbreviation" />
+          <ScalarProperty Name="ItemForm" ColumnName="ItemForm" />
+          <ScalarProperty Name="StorageCondition" ColumnName="StorageCondition" />
+          <ScalarProperty Name="StorageConditionDescription" ColumnName="StorageConditionDescription" />
+          <ScalarProperty Name="QcTest" ColumnName="QcTest" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QcTestViews">
+      <EntityTypeMapping TypeName="PipingRockModelNew.QcTestView">
+        <MappingFragment StoreEntitySet="QcTestView">
+          <ScalarProperty Name="QcTestId" ColumnName="QcTestId" />
+          <ScalarProperty Name="QcTestType" ColumnName="QcTestType" />
+          <ScalarProperty Name="QcTest" ColumnName="QcTest" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddQuarantineType" FunctionName="PipingRockModelNew.Store.AddQuarantineType" />
+    <FunctionImportMapping FunctionImportName="AddStorageCondition" FunctionName="PipingRockModelNew.Store.AddStorageCondition" />
+    <FunctionImportMapping FunctionImportName="GetAllQuarantineTypes" FunctionName="PipingRockModelNew.Store.GetAllQuarantineTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PipingRockModelNew.GetAllQuarantineTypes_Result">
+          <ScalarProperty Name="QuarantineTypeId" ColumnName="QuarantineTypeId" />
+          <ScalarProperty Name="QuarantineType" ColumnName="QuarantineType" />
+          <ScalarProperty Name="QuarantineTypeAddedDate" ColumnName="QuarantineTypeAddedDate" />
+          <ScalarProperty Name="QuarantineTypeChangedDate" ColumnName="QuarantineTypeChangedDate" />
+          <ScalarProperty Name="QuarantineTypeDeletedDate" ColumnName="QuarantineTypeDeletedDate" />
+          <ScalarProperty Name="QuarantineTypeModifiedById" ColumnName="QuarantineTypeModifiedById" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllStorageConditions" FunctionName="PipingRockModelNew.Store.GetAllStorageConditions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PipingRockModelNew.GetAllStorageConditions_Result">
+          <ScalarProperty Name="StorageConditionId" ColumnName="StorageConditionId" />
+          <ScalarProperty Name="StorageCondition" ColumnName="StorageCondition" />
+          <ScalarProperty Name="StorageConditionDescription" ColumnName="StorageConditionDescription" />
+          <ScalarProperty Name="StorageConditionAddedDate" ColumnName="StorageConditionAddedDate" />
+          <ScalarProperty Name="StorageConditionChangedDate" ColumnName="StorageConditionChangedDate" />
+          <ScalarProperty Name="StorageConditionDeletedDate" ColumnName="StorageConditionDeletedDate" />
+          <ScalarProperty Name="StorageConditionModifiedById" ColumnName="StorageConditionModifiedById" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetQuarantineTypeByID" FunctionName="PipingRockModelNew.Store.GetQuarantineTypeByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PipingRockModelNew.GetQuarantineTypeByID_Result">
+          <ScalarProperty Name="QuarantineTypeId" ColumnName="QuarantineTypeId" />
+          <ScalarProperty Name="QuarantineType" ColumnName="QuarantineType" />
+          <ScalarProperty Name="QuarantineTypeAddedDate" ColumnName="QuarantineTypeAddedDate" />
+          <ScalarProperty Name="QuarantineTypeChangedDate" ColumnName="QuarantineTypeChangedDate" />
+          <ScalarProperty Name="QuarantineTypeDeletedDate" ColumnName="QuarantineTypeDeletedDate" />
+          <ScalarProperty Name="QuarantineTypeModifiedById" ColumnName="QuarantineTypeModifiedById" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetStorageConditionByID" FunctionName="PipingRockModelNew.Store.GetStorageConditionByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PipingRockModelNew.GetStorageConditionByID_Result">
+          <ScalarProperty Name="StorageConditionId" ColumnName="StorageConditionId" />
+          <ScalarProperty Name="StorageCondition" ColumnName="StorageCondition" />
+          <ScalarProperty Name="StorageConditionDescription" ColumnName="StorageConditionDescription" />
+          <ScalarProperty Name="StorageConditionAddedDate" ColumnName="StorageConditionAddedDate" />
+          <ScalarProperty Name="StorageConditionChangedDate" ColumnName="StorageConditionChangedDate" />
+          <ScalarProperty Name="StorageConditionDeletedDate" ColumnName="StorageConditionDeletedDate" />
+          <ScalarProperty Name="StorageConditionModifiedById" ColumnName="StorageConditionModifiedById" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateQuarantineTypeByID" FunctionName="PipingRockModelNew.Store.UpdateQuarantineTypeByID" />
+    <FunctionImportMapping FunctionImportName="UpdateStorageConditionByID" FunctionName="PipingRockModelNew.Store.UpdateStorageConditionByID" />
+    <FunctionImportMapping FunctionImportName="AddRoleUserID" FunctionName="PipingRockModelNew.Store.AddRoleUserID" />
+    <FunctionImportMapping FunctionImportName="AddUser" FunctionName="PipingRockModelNew.Store.AddUser" />
+    <FunctionImportMapping FunctionImportName="GetAllRoles" FunctionName="PipingRockModelNew.Store.GetAllRoles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PipingRockModelNew.GetAllRoles_Result">
+          <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+          <ScalarProperty Name="UserRoleName" ColumnName="UserRoleName" />
+          <ScalarProperty Name="UserRoleAddedDate" ColumnName="UserRoleAddedDate" />
+          <ScalarProperty Name="UserRoleChangedDate" ColumnName="UserRoleChangedDate" />
+          <ScalarProperty Name="UserRoleDeletedDate" ColumnName="UserRoleDeletedDate" />
+          <ScalarProperty Name="UserRoleModifiedById" ColumnName="UserRoleModifiedById" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllUsers" FunctionName="PipingRockModelNew.Store.GetAllUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PipingRockModelNew.GetAllUsers_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserLastLoginDate" ColumnName="UserLastLoginDate" />
+          <ScalarProperty Name="UserAddedDate" ColumnName="UserAddedDate" />
+          <ScalarProperty Name="UserChangedDate" ColumnName="UserChangedDate" />
+          <ScalarProperty Name="UserDeletedDate" ColumnName="UserDeletedDate" />
+          <ScalarProperty Name="UserModifiedById" ColumnName="UserModifiedById" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUser" FunctionName="PipingRockModelNew.Store.GetUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PipingRockModelNew.GetUser_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserLastLoginDate" ColumnName="UserLastLoginDate" />
+          <ScalarProperty Name="UserAddedDate" ColumnName="UserAddedDate" />
+          <ScalarProperty Name="UserChangedDate" ColumnName="UserChangedDate" />
+          <ScalarProperty Name="UserDeletedDate" ColumnName="UserDeletedDate" />
+          <ScalarProperty Name="UserModifiedById" ColumnName="UserModifiedById" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUserByID" FunctionName="PipingRockModelNew.Store.GetUserByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PipingRockModelNew.GetUserByID_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserLastLoginDate" ColumnName="UserLastLoginDate" />
+          <ScalarProperty Name="UserAddedDate" ColumnName="UserAddedDate" />
+          <ScalarProperty Name="UserChangedDate" ColumnName="UserChangedDate" />
+          <ScalarProperty Name="UserDeletedDate" ColumnName="UserDeletedDate" />
+          <ScalarProperty Name="UserModifiedById" ColumnName="UserModifiedById" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUserDisabledRolesByID" FunctionName="PipingRockModelNew.Store.GetUserDisabledRolesByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PipingRockModelNew.GetUserDisabledRolesByID_Result">
+          <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+          <ScalarProperty Name="UserRoleName" ColumnName="UserRoleName" />
+          <ScalarProperty Name="UserRoleAddedDate" ColumnName="UserRoleAddedDate" />
+          <ScalarProperty Name="UserRoleChangedDate" ColumnName="UserRoleChangedDate" />
+          <ScalarProperty Name="UserRoleDeletedDate" ColumnName="UserRoleDeletedDate" />
+          <ScalarProperty Name="UserRoleModifiedById" ColumnName="UserRoleModifiedById" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUserRolesByID" FunctionName="PipingRockModelNew.Store.GetUserRolesByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PipingRockModelNew.GetUserRolesByID_Result">
+          <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+          <ScalarProperty Name="UserRoleName" ColumnName="UserRoleName" />
+          <ScalarProperty Name="UserRoleAddedDate" ColumnName="UserRoleAddedDate" />
+          <ScalarProperty Name="UserRoleChangedDate" ColumnName="UserRoleChangedDate" />
+          <ScalarProperty Name="UserRoleDeletedDate" ColumnName="UserRoleDeletedDate" />
+          <ScalarProperty Name="UserRoleModifiedById" ColumnName="UserRoleModifiedById" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RemoveRoleUserID" FunctionName="PipingRockModelNew.Store.RemoveRoleUserID" />
+    <FunctionImportMapping FunctionImportName="UpdateUserByID" FunctionName="PipingRockModelNew.Store.UpdateUserByID" />
+  </EntityContainerMapping>
+</Mapping>

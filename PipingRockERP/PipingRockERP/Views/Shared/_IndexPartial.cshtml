@@ -1,0 +1,104 @@
+﻿@{
+    if ((Request.IsAuthenticated))
+    {
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
+    <div class="menu">
+        <div id="nav" class="nav group page__nav">
+            <div class="group">
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="location.href='@Url.Action("Index", "Packaging")'">Packaging</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Manufacturing</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="location.href='@Url.Action("Index", "Purchasing")'">Purchasing</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="location.href='@Url.Action("Index", "Receiving")'">Receiving</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Warehouse</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Website Piping Rock</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Website Wholesale</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Art Dept</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="location.href='@Url.Action("Index", "Nutrition")'">Nutrition Dept</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Wholesale</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="location.href='@Url.Action("Index", "Maintenance")'">Maintenance</button>
+                </div>
+            </div>
+        </div>
+        @*<section>
+            <div style="height:100%;" id="sidebar-wrapper">
+                <div id="sidebar-usable-area" class="group">
+                    <div id="sidebar" class="group">
+                        <div class="side-bar-content">
+                            <ul class="side-bar-nav">
+                                <a href="">Add Inventory Item</a>
+                            </ul>
+                            <ul class="side-bar-nav">
+                                <a href="">Bottle Chart</a>
+                            </ul>
+                            <ul class="side-bar-nav">
+                                <a href="">Loss Factors</a>
+                            </ul>
+                            <ul class="side-bar-nav">
+                                <a href="">Location Chart</a>
+                            </ul>
+                            <ul class="side-bar-nav">
+                                <a href="">Item Type</a>
+                            </ul>
+                            <ul class="sidebar-nav">
+                                <a href="">Item Status</a>
+                            </ul>
+                            <ul class="side-bar-nav">
+                                @Html.ActionLink("Unit of Measure", "UnitOfMeasures", "Home")
+                            </ul>
+                            <ul class="side-bar-nav">
+                                <a href="">Form</a>
+                            </ul>
+                            <ul class="side-bar-nav">
+                                <a href="">Item Type Master</a>
+                            </ul>
+                            <ul class="side-bar-nav">
+                                <a href="">Brand Code Chart</a>
+                            </ul>
+                            <ul class="side-bar-nav">
+                                <a href="">Storage Conditions</a>
+                            </ul>
+                            <ul class="side-bar-nav">
+                                <a href="">Quarntine Types</a>
+                            </ul>
+                            <ul class="side-bar-nav">
+                                @Html.ActionLink("Users", "Users", "Home")
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+    </div>
+        }
+    }

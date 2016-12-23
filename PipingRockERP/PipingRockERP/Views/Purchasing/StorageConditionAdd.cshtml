@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "StorageConditionAdd";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_PurchasingPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Purchasing > Add Storage Condition</h4>
+            </div>
+            <button style="margin-left:18px; max-width:90px" class="btn btn-success1" onclick="location.href='@Url.Action("StorageConditions", "Purchasing")'">Back</button>
+            @using (Html.BeginForm("SubmitStorageConditionAdd", "Purchasing"))
+            {
+                <input style="margin-left:18px; margin-top:2px; width:90px" class="btn btn-success" type="submit" id="SubmitStorageConditionAdd" value="Save" />
+                <table>
+                    <tr>
+                        <td>Storage Condition ID</td>
+                        <td><div id="qscId" name="scId">New</div></td>
+                    </tr>
+                    <tr>
+                        <td>Storage Condition Name</td>
+                        <td><input class="form-control" type="text" id="scname" name="scname" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>Storage Condition Description</td>
+                        <td><input class="form-control" type="text" id="scdesc" name="scdesc" value="N/A" /></td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </aside>
+}

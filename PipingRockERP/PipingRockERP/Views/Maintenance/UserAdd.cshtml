@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Add";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_MaintenancePartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Maintenance > Add New User</h4>
+            </div>
+            <button style="margin-left:18px; max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Users", "Maintenance")'">Back</button>
+            @using (Html.BeginForm("UserSubmitAdd", "Maintenance"))
+            {
+                <input style="margin-left:18px; margin-top:2px; width:90px" class="btn btn-success" type="submit" id="UserSubmitAdd" value="Save" />
+                <table>
+                    <tr>
+                        <td>User Name:</td>
+                        <td><input class="form-control" type="text" id="userName" name="userName" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>User Role:</td>
+                        <td>
+                            <select id="roleName" name="roleName" class="form-control">
+                                @foreach (var item in ViewBag.Roles)
+                                {
+                                    <option value="@item.UserRoleName">@item.UserRoleName</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </aside>
+}

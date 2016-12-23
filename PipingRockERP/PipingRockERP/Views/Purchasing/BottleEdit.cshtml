@@ -1,0 +1,165 @@
+﻿@{
+    ViewBag.Title = "BottleEdit";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_PurchasingPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+        <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="~/App/Scripts/DimensionsUtils.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                handleDimensionsUpdate($("#BottleLengthInches"), $("#BottleWidthInches"), $("#BottleHieghtInches"), $("#BottleCubicInches"), $("#BottleLengthCm"), $("#BottleWidthCm"), $("#BottleHieghtCm"), $("#BottleCubicCm"));
+                handleDimensionsUpdate($("#BottleLengthWrappedInches"), $("#BottleWidthWrappedInches"), $("#BottleDepthWrappedInches"), $("#BottleCubicInchWrappedInches"), $("#BottleLengthWrappedCm"), $("#BottleWidthWrappedCm"), $("#BottleDepthWrappedCm"), $("#BottleCubicInchWrappedCm"));
+                //handleDimensionsUpdate($("#BottleLengthInches"), $("#BottleWidthInches"), $("#BottleHieghtInches"), $("#BottleCubicInches"));
+                //handleDimensionsUpdate($("#BottleLengthWrappedInches"), $("#BottleWidthWrappedInches"), $("#BottleDepthWrappedInches"), $("#BottleCubicInchWrappedInches"));
+                //handleDimensionsUpdate($("#BottleLengthCm"), $("#BottleWidthCm"), $("#BottleHieghtCm"), $("#BottleCubicCm"));
+                //handleDimensionsUpdate($("#BottleLengthWrappedCm"), $("#BottleWidthWrappedCm"), $("#BottleDepthWrappedCm"), $("#BottleCubicInchWrappedCm"));
+
+                handleDimensionsInput($("#LabelSquareInches"), $("#LabelSquareCm"));
+            });
+            $(document).ready(function () {
+                $('.tt').each(function () {
+                    $(this).attr('value', $(this).attr('value').replace(',', '.'));
+                })
+            });
+            function checkInt(input) {
+                var value = input.value;
+                var rep = /[-\,\.;":'a-zA-Zа-яА-Я]/;
+                if (rep.test(value)) {
+                    value = value.replace(rep, '');
+                    input.value = value;
+                }
+            }
+            function checkDec(input) {
+                var value = input.value;
+                var rep = /[-;":'a-zA-Zа-яА-Я]/;
+                if (rep.test(value)) {
+                    value = value.replace(rep, '');
+                    input.value = value;
+                }
+            }
+        </script>
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel">
+            <div style="margin-left: 20px">
+                <h4>Purchasing > Edit Bottle</h4>
+            </div>
+            <button style="margin-left:18px; max-width:90px;" class="btn btn-success1" onclick="location.href='@Url.Action("BottleChart", "Purchasing")'">Back</button>
+            @using (Html.BeginForm("SubmitBottleUpdate", "Purchasing", new { bottleId = @ViewBag.Bottle[0].BottleId }, FormMethod.Post, null))
+            {
+                <input style="margin-left:18px; margin-top:2px; width:90px" class="btn btn-success" type="submit" id="SubmitBottleUpdate" value="Save" />
+                <table>
+                    <tr>
+                        <td>Bottle ID</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleId</div></td>
+                        <td></td>
+                        <td rowspan="7"><img src="~/src/img/no-image_130px.jpg" height="95%"/></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Item Key</td>
+                        <td><input class="form-control" type="text" id="BottleItemKey" name="BottleItemKey" value="@ViewBag.Bottle[0].BottleItemKey" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Description</td>
+                        <td><input class="form-control" type="text" id="BottleDescription" name="BottleDescription" value="@ViewBag.Bottle[0].BottleDescription" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottles Small Tray</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="BottlesSmallTray" name="BottlesSmallTray" value="@ViewBag.Bottle[0].BottlesSmallTray" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottles Large Tray</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="BottlesLargeTray" name="BottlesLargeTray" value="@ViewBag.Bottle[0].BottlesLargeTray" /></td>
+                    </tr>
+                    <tr>
+                        <td>Wrapped Bottles Tray Small</td>
+                        <td><input class="form-control tt" ttype="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="WrappedBottlesTraySmall" name="WrappedBottlesTraySmall" value="@ViewBag.Bottle[0].WrappedBottlesTraySmall" /></td>
+                    </tr>
+                    <tr>
+                        <td>Wrapped Bottles Tray Large</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="WrappedBottlesTrayLarge" name="WrappedBottlesTrayLarge" value="@ViewBag.Bottle[0].WrappedBottlesTrayLarge" /></td>
+                    </tr>
+                    <tr>
+                        <td>Layers Unwrapped</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="[0-9]+" id="LayersUnWrapped" name="LayersUnWrapped" value="@ViewBag.Bottle[0].LayersUnWrapped" /></td>
+                        <td>Layers Wrapped</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="[0-9]+" id="LayersWrapped" name="LayersWrapped" value="@ViewBag.Bottle[0].LayersWrapped" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Length</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleLengthInches" name="BottleLengthInches" value="@ViewBag.Bottle[0].BottleLengthInches" /></td>
+                        <td>Bottle Length Cm</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleLengthCm" name="BottleLengthCm" value="@ViewBag.Bottle[0].BottleLengthCm" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Width</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleWidthInches" name="BottleWidthInches" value="@ViewBag.Bottle[0].BottleWidthInches" /></td>
+                        <td>Bottle Length Cm</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleWidthCm" name="BottleWidthCm" value="@ViewBag.Bottle[0].BottleWidthCm" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Hieght</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleHieghtInches" name="BottleHieghtInches" value="@ViewBag.Bottle[0].BottleHieghtInches" /></td>
+                        <td>Bottle Hieght Cm</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleHieghtCm" name="BottleHieghtCm" value="@ViewBag.Bottle[0].BottleHieghtCm" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Cubic Inches</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleCubicInches" name="BottleCubicInches" value="@ViewBag.Bottle[0].BottleCubicInches" readonly="readonly"/></td>
+                        <td>Bottle Cubic Cm</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleCubicCm" name="BottleCubicCm" value="@ViewBag.Bottle[0].BottleCubicCm" readonly="readonly" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Length Wrapped</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleLengthWrappedInches" name="BottleLengthWrappedInches" value="@ViewBag.Bottle[0].BottleLengthWrappedInches" /></td>
+                        <td>Bottle Length Wrapped Cm</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" step="0.001" id="BottleLengthWrappedCm" name="BottleLengthWrappedCm" value="@ViewBag.Bottle[0].BottleLengthWrappedCm" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Width Wrapped</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleWidthWrappedInches" name="BottleWidthWrappedInches" value="@ViewBag.Bottle[0].BottleWidthWrappedInches" /></td>
+                        <td>Bottle Width Wrapped Cm</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleWidthWrappedCm" name="BottleWidthWrappedCm" value="@ViewBag.Bottle[0].BottleWidthWrappedCm" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Depth Wrapped</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" step="0.001" id="BottleDepthWrappedInches" name="BottleDepthWrappedInches" value="@ViewBag.Bottle[0].BottleDepthWrappedInches" /></td>
+                        <td>Bottle Depth Wrapped Cm</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleDepthWrappedCm" name="BottleDepthWrappedCm" value="@ViewBag.Bottle[0].BottleDepthWrappedCm" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Cubic Inch Wrapped</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleCubicInchWrappedInches" name="BottleCubicInchWrappedInches" value="@ViewBag.Bottle[0].BottleCubicInchWrappedInches" readonly="readonly"/></td>
+                        <td>Bottle Cubic Wrapped Cm</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleCubicInchWrappedCm" name="BottleCubicInchWrappedCm" value="@ViewBag.Bottle[0].BottleCubicInchWrappedCm" readonly="readonly" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Label Square Inches</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="BottleLabelSquareInches" name="BottleLabelSquareInches" value="@ViewBag.Bottle[0].BottleLabelSquareInches" /></td>
+                    </tr>
+                    <tr>
+                        <td>Label Square In</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="LabelSquareInches" name="LabelSquareInches" value="@ViewBag.Bottle[0].LabelSquareInches"/></td>
+                        <td>Label Square Cm</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="LabelSquareCm" name="LabelSquareCm" value="@ViewBag.Bottle[0].LabelSquareCm"/></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Size</td>
+                        <td><input class="form-control" type="text" id="BottleSize" name="BottleSize" value="@ViewBag.Bottle[0].BottleSize" /></td>
+                    </tr>
+                    <tr>
+                        <td>Print Frames</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="PrintFrames" name="PrintFrames" value="@ViewBag.Bottle[0].PrintFrames" /></td>
+                    </tr>
+                    <tr>
+                        <td>Number of Print Position</td>
+                        <td><input class="form-control tt" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="NumberOfPrintingPositions" name="NumberOfPrintingPositions" value="@ViewBag.Bottle[0].NumberOfPrintingPositions" /></td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </aside>
+}

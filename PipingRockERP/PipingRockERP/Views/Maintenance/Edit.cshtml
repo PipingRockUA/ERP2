@@ -1,0 +1,66 @@
+﻿@*@model List<PipingRockERP.Models.UsersRolesModels>*@
+
+@{
+    ViewBag.Title = "Edit";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_MaintenancePartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Maintenance > Edit User Profile</h4>
+            </div>
+            <table style="background:none; margin-left: 20px;">
+                <tr>
+                    <td><b>UserID:</b></td>
+                    <td style="padding-left:15px">@ViewBag.ActiveRoles[0].UserID</td>
+                </tr>
+                <tr>
+                    <td><b>User Name:</b></td>
+                    <td style="padding-left:15px">@ViewBag.ActiveRoles[0].UserName</td>
+                </tr>
+            </table>
+            <table class="table">
+                <tr>
+                    <th colspan="3">Active Roles</th>
+                </tr>
+                <tr>
+                    <th width="20%">RoleID</th>
+                    <th>Role Name</th>
+                    <td width="30%">Action</td>
+                </tr>
+                @foreach (var item in ViewBag.ActiveRoles)
+                {
+                    <tr>
+                        <td width="20%">@item.RoleID</td>
+                        <td>@item.RoleName</td>
+                        <td width="30%">@Html.ActionLink("Remove", "RemoveUserRole", "Maintenance", new { userId = ViewBag.ActiveRoles[0].UserID.ToString(), roleId = item.RoleID }, null)</td>
+                    </tr>
+                }
+            </table>
+            <br />
+            <table class="table">
+                <tr>
+                    <th colspan="3">Disabled Roles</th>
+                </tr>
+                <tr>
+                    <th width="20%">RoleID</th>
+                    <th>Role Name</th>
+                    <td width="30%">Action</td>
+                </tr>
+                @foreach (var item in ViewBag.OtherRoles)
+                {
+                    <tr>
+                        <td width="20%">@item.RID</td>
+                        <td>@item.RN</td>
+                        <td width="30%">@Html.ActionLink("Add", "UserAddRole", "Maintenance", new { userId = ViewBag.ActiveRoles[0].UserID.ToString(), roleId = item.RID }, null)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </aside>
+}

@@ -1,0 +1,53 @@
+﻿@using PipingRockERP.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+<div class="container">
+    <div class="row">
+        <div class="Absolute-Center is-Responsive">
+            <div class="col-sm-12 col-md-10 col-md-offset-1 panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Login</div>
+                    <div class="panel-body">
+                        @using (Html.BeginForm("Login", "Account", new
+                        {
+                            ReturnUrl = ViewBag.ReturnUrl
+                        }, FormMethod.Post, new
+                        {
+                            @class = "form-horizontal",
+                            role = "form"
+                        }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="main-login-form">
+                                @Html.LabelFor(m => m.Username)
+                                <div>
+                                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div>
+                                @Html.LabelFor(m => m.Password)
+                                <div>
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <br />
+                            <div>
+                                <div>
+                                    <input id="LoginBtn" type="submit" value="Log in" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        @section Scripts
+        {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </div>
+</div>
+

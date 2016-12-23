@@ -1,0 +1,45 @@
+﻿@model List<Quarantine>
+
+@{
+    ViewBag.Title = "Quarantines";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_MaintenancePartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Maintenance > Quarantine Types</h4>
+                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Maintenance", new { param = "QuarantineAdd" })'">Add</button>
+                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("ExportQuarantine", "Maintenance")'">Export</button>
+                <p style="text-align:right; font-size:14px">Page:1 Records:@Model.Count</p>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr style="font-size:14px">
+                        <th>ID</th>
+                        <th>Quarantine Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                {
+                        <tr style="font-size:14px">
+                            <td width="10%">@item.QuarantineId</td>
+                            <td width="50%">@item.Quarantine1</td>
+                            <td width="20%">@Html.ActionLink("Edit", "QuarantineEdit", "Maintenance", new { qtId = item.QuarantineId.ToString() }, null)</td>
+                            @*<td width="5%"><input class="btn-edit" type="button" value="Edit" onclick="location.href='@Url.Action("Edit", "Home")'" /></td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </aside>
+    <footer>
+        <p style="text-align:center; font-size:14px">Total Pages:1 Records:@Model.Count</p>
+    </footer>
+}

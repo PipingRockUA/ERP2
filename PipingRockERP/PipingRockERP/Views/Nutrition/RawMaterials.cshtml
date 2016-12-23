@@ -1,0 +1,59 @@
+﻿@model List<RawMaterial>
+@{
+    ViewBag.Title = "RawMaterials";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_NutritionPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+
+        <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".tt").each(function () {
+                    var t = $(this).text().replace(',', '.');
+                    $(this).text(t);
+                })});
+        </script>
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Nutrition > Raw Material</h4>
+                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Nutrition", new { param = "AddRawMaterial" })'">Add</button>
+                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("ExportRawMaterial", "Nutrition")'">Export</button>
+            </div>
+            <table class="table" id="table1">
+                <thead>
+                    <tr style="font-size:16px">
+                        <th>Id</th>
+                        <th id="hiddingEls">Item Key</th>
+                        <th id="hiddingElm">Description (S)</th>
+                        <th>Expiration Months</th>
+                        <th id="hiddingEls">Retesting Months</th>
+                        <th id="hiddingEll">Changed Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                {
+                        <tr style="font-size:16px">
+                            <td>@item.RawMaterialId</td>
+                            <td id="hiddingEls">@item.RawMaterialItemKey</td>
+                            <td id="hiddingElm">@item.RawMaterialDescriptionShort</td>
+                            <td>@item.ExpirationMonths</td>
+                            <td id="hiddingEls" class="tt">@item.RetestingMonths</td>
+                            <td id="hiddingEll">@item.RawMaterialChangedDate.ToString("MM'/'dd'/'yyyy")</td>
+                            <td>@Html.ActionLink("Edit", "EditRawMaterial", "Nutrition", new { rawMaterialId = item.RawMaterialId.ToString() }, null)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </aside>
+    <footer>
+        <p style="text-align:center; font-size:16px">Total Pages:1 Records:@ViewBag.RawMaterial.Count</p>
+    </footer>
+}

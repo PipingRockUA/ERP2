@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "AllergenEdit";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_NutritionPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Nutrition > Edit Allergen</h4>
+            </div>
+            @using (Html.BeginForm("SubmitAllergenUpdate", "Nutrition", new { allergenId = @ViewBag.Allergen[0].AllergenId }, FormMethod.Post, null))
+            {
+                <button style="margin-left:18px; max-width:90px" class="btn btn-success" onclick="javascript:history.go(-1)">To the List</button>
+                <input style="max-width:90px" class="btn btn-success" type="submit" id="SubmitAllergenUpdate" value="Save" />
+                <table>
+                    <tr>
+                        <td>Allergen ID</td>
+                        <td><div id="allergenId" name="allergenId">@ViewBag.Allergen[0].AllergenId</div></td>
+                    </tr>
+                    <tr>
+                        <td>Allergen Name</td>
+                        <td><input class="form-control" type="text" id="allergenName" name="allergenName" value="@ViewBag.Allergen[0].Allergen1" /></td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </aside>
+}

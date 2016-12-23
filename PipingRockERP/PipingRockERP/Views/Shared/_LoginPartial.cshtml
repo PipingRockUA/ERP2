@@ -1,0 +1,36 @@
+﻿@* @using Microsoft.AspNet.Identity *@
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new
+        {
+            id = "logoutForm",
+            @class = "navbar-right"
+        }))
+        {
+            <ul class="nav navbar-nav navbar-left">
+                <li style="display: inline;">
+                    <a><div>Logged in as @User.Identity.Name</div></a> 
+                       @*Html.ActionLink("Logged in as " + User.Identity.Name, "Index", "Home", routeValues: null, htmlAttributes: new
+               {
+                   title = "Manage"
+               })*@
+                </li>
+                <li style="display: inline;"> <a href="javascript:document.getElementById('logoutForm').submit()">(Logout)</a></li>
+            </ul>
+        }
+    } 
+@if (!Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new
+    {
+        id = "loginForm",
+        @class = "navbar-right"
+    }))
+    {
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                <a href="@Url.Action("Index", "Home")">Log In</a>
+            </li>
+        </ul>
+    }
+}

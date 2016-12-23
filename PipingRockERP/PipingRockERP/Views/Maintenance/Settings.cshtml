@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Settings";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_MaintenancePartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel">
+            <div style="margin-left: 20px">
+                <h4>Global Settings</h4>
+            </div>
+            @using (Html.BeginForm())
+            {
+                <input style="margin-left:18px; margin-top:2px; width:90px" class="btn btn-success1" type="submit" id="SubmitSettings" value="Submit" />
+                <table>
+                    <tr>
+                        <td>Max Cubic Inches</td>
+                        <td><input class="form-control" type="number" id="mci" name="mci" value="0"/></td>
+                    </tr>
+                    <tr>
+                        <td>Number of Decimals</td>
+                        <td><input class="form-control" type="number" id="nod" name="nod" value="2"/></td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </aside>
+}
+
