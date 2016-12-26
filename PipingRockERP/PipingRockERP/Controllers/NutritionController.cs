@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Excel = Microsoft.Office.Interop.Excel;
+using Exc = Microsoft.Office.Interop.Excel;
 using System.Reflection;
 
 namespace PipingRockERP.Controllers
@@ -88,13 +88,13 @@ namespace PipingRockERP.Controllers
 
             try
             {
-                Excel.Application excelApplication = new Excel.Application();
+                Exc.Application excelApplication = new Exc.Application();
 
-                Excel.Workbook excelWorkBook = excelApplication.Workbooks.Add();
+                Exc.Workbook excelWorkBook = excelApplication.Workbooks.Add();
 
-                Excel.Worksheet excelWorkSheet = (Excel.Worksheet)excelWorkBook.Worksheets.get_Item(1);
+                Exc.Worksheet excelWorkSheet = (Exc.Worksheet)excelWorkBook.Worksheets.get_Item(1);
 
-                Excel.Range Line = (Excel.Range)excelWorkSheet.Rows[3];
+                Exc.Range Line = (Exc.Range)excelWorkSheet.Rows[3];
                 Line.Insert();
                 var table = (from Allergen in db.Allergens
                              select new
@@ -179,9 +179,9 @@ namespace PipingRockERP.Controllers
                             }
                     }
                 }
-                excelWorkBook.SaveAs("Allergens.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
-        Missing.Value, false, false, Excel.XlSaveAsAccessMode.xlNoChange,
-        Excel.XlSaveConflictResolution.xlUserResolution, true,
+                excelWorkBook.SaveAs("Allergens.xlsx", Exc.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
+        Missing.Value, false, false, Exc.XlSaveAsAccessMode.xlNoChange,
+        Exc.XlSaveConflictResolution.xlUserResolution, true,
         Missing.Value, Missing.Value, Missing.Value);
                 excelWorkBook.Close(Missing.Value, Missing.Value, Missing.Value);
             }
@@ -258,13 +258,13 @@ namespace PipingRockERP.Controllers
 
         //    try
         //    {
-        //        Excel.Application excelApplication = new Excel.Application();
+        //        Exc.Application excelApplication = new Exc.Application();
 
-        //        Excel.Workbook excelWorkBook = excelApplication.Workbooks.Add();
+        //        Exc.Workbook excelWorkBook = excelApplication.Workbooks.Add();
 
-        //        Excel.Worksheet excelWorkSheet = (Excel.Worksheet)excelWorkBook.Worksheets.get_Item(1);
+        //        Exc.Worksheet excelWorkSheet = (Exc.Worksheet)excelWorkBook.Worksheets.get_Item(1);
 
-        //        Excel.Range Line = (Excel.Range)excelWorkSheet.Rows[3];
+        //        Exc.Range Line = (Exc.Range)excelWorkSheet.Rows[3];
         //        Line.Insert();
         //        var table = (from RawMaterial in db.RawMaterials
         //                     select new
@@ -342,9 +342,9 @@ namespace PipingRockERP.Controllers
         //                    }
         //            }
         //        }
-        //        excelWorkBook.SaveAs("RawMaterials.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
-        //Missing.Value, false, false, Excel.XlSaveAsAccessMode.xlNoChange,
-        //Excel.XlSaveConflictResolution.xlUserResolution, true,
+        //        excelWorkBook.SaveAs("RawMaterials.xlsx", Exc.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
+        //Missing.Value, false, false, Exc.XlSaveAsAccessMode.xlNoChange,
+        //Exc.XlSaveConflictResolution.xlUserResolution, true,
         //Missing.Value, Missing.Value, Missing.Value);
         //        excelWorkBook.Close(Missing.Value, Missing.Value, Missing.Value);
         //    }

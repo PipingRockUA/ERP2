@@ -39,7 +39,6 @@ namespace PipingRockERP
         public virtual DbSet<Bulk_QcTest> Bulk_QcTest { get; set; }
         public virtual DbSet<Bulk_Quarantine> Bulk_Quarantine { get; set; }
         public virtual DbSet<FinishedGood> FinishedGoods { get; set; }
-        public virtual DbSet<FinishedGood_BuyItems> FinishedGood_BuyItems { get; set; }
         public virtual DbSet<FinishedGood_QcTest> FinishedGood_QcTest { get; set; }
         public virtual DbSet<FinishedGood_Quarantine> FinishedGood_Quarantine { get; set; }
         public virtual DbSet<FinishedGoodLocation> FinishedGoodLocations { get; set; }
@@ -48,7 +47,7 @@ namespace PipingRockERP
         public virtual DbSet<ItemSubType> ItemSubTypes { get; set; }
         public virtual DbSet<ItemType> ItemTypes { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
-        public virtual DbSet<PackagingComponent> PackagingComponents { get; set; }
+        public virtual DbSet<PackagingUnit> PackagingUnits { get; set; }
         public virtual DbSet<PackagingUOM> PackagingUOMs { get; set; }
         public virtual DbSet<QcTest> QcTests { get; set; }
         public virtual DbSet<Quarantine> Quarantines { get; set; }
@@ -56,7 +55,6 @@ namespace PipingRockERP
         public virtual DbSet<Ref_GDSN_UoM> Ref_GDSN_UoM { get; set; }
         public virtual DbSet<ReportSort> ReportSorts { get; set; }
         public virtual DbSet<StorageCondition> StorageConditions { get; set; }
-        public virtual DbSet<Supply> Supplies { get; set; }
         public virtual DbSet<UnitOfMeasure> UnitOfMeasures { get; set; }
         public virtual DbSet<Vendor> Vendors { get; set; }
         public virtual DbSet<Vendor_RawMaterial> Vendor_RawMaterial { get; set; }

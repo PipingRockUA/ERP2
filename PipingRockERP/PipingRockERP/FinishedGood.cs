@@ -17,13 +17,11 @@ namespace PipingRockERP
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FinishedGood()
         {
-            this.FinishedGood_BuyItems = new HashSet<FinishedGood_BuyItems>();
             this.FinishedGood_QcTest = new HashSet<FinishedGood_QcTest>();
             this.FinishedGood_Quarantine = new HashSet<FinishedGood_Quarantine>();
         }
     
         public int FinishedGoodId { get; set; }
-        public System.Guid ItemGUID { get; set; }
         public string FinishedGoodItemKey { get; set; }
         public string FinishedGoodDescriptionShort { get; set; }
         public string FinishedGoodDescriptionMedium { get; set; }
@@ -35,8 +33,8 @@ namespace PipingRockERP
         public int ItemTypeId { get; set; }
         public int BrandId { get; set; }
         public int BulkId { get; set; }
-        public int SupplyId { get; set; }
         public int ReportSortId { get; set; }
+        public int PackagingUnitId { get; set; }
         public int PackagingUOMId { get; set; }
         public int BottleId { get; set; }
         public decimal ChainPrice { get; set; }
@@ -78,13 +76,13 @@ namespace PipingRockERP
         public System.DateTime FinishedGoodChangedDate { get; set; }
         public Nullable<System.DateTime> FinishedGoodDeletedDate { get; set; }
         public int FinishedGoodModifiedById { get; set; }
+        public bool isDeleted { get; set; }
     
         public virtual Bottle2 Bottle2 { get; set; }
         public virtual Brand Brand { get; set; }
         public virtual Bulk Bulk { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FinishedGood_BuyItems> FinishedGood_BuyItems { get; set; }
         public virtual ItemStatu ItemStatu { get; set; }
+        public virtual PackagingUnit PackagingUnit { get; set; }
         public virtual PackagingUOM PackagingUOM { get; set; }
         public virtual QcTest QcTest { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

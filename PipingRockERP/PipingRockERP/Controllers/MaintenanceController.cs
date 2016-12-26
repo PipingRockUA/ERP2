@@ -28,6 +28,136 @@ namespace PipingRockERP.Controllers
             return View(param);
         }
 
+        //#region Units of Measures
+        //public ActionResult UnitOfMeasures()
+        //{
+        //    PipingRockEntities db = new PipingRockEntities();
+
+        //    var measures = (from UnitOfMeasure in db.UnitOfMeasures select UnitOfMeasure).ToList();
+
+        //    return View(measures);
+        //}
+
+        //public ActionResult ExportUnitOfMeasures()
+        //{
+        //    PipingRockEntities db = new PipingRockEntities();
+        //    try
+        //    {
+        //        Excel.Application excelApplication = new Excel.Application();
+
+        //        Excel.Workbook excelWorkBook = excelApplication.Workbooks.Add();
+
+        //        Excel.Worksheet excelWorkSheet = (Excel.Worksheet)excelWorkBook.Worksheets.get_Item(1);
+
+        //        Excel.Range Line = (Excel.Range)excelWorkSheet.Rows[3];
+        //        Line.Insert();
+        //        var table = (from UnitOfMeasure in db.UnitOfMeasures
+        //                     select new
+        //                     {
+        //                         ID = UnitOfMeasure.UnitOfMeasureId,
+        //                         UnitOfMeasure = UnitOfMeasure.UnitOfMeasure1,
+        //                         Abbreviation = UnitOfMeasure.UnitOfMeasureAbbreviation,
+        //                         AddedDate = UnitOfMeasure.UnitOfMeasureAddedDate,
+        //                         ChangedDate = UnitOfMeasure.UnitOfMeasureChangedDate,
+        //                         DeletedDate = UnitOfMeasure.UnitOfMeasureDeletedDate,
+        //                         ModifiedById = UnitOfMeasure.UnitOfMeasureModifiedById,
+        //                         isDeleted = (UnitOfMeasure.isDeleted ? 1 : 0)
+        //                     }).ToList();
+
+        //        excelApplication.Cells[1, 1] = "ID";
+        //        excelApplication.Cells[1, 2] = "UnitOfMeasure";
+        //        excelApplication.Cells[1, 3] = "Abbreviation";
+        //        excelApplication.Cells[1, 4] = "AddedDate";
+        //        excelApplication.Cells[1, 5] = "ChangedDate";
+        //        excelApplication.Cells[1, 6] = "DeletedDate";
+        //        excelApplication.Cells[1, 7] = "ModifiedById";
+        //        excelApplication.Cells[1, 8] = "isDeleted";
+
+        //        for (int j = 1; j < 9; j++)
+        //        {
+        //            excelWorkSheet.Columns[j].ColumnWidth = 18;
+        //            switch (j)
+        //            {
+        //                case 1:
+        //                    {
+        //                        for (int i = 2; i < table.Count + 1; i++)
+        //                        {
+        //                            excelApplication.Cells[i, j] = table[i - 2].ID;
+        //                        }
+        //                        break;
+        //                    }
+        //                case 2:
+        //                    {
+        //                        for (int i = 2; i < table.Count + 1; i++)
+        //                        {
+        //                            excelApplication.Cells[i, j] = table[i - 2].UnitOfMeasure;
+        //                        }
+        //                        break;
+        //                    }
+        //                case 3:
+        //                    {
+        //                        for (int i = 2; i < table.Count + 1; i++)
+        //                        {
+        //                            excelApplication.Cells[i, j] = table[i - 2].Abbreviation;
+        //                        }
+        //                        break;
+        //                    }
+        //                case 4:
+        //                    {
+        //                        for (int i = 2; i < table.Count + 1; i++)
+        //                        {
+        //                            excelApplication.Cells[i, j] = table[i - 2].AddedDate.ToString("MM'/'dd'/'yyyy");
+        //                        }
+        //                        break;
+        //                    }
+        //                case 5:
+        //                    {
+        //                        for (int i = 2; i < table.Count + 1; i++)
+        //                        {
+        //                            excelApplication.Cells[i, j] = table[i - 2].ChangedDate.ToString("MM'/'dd'/'yyyy");
+        //                        }
+        //                        break;
+        //                    }
+        //                case 6:
+        //                    {
+        //                        for (int i = 2; i < table.Count + 1; i++)
+        //                        {
+        //                            excelApplication.Cells[i, j] = table[i - 2].DeletedDate.ToString();
+        //                        }
+        //                        break;
+        //                    }
+        //                case 7:
+        //                    {
+        //                        for (int i = 2; i < table.Count + 1; i++)
+        //                        {
+        //                            excelApplication.Cells[i, j] = table[i - 2].ModifiedById;
+        //                        }
+        //                        break;
+        //                    }
+        //                case 8:
+        //                    {
+        //                        for (int i = 2; i < table.Count + 1; i++)
+        //                        {
+        //                            excelApplication.Cells[i, j] = table[i - 2].isDeleted;
+        //                        }
+        //                        break;
+        //                    }
+        //            }
+        //        }
+        //        excelWorkBook.SaveAs("UnitOfMeasures.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
+        //Missing.Value, false, false, Excel.XlSaveAsAccessMode.xlNoChange,
+        //Excel.XlSaveConflictResolution.xlUserResolution, true,
+        //Missing.Value, Missing.Value, Missing.Value);
+        //        excelWorkBook.Close(Missing.Value, Missing.Value, Missing.Value);
+        //    }
+        //    catch(Exception e)
+        //    {
+        //        Console.WriteLine(e.ToString());
+        //    }
+        //    return RedirectToAction("UnitOfMeasures");
+        //}
+        //#endregion
+
         #region Users Profiles
         public ActionResult Users()
         {

@@ -26,5 +26,6 @@ namespace PipingRockERP
         public bool isDeleted { get; set; }
     
         public virtual Bottle2 Bottle2 { get; set; }
+        public virtual PackagingUnit PackagingUnit { get; set; }
     }
 }

@@ -9,9 +9,10 @@ using System.Globalization;
 using System.Web.UI.WebControls;
 using System.Web.UI;
 using System.IO;
-using Excel = Microsoft.Office.Interop.Excel;
+using Exc = Microsoft.Office.Interop.Excel;
 using System.Reflection;
 using System.Net;
+using Excel;
 
 namespace PipingRockERP.Controllers
 {
@@ -43,13 +44,13 @@ namespace PipingRockERP.Controllers
             PipingRockEntities db = new PipingRockEntities();
             try
             {
-                Excel.Application excelApplication = new Excel.Application();
+                Exc.Application excelApplication = new Exc.Application();
 
-                Excel.Workbook excelWorkBook = excelApplication.Workbooks.Add();
+                Exc.Workbook excelWorkBook = excelApplication.Workbooks.Add();
 
-                Excel.Worksheet excelWorkSheet = (Excel.Worksheet)excelWorkBook.Worksheets.get_Item(1);
+                Exc.Worksheet excelWorkSheet = (Exc.Worksheet)excelWorkBook.Worksheets.get_Item(1);
 
-                Excel.Range Line = (Excel.Range)excelWorkSheet.Rows[3];
+                Exc.Range Line = (Exc.Range)excelWorkSheet.Rows[3];
                 Line.Insert();
                 var table = (from UnitOfMeasure in db.UnitOfMeasures
                              select new
@@ -144,9 +145,9 @@ namespace PipingRockERP.Controllers
                             }
                     }
                 }
-                excelWorkBook.SaveAs("UnitOfMeasures.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
-        Missing.Value, false, false, Excel.XlSaveAsAccessMode.xlNoChange,
-        Excel.XlSaveConflictResolution.xlUserResolution, true,
+                excelWorkBook.SaveAs("UnitOfMeasures.xlsx", Exc.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
+        Missing.Value, false, false, Exc.XlSaveAsAccessMode.xlNoChange,
+        Exc.XlSaveConflictResolution.xlUserResolution, true,
         Missing.Value, Missing.Value, Missing.Value);
                 excelWorkBook.Close(Missing.Value, Missing.Value, Missing.Value);
             }
@@ -269,11 +270,128 @@ namespace PipingRockERP.Controllers
                 BottleAddedDate = DateTime.Now,
                 BottleChangedDate = DateTime.Now,
                 BottleModifiedById = 1,
+                isDeleted = false
             };
 
             db.Bottle2.Add(bottle);
             db.SaveChanges();
             return RedirectToAction("BottleChart");
+        }
+
+        public ActionResult ImportBottle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ImportBottle(HttpPostedFileBase upload)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    if (upload != null && upload.ContentLength > 0)
+                    {
+                        // ExcelDataReader works with the binary Excel file, so it needs a FileStream
+                        // to get started. This is how we avoid dependencies on ACE or Interop:
+                        Stream stream = upload.InputStream;
+
+                        // We return the interface, so that
+                        IExcelDataReader reader = null;
+
+
+                        if (upload.FileName.EndsWith(".xls"))
+                        {
+                            reader = ExcelReaderFactory.CreateBinaryReader(stream);
+                        }
+                        else if (upload.FileName.EndsWith(".xlsx"))
+                        {
+                            reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("File", "This file format is not supported");
+                            return View();
+                        }
+
+                        reader.IsFirstRowAsColumnNames = true;
+
+                        DataSet result = reader.AsDataSet();
+                        reader.Close();
+
+                        var data = new Bottle1();
+                        PipingRockEntities db = new PipingRockEntities();
+                        //db.prc_ExcelUpload_Bottle(1);
+                        //db.Bottle1.
+                        for (int i = 0; i < result.Tables[0].Rows.Count; i++)
+                        {
+                            data.BottleId = i;
+                            data.BottleItemKey = result.Tables[0].Rows[i][1].ToString().Trim();
+                            data.BottleDescription = result.Tables[0].Rows[i][2].ToString().Trim();
+                            data.BottlesSmallTray = Int32.Parse(result.Tables[0].Rows[i][3].ToString().Trim());
+                            data.BottlesLargeTray = Int32.Parse(result.Tables[0].Rows[i][4].ToString().Trim()); 
+                            data.WrappedBottlesTrayLarge = Int32.Parse(result.Tables[0].Rows[i][5].ToString().Trim());
+                            data.WrappedBottlesTraySmall = Int32.Parse(result.Tables[0].Rows[i][6].ToString().Trim());
+                            data.BottleLengthInches = Decimal.Parse(result.Tables[0].Rows[i][7].ToString().Trim());
+                            data.BottleWidthInches = Decimal.Parse(result.Tables[0].Rows[i][8].ToString().Trim());
+                            data.BottleHieghtInches = Decimal.Parse(result.Tables[0].Rows[i][9].ToString().Trim());
+                            data.BottleCubicInches = Decimal.Parse(result.Tables[0].Rows[i][10].ToString().Trim());
+                            data.ItemStatusId = 3; 
+                            data.ItemTypeId = 2; 
+                            data.ItemSubTypeId = 1;
+                            data.BottleLengthCm = Decimal.Parse(result.Tables[0].Rows[i][11].ToString().Trim());
+                            data.BottleWidthCm = Decimal.Parse(result.Tables[0].Rows[i][12].ToString().Trim());
+                            data.BottleHieghtCm = Decimal.Parse(result.Tables[0].Rows[i][13].ToString().Trim());
+                            data.BottleCubicCm = Decimal.Parse(result.Tables[0].Rows[i][14].ToString().Trim());
+                            data.BottleLengthWrappedInches = Decimal.Parse(result.Tables[0].Rows[i][15].ToString().Trim());
+                            data.BottleWidthWrappedInches = Decimal.Parse(result.Tables[0].Rows[i][16].ToString().Trim());
+                            data.BottleDepthWrappedInches = Decimal.Parse(result.Tables[0].Rows[i][17].ToString().Trim());
+                            data.BottleCubicInchWrappedInches = Decimal.Parse(result.Tables[0].Rows[i][18].ToString().Trim());
+                            data.BottleLengthWrappedCm = Decimal.Parse(result.Tables[0].Rows[i][19].ToString().Trim());
+                            data.BottleWidthWrappedCm = Decimal.Parse(result.Tables[0].Rows[i][20].ToString().Trim());
+                            data.BottleDepthWrappedCm = Decimal.Parse(result.Tables[0].Rows[i][21].ToString().Trim()); ;
+                            data.BottleCubicInchWrappedCm = Decimal.Parse(result.Tables[0].Rows[i][22].ToString().Trim());
+                            data.BottleLabelSquareInches = Decimal.Parse(result.Tables[0].Rows[i][23].ToString().Trim());
+                            data.LayersUnWrapped = Int32.Parse(result.Tables[0].Rows[i][24].ToString().Trim());
+                            data.LayersWrapped = Int32.Parse(result.Tables[0].Rows[i][25].ToString().Trim());
+                            data.LabelSquareInches = 0;
+                            data.LabelSquareCm = 0;
+                            data.BottleSize = ""; 
+                            data.PrintFrames = Int32.Parse(result.Tables[0].Rows[i][27].ToString().Trim()); 
+                            data.NumberOfPrintingPositions = Int32.Parse(result.Tables[0].Rows[i][28].ToString().Trim());
+                            //data.BottleAddedDate = DateTime.Now;
+                            //data.BottleChangedDate = DateTime.Now;
+                            data.BottleModifiedById = 1;
+                            data.isDeleted = false;
+
+                            add(data);
+                            //db.Bottle1.Add(data);
+                            //db.SaveChanges();
+                        }
+                        //db.SaveChanges();
+                        
+                        return View(result.Tables[0]);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("File", "Please Upload Your file");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Info    
+                Console.Write(ex);
+            }
+            return View();
+        }
+
+        public void add(Bottle1 b)
+        {
+            PipingRockEntities db = new PipingRockEntities();
+            db.Bottle1.Add(b);
+            db.SaveChanges();
         }
 
         public ActionResult SubmitBottleUpdate(string bottleId,
@@ -377,13 +495,13 @@ namespace PipingRockERP.Controllers
 
             try
             {
-                Excel.Application excelApplication = new Excel.Application();
+                Exc.Application excelApplication = new Exc.Application();
 
-                Excel.Workbook excelWorkBook = excelApplication.Workbooks.Add();
+                Exc.Workbook excelWorkBook = excelApplication.Workbooks.Add();
 
-                Excel.Worksheet excelWorkSheet = (Excel.Worksheet)excelWorkBook.Worksheets.get_Item(1);
+                Exc.Worksheet excelWorkSheet = (Exc.Worksheet)excelWorkBook.Worksheets.get_Item(1);
 
-                Excel.Range Line = (Excel.Range)excelWorkSheet.Rows[3];
+                Exc.Range Line = (Exc.Range)excelWorkSheet.Rows[3];
                 Line.Insert();
                 var table = (from Bottle in db.Bottle2
                              select new
@@ -424,6 +542,7 @@ namespace PipingRockERP.Controllers
                                  ChangedDate = Bottle.BottleChangedDate,
                                  DeletedDate = Bottle.BottleDeletedDate,
                                  ModifiedById = Bottle.BottleModifiedById,
+                                 isDeleted = (Bottle.isDeleted ? 1 : 0)
                              }).ToList();
 
                 excelApplication.Cells[1, 1] = "ID";
@@ -459,8 +578,9 @@ namespace PipingRockERP.Controllers
                 excelApplication.Cells[1, 31] = "ChangedDate";
                 excelApplication.Cells[1, 32] = "DeletedDate";
                 excelApplication.Cells[1, 33] = "ModifiedById";
+                excelApplication.Cells[1, 34] = "isDeleted";
 
-                for (int j = 1; j < 34; j++)
+                for (int j = 1; j < 35; j++)
                 {
                     excelWorkSheet.Columns[j].ColumnWidth = 18;
                     switch (j)
@@ -664,14 +784,20 @@ namespace PipingRockERP.Controllers
                                     excelApplication.Cells[i, j] = table[i - 2].ModifiedById;
                                 break;
                             }
+                        case 34:
+                            {
+                                for (int i = 2; i < table.Count + 1; i++)
+                                    excelApplication.Cells[i, j] = table[i - 2].isDeleted;
+                                break;
+                            }
                     }
                 }
                 excelWorkSheet.Columns[1].ColumnWidth = 12;
                 excelWorkSheet.Columns[2].ColumnWidth = 25;
                 excelWorkSheet.Columns[3].ColumnWidth = 50;
-                excelWorkBook.SaveAs("Bottles.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
-        Missing.Value, false, false, Excel.XlSaveAsAccessMode.xlNoChange,
-        Excel.XlSaveConflictResolution.xlUserResolution, true,
+                excelWorkBook.SaveAs("Bottles.xlsx", Exc.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
+        Missing.Value, false, false, Exc.XlSaveAsAccessMode.xlNoChange,
+        Exc.XlSaveConflictResolution.xlUserResolution, true,
         Missing.Value, Missing.Value, Missing.Value);
                 excelWorkBook.Close(Missing.Value, Missing.Value, Missing.Value);
             }
@@ -748,9 +874,9 @@ namespace PipingRockERP.Controllers
 
             try
             {
-                Excel.Application excelApplication = new Excel.Application();
-                Excel.Workbook excelWorkBook = excelApplication.Workbooks.Add();
-                Excel.Worksheet excelWorkSheet = (Excel.Worksheet)excelWorkBook.Worksheets.get_Item(1);
+                Exc.Application excelApplication = new Exc.Application();
+                Exc.Workbook excelWorkBook = excelApplication.Workbooks.Add();
+                Exc.Worksheet excelWorkSheet = (Exc.Worksheet)excelWorkBook.Worksheets.get_Item(1);
 
                 var table = (from Quarantine in db.Quarantines
                              select new
@@ -790,9 +916,9 @@ namespace PipingRockERP.Controllers
                     excelWorkSheet.Columns[j].ColumnWidth = 18;
                 }
                 excelWorkSheet.Columns[2].ColumnWidth = 25;
-                excelWorkBook.SaveAs("Quarantines.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
-                                        Missing.Value, false, false, Excel.XlSaveAsAccessMode.xlNoChange,
-                                        Excel.XlSaveConflictResolution.xlUserResolution, true,
+                excelWorkBook.SaveAs("Quarantines.xlsx", Exc.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
+                                        Missing.Value, false, false, Exc.XlSaveAsAccessMode.xlNoChange,
+                                        Exc.XlSaveConflictResolution.xlUserResolution, true,
                                         Missing.Value, Missing.Value, Missing.Value);
                 excelWorkBook.Close(Missing.Value, Missing.Value, Missing.Value);
 
@@ -872,9 +998,9 @@ namespace PipingRockERP.Controllers
 
             try
             {
-                Excel.Application excelApplication = new Excel.Application();
-                Excel.Workbook excelWorkBook = excelApplication.Workbooks.Add();
-                Excel.Worksheet excelWorkSheet = (Excel.Worksheet)excelWorkBook.Worksheets.get_Item(1);
+                Exc.Application excelApplication = new Exc.Application();
+                Exc.Workbook excelWorkBook = excelApplication.Workbooks.Add();
+                Exc.Worksheet excelWorkSheet = (Exc.Worksheet)excelWorkBook.Worksheets.get_Item(1);
 
                 var table = (from StorageCondition in db.StorageConditions
                              select new
@@ -918,9 +1044,9 @@ namespace PipingRockERP.Controllers
                 }
                 excelWorkSheet.Columns[2].ColumnWidth = 25;
 
-                excelWorkBook.SaveAs("StorageConditions.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
-                                        Missing.Value, false, false, Excel.XlSaveAsAccessMode.xlNoChange,
-                                        Excel.XlSaveConflictResolution.xlUserResolution, true,
+                excelWorkBook.SaveAs("StorageConditions.xlsx", Exc.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
+                                        Missing.Value, false, false, Exc.XlSaveAsAccessMode.xlNoChange,
+                                        Exc.XlSaveConflictResolution.xlUserResolution, true,
                                         Missing.Value, Missing.Value, Missing.Value);
                 excelWorkBook.Close(Missing.Value, Missing.Value, Missing.Value);
             }
@@ -999,13 +1125,13 @@ namespace PipingRockERP.Controllers
 
             try
             {
-                Excel.Application excelApplication = new Excel.Application();
+                Exc.Application excelApplication = new Exc.Application();
 
-                Excel.Workbook excelWorkBook = excelApplication.Workbooks.Add();
+                Exc.Workbook excelWorkBook = excelApplication.Workbooks.Add();
 
-                Excel.Worksheet excelWorkSheet = (Excel.Worksheet)excelWorkBook.Worksheets.get_Item(1);
+                Exc.Worksheet excelWorkSheet = (Exc.Worksheet)excelWorkBook.Worksheets.get_Item(1);
 
-                Excel.Range Line = (Excel.Range)excelWorkSheet.Rows[3];
+                Exc.Range Line = (Exc.Range)excelWorkSheet.Rows[3];
                 Line.Insert();
                 var table = (from Brand in db.Brands
                              select new
@@ -1100,9 +1226,9 @@ namespace PipingRockERP.Controllers
                             }
                     }
                 }
-                excelWorkBook.SaveAs("Brands.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
-        Missing.Value, false, false, Excel.XlSaveAsAccessMode.xlNoChange,
-        Excel.XlSaveConflictResolution.xlUserResolution, true,
+                excelWorkBook.SaveAs("Brands.xlsx", Exc.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
+        Missing.Value, false, false, Exc.XlSaveAsAccessMode.xlNoChange,
+        Exc.XlSaveConflictResolution.xlUserResolution, true,
         Missing.Value, Missing.Value, Missing.Value);
                 excelWorkBook.Close(Missing.Value, Missing.Value, Missing.Value);
             }

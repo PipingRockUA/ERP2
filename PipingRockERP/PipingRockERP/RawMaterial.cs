@@ -21,7 +21,6 @@ namespace PipingRockERP
         }
     
         public int RawMaterialId { get; set; }
-        public System.Guid ItemGUID { get; set; }
         public string RawMaterialItemKey { get; set; }
         public string RawMaterialDescriptionShort { get; set; }
         public string RawMaterialDescriptionMedium { get; set; }
@@ -43,6 +42,7 @@ namespace PipingRockERP
         public System.DateTime RawMaterialChangedDate { get; set; }
         public Nullable<System.DateTime> RawMaterialDeletedDate { get; set; }
         public int RawMaterialModifiedById { get; set; }
+        public bool isDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vendor_RawMaterial> Vendor_RawMaterial { get; set; }

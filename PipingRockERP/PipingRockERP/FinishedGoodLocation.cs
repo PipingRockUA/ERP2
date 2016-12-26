@@ -25,5 +25,6 @@ namespace PipingRockERP
         public System.DateTime FinishedGoodLocationChangedDate { get; set; }
         public Nullable<System.DateTime> FinishedGoodLocationDeletedDate { get; set; }
         public int FinishedGoodLocationModifiedById { get; set; }
+        public bool isDeleted { get; set; }
     }
 }

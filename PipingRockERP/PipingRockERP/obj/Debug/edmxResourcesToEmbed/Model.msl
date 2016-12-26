@@ -57,6 +57,7 @@
           <ScalarProperty Name="BottleChangedDate" ColumnName="BottleChangedDate" />
           <ScalarProperty Name="BottleDeletedDate" ColumnName="BottleDeletedDate" />
           <ScalarProperty Name="BottleModifiedById" ColumnName="BottleModifiedById" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -109,6 +110,7 @@
           <ScalarProperty Name="PrintFrames" ColumnName="PrintFrames" />
           <ScalarProperty Name="NumberOfPrintingPositions" ColumnName="NumberOfPrintingPositions" />
           <ScalarProperty Name="BottleModifiedById" ColumnName="BottleModifiedById" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -129,7 +131,6 @@
       <EntityTypeMapping TypeName="PipingRockModel.Bottle2">
         <MappingFragment StoreEntitySet="Bottle2">
           <ScalarProperty Name="BottleId" ColumnName="BottleId" />
-          <ScalarProperty Name="ItemGUID" ColumnName="ItemGUID" />
           <ScalarProperty Name="BottleItemKey" ColumnName="BottleItemKey" />
           <ScalarProperty Name="BottleDescription" ColumnName="BottleDescription" />
           <ScalarProperty Name="BottlesSmallTray" ColumnName="BottlesSmallTray" />
@@ -167,6 +168,7 @@
           <ScalarProperty Name="BottleChangedDate" ColumnName="BottleChangedDate" />
           <ScalarProperty Name="BottleDeletedDate" ColumnName="BottleDeletedDate" />
           <ScalarProperty Name="BottleModifiedById" ColumnName="BottleModifiedById" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -204,7 +206,6 @@
       <EntityTypeMapping TypeName="PipingRockModel.Bulk">
         <MappingFragment StoreEntitySet="Bulk">
           <ScalarProperty Name="BulkId" ColumnName="BulkId" />
-          <ScalarProperty Name="ItemGUID" ColumnName="ItemGUID" />
           <ScalarProperty Name="BulkItemKey" ColumnName="BulkItemKey" />
           <ScalarProperty Name="BulkDescriptionShort" ColumnName="BulkDescriptionShort" />
           <ScalarProperty Name="BulkDescriptionMedium" ColumnName="BulkDescriptionMedium" />
@@ -226,6 +227,7 @@
           <ScalarProperty Name="BulkChangedDate" ColumnName="BulkChangedDate" />
           <ScalarProperty Name="BulkDeletedDate" ColumnName="BulkDeletedDate" />
           <ScalarProperty Name="BulkModifiedById" ColumnName="BulkModifiedById" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -261,7 +263,6 @@
       <EntityTypeMapping TypeName="PipingRockModel.FinishedGood">
         <MappingFragment StoreEntitySet="FinishedGood">
           <ScalarProperty Name="FinishedGoodId" ColumnName="FinishedGoodId" />
-          <ScalarProperty Name="ItemGUID" ColumnName="ItemGUID" />
           <ScalarProperty Name="FinishedGoodItemKey" ColumnName="FinishedGoodItemKey" />
           <ScalarProperty Name="FinishedGoodDescriptionShort" ColumnName="FinishedGoodDescriptionShort" />
           <ScalarProperty Name="FinishedGoodDescriptionMedium" ColumnName="FinishedGoodDescriptionMedium" />
@@ -273,8 +274,8 @@
           <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
           <ScalarProperty Name="BrandId" ColumnName="BrandId" />
           <ScalarProperty Name="BulkId" ColumnName="BulkId" />
-          <ScalarProperty Name="SupplyId" ColumnName="SupplyId" />
           <ScalarProperty Name="ReportSortId" ColumnName="ReportSortId" />
+          <ScalarProperty Name="PackagingUnitId" ColumnName="PackagingUnitId" />
           <ScalarProperty Name="PackagingUOMId" ColumnName="PackagingUOMId" />
           <ScalarProperty Name="BottleId" ColumnName="BottleId" />
           <ScalarProperty Name="ChainPrice" ColumnName="ChainPrice" />
@@ -316,25 +317,7 @@
           <ScalarProperty Name="FinishedGoodChangedDate" ColumnName="FinishedGoodChangedDate" />
           <ScalarProperty Name="FinishedGoodDeletedDate" ColumnName="FinishedGoodDeletedDate" />
           <ScalarProperty Name="FinishedGoodModifiedById" ColumnName="FinishedGoodModifiedById" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="FinishedGood_BuyItems">
-      <EntityTypeMapping TypeName="PipingRockModel.FinishedGood_BuyItems">
-        <MappingFragment StoreEntitySet="FinishedGood_BuyItems">
-          <ScalarProperty Name="FinishedGood_BuyItemsId" ColumnName="FinishedGood_BuyItemsId" />
-          <ScalarProperty Name="FinishedGoodId" ColumnName="FinishedGoodId" />
-          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
-          <ScalarProperty Name="CsTraysperLayer" ColumnName="CsTraysperLayer" />
-          <ScalarProperty Name="NbrLayerLow" ColumnName="NbrLayerLow" />
-          <ScalarProperty Name="NbrLayerMedium" ColumnName="NbrLayerMedium" />
-          <ScalarProperty Name="NbrLayerHigh" ColumnName="NbrLayerHigh" />
-          <ScalarProperty Name="LastPurchaseDate" ColumnName="LastPurchaseDate" />
-          <ScalarProperty Name="LastPurchaseUnitCost" ColumnName="LastPurchaseUnitCost" />
-          <ScalarProperty Name="FinishedGood_BuyItemsAddedDate" ColumnName="FinishedGood_BuyItemsAddedDate" />
-          <ScalarProperty Name="FinishedGood_BuyItemsChangedDate" ColumnName="FinishedGood_BuyItemsChangedDate" />
-          <ScalarProperty Name="FinishedGood_BuyItemsDeletedDate" ColumnName="FinishedGood_BuyItemsDeletedDate" />
-          <ScalarProperty Name="FinishedGood_BuyItemsModifiedById" ColumnName="FinishedGood_BuyItemsModifiedById" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -380,6 +363,7 @@
           <ScalarProperty Name="FinishedGoodLocationChangedDate" ColumnName="FinishedGoodLocationChangedDate" />
           <ScalarProperty Name="FinishedGoodLocationDeletedDate" ColumnName="FinishedGoodLocationDeletedDate" />
           <ScalarProperty Name="FinishedGoodLocationModifiedById" ColumnName="FinishedGoodLocationModifiedById" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -467,21 +451,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PackagingComponents">
-      <EntityTypeMapping TypeName="PipingRockModel.PackagingComponent">
-        <MappingFragment StoreEntitySet="PackagingComponent">
-          <ScalarProperty Name="PackagingComponentId" ColumnName="PackagingComponentId" />
-          <ScalarProperty Name="PackagingComponentItemKey" ColumnName="PackagingComponentItemKey" />
-          <ScalarProperty Name="PackagingComponentDescriptionShort" ColumnName="PackagingComponentDescriptionShort" />
-          <ScalarProperty Name="PackagingComponentDescriptionMedium" ColumnName="PackagingComponentDescriptionMedium" />
-          <ScalarProperty Name="PackagingComponentDescriptionLong" ColumnName="PackagingComponentDescriptionLong" />
-          <ScalarProperty Name="ItemStatusId" ColumnName="ItemStatusId" />
+    <EntitySetMapping Name="PackagingUnits">
+      <EntityTypeMapping TypeName="PipingRockModel.PackagingUnit">
+        <MappingFragment StoreEntitySet="PackagingUnit">
+          <ScalarProperty Name="PackagingUnitId" ColumnName="PackagingUnitId" />
+          <ScalarProperty Name="PackagingUnitItemKey" ColumnName="PackagingUnitItemKey" />
+          <ScalarProperty Name="PackagingUnitDesc" ColumnName="PackagingUnitDesc" />
           <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
           <ScalarProperty Name="ItemSubTypeId" ColumnName="ItemSubTypeId" />
-          <ScalarProperty Name="PackagingComponentAddedDate" ColumnName="PackagingComponentAddedDate" />
-          <ScalarProperty Name="PackagingComponentChangedDate" ColumnName="PackagingComponentChangedDate" />
-          <ScalarProperty Name="PackagingComponentDeletedDate" ColumnName="PackagingComponentDeletedDate" />
-          <ScalarProperty Name="PackagingComponentModifiedById" ColumnName="PackagingComponentModifiedById" />
+          <ScalarProperty Name="QuantityPerLayer" ColumnName="QuantityPerLayer" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="LayersHigh" ColumnName="LayersHigh" />
+          <ScalarProperty Name="LayersMed" ColumnName="LayersMed" />
+          <ScalarProperty Name="LayersLow" ColumnName="LayersLow" />
+          <ScalarProperty Name="NumberBoxesHigh" ColumnName="NumberBoxesHigh" />
+          <ScalarProperty Name="NumberBoxesMed" ColumnName="NumberBoxesMed" />
+          <ScalarProperty Name="NumberBoxesLow" ColumnName="NumberBoxesLow" />
+          <ScalarProperty Name="PackagingUnitAddedDate" ColumnName="PackagingUnitAddedDate" />
+          <ScalarProperty Name="PackagingUnitChangedDate" ColumnName="PackagingUnitChangedDate" />
+          <ScalarProperty Name="PackagingUnitDeletedDate" ColumnName="PackagingUnitDeletedDate" />
+          <ScalarProperty Name="PackagingUnitModifiedById" ColumnName="PackagingUnitModifiedById" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -531,7 +521,6 @@
       <EntityTypeMapping TypeName="PipingRockModel.RawMaterial">
         <MappingFragment StoreEntitySet="RawMaterial">
           <ScalarProperty Name="RawMaterialId" ColumnName="RawMaterialId" />
-          <ScalarProperty Name="ItemGUID" ColumnName="ItemGUID" />
           <ScalarProperty Name="RawMaterialItemKey" ColumnName="RawMaterialItemKey" />
           <ScalarProperty Name="RawMaterialDescriptionShort" ColumnName="RawMaterialDescriptionShort" />
           <ScalarProperty Name="RawMaterialDescriptionMedium" ColumnName="RawMaterialDescriptionMedium" />
@@ -553,6 +542,7 @@
           <ScalarProperty Name="RawMaterialChangedDate" ColumnName="RawMaterialChangedDate" />
           <ScalarProperty Name="RawMaterialDeletedDate" ColumnName="RawMaterialDeletedDate" />
           <ScalarProperty Name="RawMaterialModifiedById" ColumnName="RawMaterialModifiedById" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -595,32 +585,6 @@
           <ScalarProperty Name="StorageConditionDeletedDate" ColumnName="StorageConditionDeletedDate" />
           <ScalarProperty Name="StorageConditionModifiedById" ColumnName="StorageConditionModifiedById" />
           <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Supplies">
-      <EntityTypeMapping TypeName="PipingRockModel.Supply">
-        <MappingFragment StoreEntitySet="Supply">
-          <ScalarProperty Name="SupplyId" ColumnName="SupplyId" />
-          <ScalarProperty Name="SupplyItemKey" ColumnName="SupplyItemKey" />
-          <ScalarProperty Name="SupplyDescriptionShort" ColumnName="SupplyDescriptionShort" />
-          <ScalarProperty Name="SupplyDescriptionMedium" ColumnName="SupplyDescriptionMedium" />
-          <ScalarProperty Name="SupplyDescriptionLong" ColumnName="SupplyDescriptionLong" />
-          <ScalarProperty Name="ItemStatusId" ColumnName="ItemStatusId" />
-          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
-          <ScalarProperty Name="ItemSubTypeId" ColumnName="ItemSubTypeId" />
-          <ScalarProperty Name="QuantityPerLayer" ColumnName="QuantityPerLayer" />
-          <ScalarProperty Name="Height" ColumnName="Height" />
-          <ScalarProperty Name="LayersHigh" ColumnName="LayersHigh" />
-          <ScalarProperty Name="LayersMed" ColumnName="LayersMed" />
-          <ScalarProperty Name="LayersLow" ColumnName="LayersLow" />
-          <ScalarProperty Name="NumberBoxesHigh" ColumnName="NumberBoxesHigh" />
-          <ScalarProperty Name="NumberBoxesMed" ColumnName="NumberBoxesMed" />
-          <ScalarProperty Name="NumberBoxesLow" ColumnName="NumberBoxesLow" />
-          <ScalarProperty Name="SupplyAddedDate" ColumnName="SupplyAddedDate" />
-          <ScalarProperty Name="SupplyChangedDate" ColumnName="SupplyChangedDate" />
-          <ScalarProperty Name="SupplyDeletedDate" ColumnName="SupplyDeletedDate" />
-          <ScalarProperty Name="SupplyModifiedById" ColumnName="SupplyModifiedById" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1092,11 +1056,29 @@
       <EntityTypeMapping TypeName="PipingRockModel.ItemView">
         <MappingFragment StoreEntitySet="ItemView">
           <ScalarProperty Name="ItemKey" ColumnName="ItemKey" />
-          <ScalarProperty Name="DescriptionLong" ColumnName="DescriptionLong" />
-          <ScalarProperty Name="ItemGUID" ColumnName="ItemGUID" />
           <ScalarProperty Name="ItemType" ColumnName="ItemType" />
-          <ScalarProperty Name="ItemSubType" ColumnName="ItemSubType" />
+          <ScalarProperty Name="ItemTypeCode" ColumnName="ItemTypeCode" />
+          <ScalarProperty Name="ItemTypeDetail" ColumnName="ItemTypeDetail" />
           <ScalarProperty Name="ItemStatus" ColumnName="ItemStatus" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemDescriptionShort" ColumnName="ItemDescriptionShort" />
+          <ScalarProperty Name="ItemDescriptionLong" ColumnName="ItemDescriptionLong" />
+          <ScalarProperty Name="ReceivingBoxLabelsRequired" ColumnName="ReceivingBoxLabelsRequired" />
+          <ScalarProperty Name="ExpirationMonths" ColumnName="ExpirationMonths" />
+          <ScalarProperty Name="RetestingMonths" ColumnName="RetestingMonths" />
+          <ScalarProperty Name="PctOfLifeForRetesting" ColumnName="PctOfLifeForRetesting" />
+          <ScalarProperty Name="Purchase_UnitOfMeasure" ColumnName="Purchase_UnitOfMeasure" />
+          <ScalarProperty Name="Purchase_UnitOfMeasureAbbreviation" ColumnName="Purchase_UnitOfMeasureAbbreviation" />
+          <ScalarProperty Name="Stock_UnitOfMeasure" ColumnName="Stock_UnitOfMeasure" />
+          <ScalarProperty Name="Stock_UnitOfMeasureAbbreviation" ColumnName="Stock_UnitOfMeasureAbbreviation" />
+          <ScalarProperty Name="Production_UnitOfMeasure" ColumnName="Production_UnitOfMeasure" />
+          <ScalarProperty Name="Production_UnitOfMeasureAbbreviation" ColumnName="Production_UnitOfMeasureAbbreviation" />
+          <ScalarProperty Name="Sale_UnitOfMeasure" ColumnName="Sale_UnitOfMeasure" />
+          <ScalarProperty Name="Sale_UnitOfMeasureAbbreviation" ColumnName="Sale_UnitOfMeasureAbbreviation" />
+          <ScalarProperty Name="ItemForm" ColumnName="ItemForm" />
+          <ScalarProperty Name="StorageCondition" ColumnName="StorageCondition" />
+          <ScalarProperty Name="StorageConditionDescription" ColumnName="StorageConditionDescription" />
+          <ScalarProperty Name="QcTest" ColumnName="QcTest" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
