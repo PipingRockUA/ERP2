@@ -1,10 +1,8 @@
-﻿
-
-div,
+﻿div,
 tr,
 p {
     font-size:16px;
-    z-index:9999;
+    z-index:999;
 }
 
 @media only screen and (max-width: 920px) {
@@ -97,7 +95,6 @@ p {
         min-width: 140px;
         max-width: 140px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 9999;
     }
         /* Links inside the dropdown */
         .dropdown-content a {
@@ -276,7 +273,6 @@ p {
         min-width: 175px;
         max-width: 175px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 9999;
     }
         /* Links inside the dropdown */
         .dropdown-content a {

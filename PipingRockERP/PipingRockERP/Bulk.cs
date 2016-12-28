@@ -23,6 +23,7 @@ namespace PipingRockERP
         }
     
         public int BulkId { get; set; }
+        public System.Guid ItemGUID { get; set; }
         public string BulkItemKey { get; set; }
         public string BulkDescriptionShort { get; set; }
         public string BulkDescriptionMedium { get; set; }
@@ -44,7 +45,6 @@ namespace PipingRockERP
         public System.DateTime BulkChangedDate { get; set; }
         public Nullable<System.DateTime> BulkDeletedDate { get; set; }
         public int BulkModifiedById { get; set; }
-        public bool isDeleted { get; set; }
     
         public virtual ItemForm ItemForm { get; set; }
         public virtual ItemStatu ItemStatu { get; set; }

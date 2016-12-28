@@ -49,6 +49,5 @@ namespace PipingRockERP
         public int PrintFrames { get; set; }
         public int NumberOfPrintingPositions { get; set; }
         public int BottleModifiedById { get; set; }
-        public bool isDeleted { get; set; }
     }
 }

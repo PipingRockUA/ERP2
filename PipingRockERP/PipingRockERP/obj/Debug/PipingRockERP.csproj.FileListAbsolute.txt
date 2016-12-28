@@ -256,3 +256,16 @@ C:\Users\Valeriy\Documents\GitHub\ERP\PipingRockERP\PipingRockERP\bin\Excel.pdb
 C:\Users\Valeriy\Documents\GitHub\ERP\PipingRockERP\PipingRockERP\bin\System.Net.Http.Formatting.xml
 C:\Users\Valeriy\Documents\GitHub\ERP\PipingRockERP\PipingRockERP\bin\System.Web.Http.xml
 C:\Users\Valeriy\Documents\GitHub\ERP\PipingRockERP\PipingRockERP\bin\System.Web.Http.WebHost.xml
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\Excel.dll
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\System.Net.Http.Formatting.dll
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\System.Web.Http.dll
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\System.Web.Http.WebHost.dll
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\Excel.pdb
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\System.Net.Http.Formatting.xml
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\System.Web.Http.xml
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\System.Web.Http.WebHost.xml
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\ClosedXML.dll
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\DocumentFormat.OpenXml.dll
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\ClosedXML.pdb
+C:\Users\Admin\Documents\Visual Studio 2015\Projects\ERP\PipingRockERP\PipingRockERP\bin\ClosedXML.xml

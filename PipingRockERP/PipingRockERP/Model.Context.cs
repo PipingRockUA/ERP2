@@ -34,11 +34,13 @@ namespace PipingRockERP
         public virtual DbSet<Allergen> Allergens { get; set; }
         public virtual DbSet<Bottle2> Bottle2 { get; set; }
         public virtual DbSet<BottlesPerCase> BottlesPerCases { get; set; }
+        public virtual DbSet<Box> Boxes { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Bulk> Bulks { get; set; }
         public virtual DbSet<Bulk_QcTest> Bulk_QcTest { get; set; }
         public virtual DbSet<Bulk_Quarantine> Bulk_Quarantine { get; set; }
         public virtual DbSet<FinishedGood> FinishedGoods { get; set; }
+        public virtual DbSet<FinishedGood_BuyItems> FinishedGood_BuyItems { get; set; }
         public virtual DbSet<FinishedGood_QcTest> FinishedGood_QcTest { get; set; }
         public virtual DbSet<FinishedGood_Quarantine> FinishedGood_Quarantine { get; set; }
         public virtual DbSet<FinishedGoodLocation> FinishedGoodLocations { get; set; }
@@ -47,7 +49,7 @@ namespace PipingRockERP
         public virtual DbSet<ItemSubType> ItemSubTypes { get; set; }
         public virtual DbSet<ItemType> ItemTypes { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
-        public virtual DbSet<PackagingUnit> PackagingUnits { get; set; }
+        public virtual DbSet<PackagingComponent> PackagingComponents { get; set; }
         public virtual DbSet<PackagingUOM> PackagingUOMs { get; set; }
         public virtual DbSet<QcTest> QcTests { get; set; }
         public virtual DbSet<Quarantine> Quarantines { get; set; }

@@ -23,6 +23,8 @@ namespace PipingRockERP
         public int Vendor_RawMaterialId { get; set; }
         public int VendorId { get; set; }
         public int RawMaterialId { get; set; }
+        public bool isCurrentVendor { get; set; }
+        public bool isRejectedVendor { get; set; }
         public System.DateTime Vendor_RawMaterialAddedDate { get; set; }
         public System.DateTime Vendor_RawMaterialChangedDate { get; set; }
         public Nullable<System.DateTime> Vendor_RawMaterialDeletedDate { get; set; }

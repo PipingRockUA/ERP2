@@ -15,28 +15,10 @@ namespace PipingRockERP
     public partial class ItemView
     {
         public string ItemKey { get; set; }
+        public string DescriptionLong { get; set; }
+        public System.Guid ItemGUID { get; set; }
         public string ItemType { get; set; }
-        public string ItemTypeCode { get; set; }
-        public string ItemTypeDetail { get; set; }
+        public string ItemSubType { get; set; }
         public string ItemStatus { get; set; }
-        public string ItemDescription { get; set; }
-        public string ItemDescriptionShort { get; set; }
-        public string ItemDescriptionLong { get; set; }
-        public bool ReceivingBoxLabelsRequired { get; set; }
-        public int ExpirationMonths { get; set; }
-        public int RetestingMonths { get; set; }
-        public decimal PctOfLifeForRetesting { get; set; }
-        public string Purchase_UnitOfMeasure { get; set; }
-        public string Purchase_UnitOfMeasureAbbreviation { get; set; }
-        public string Stock_UnitOfMeasure { get; set; }
-        public string Stock_UnitOfMeasureAbbreviation { get; set; }
-        public string Production_UnitOfMeasure { get; set; }
-        public string Production_UnitOfMeasureAbbreviation { get; set; }
-        public string Sale_UnitOfMeasure { get; set; }
-        public string Sale_UnitOfMeasureAbbreviation { get; set; }
-        public string ItemForm { get; set; }
-        public string StorageCondition { get; set; }
-        public string StorageConditionDescription { get; set; }
-        public string QcTest { get; set; }
     }
 }

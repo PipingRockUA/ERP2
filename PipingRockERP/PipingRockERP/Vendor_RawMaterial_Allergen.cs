@@ -17,6 +17,7 @@ namespace PipingRockERP
         public int Vendor_RawMaterial_AllergenId { get; set; }
         public int Vendor_RawMaterialId { get; set; }
         public int AllergenId { get; set; }
+        public string AllergenClaim { get; set; }
         public System.DateTime Vendor_RawMaterial_AllergenAddedDate { get; set; }
         public System.DateTime Vendor_RawMaterial_AllergenChangedDate { get; set; }
         public Nullable<System.DateTime> Vendor_RawMaterial_AllergenDeletedDate { get; set; }

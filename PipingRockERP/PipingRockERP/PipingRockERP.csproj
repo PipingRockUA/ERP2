@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.85.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.85.0\lib\net40\ClosedXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Excel, Version=2.1.2.3, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelDataReader.2.1.2.3\lib\net45\Excel.dll</HintPath>
       <Private>True</Private>
@@ -241,6 +249,9 @@
     <Compile Include="BottlesPerCase.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Box.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Brand.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -260,11 +271,13 @@
     <Compile Include="Controllers\PackagingController.cs" />
     <Compile Include="Controllers\PurchasingController.cs" />
     <Compile Include="Controllers\ReceivingController.cs" />
-    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="FinishedGood.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="FinishedGoodLocation.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinishedGood_BuyItems.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="FinishedGood_QcTest.cs">
@@ -344,7 +357,7 @@
     </Compile>
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="PackagingUnit.cs">
+    <Compile Include="PackagingComponent.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="PackagingUOM.cs">
@@ -531,7 +544,6 @@
     <Content Include="fonts\Roboto\Roboto-Regular.ttf" />
     <Content Include="fonts\Roboto\Roboto-Thin.ttf" />
     <Content Include="fonts\Roboto\Roboto-ThinItalic.ttf" />
-    <Content Include="Views\Upload\Upload.cshtml" />
     <Content Include="Views\Purchasing\ImportBottle.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -54,6 +54,5 @@ namespace PipingRockERP
         public System.DateTime BottleChangedDate { get; set; }
         public Nullable<System.DateTime> BottleDeletedDate { get; set; }
         public int BottleModifiedById { get; set; }
-        public bool isDeleted { get; set; }
     }
 }

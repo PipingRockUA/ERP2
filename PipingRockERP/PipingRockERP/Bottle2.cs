@@ -22,6 +22,7 @@ namespace PipingRockERP
         }
     
         public int BottleId { get; set; }
+        public System.Guid ItemGUID { get; set; }
         public string BottleItemKey { get; set; }
         public string BottleDescription { get; set; }
         public int BottlesSmallTray { get; set; }
@@ -59,7 +60,6 @@ namespace PipingRockERP
         public System.DateTime BottleChangedDate { get; set; }
         public Nullable<System.DateTime> BottleDeletedDate { get; set; }
         public int BottleModifiedById { get; set; }
-        public bool isDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BottlesPerCase> BottlesPerCases { get; set; }
