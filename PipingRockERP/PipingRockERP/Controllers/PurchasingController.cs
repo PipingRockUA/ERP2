@@ -254,7 +254,7 @@ namespace PipingRockERP.Controllers
                         //db.Bottle1.
                         for (int i = 0; i < result.Tables[0].Rows.Count; i++)
                         {
-                            data.BottleId = i;
+                            data.BottleId = Int32.Parse(result.Tables[0].Rows[i][0].ToString().Trim());
                             data.BottleItemKey = result.Tables[0].Rows[i][1].ToString().Trim();
                             data.BottleDescription = result.Tables[0].Rows[i][2].ToString().Trim();
                             data.BottlesSmallTray = Int32.Parse(result.Tables[0].Rows[i][3].ToString().Trim());
@@ -297,7 +297,7 @@ namespace PipingRockERP.Controllers
                             //db.SaveChanges();
                         }
                         //db.SaveChanges();
-                        
+                        db.prc_ExcelUpload_Bottle(0);
                         return View(result.Tables[0]);
                     }
                     else
