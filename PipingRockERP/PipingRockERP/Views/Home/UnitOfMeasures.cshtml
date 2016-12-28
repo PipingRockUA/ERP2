@@ -1,0 +1,28 @@
+﻿@model List<UnitOfMeasure>
+
+@{
+    ViewBag.Title = "UnitOfMeasures";
+}
+
+    <aside style="margin-top:10px">
+        <div class="panel" style="background-color:#f7f7f7; border:1px solid">
+            <div style="margin-left: 20px">
+                <h4>Maintenance > Unit of Measure</h4>
+            </div>
+            <table style="width:95%; background-color:white; margin-left: 20px; margin-bottom:20px" border="1">
+                <tr style="background-color:#b0c3f4">
+                    <th>ID</th>
+                    <th>Unit of Measure</th>
+                    <th>Abreviation</th>
+                </tr>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>@item.UnitOfMeasureId</td>
+                        <td>@item.UnitOfMeasure1</td>
+                        <td>@item.UnitOfMeasureAbbreviation</td>
+                    </tr>
+                }
+            </table>
+        </div>
+</aside>

@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "AddAllergen";
+}
+@Html.Partial("_NutritionPartial")
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+</head>
+<aside style="margin-top:10px">
+    <div class="panel" @*style="border:1px solid"*@>
+        <div style="margin-left: 20px">
+            <h4>Maintenance > Add Allergen</h4>
+        </div>
+        @using (Html.BeginForm("SubmitAllergenAdd", "Nutrition"))
+        {
+            <input style="margin-left:18px; max-width:90px" class="btn btn-success" type="submit" id="SubmitAllergenAdd" value="Add" />
+            <table>
+                <tr>
+                    <td>Allergen ID</td>
+                    <td><div id="allergenId" name="allergenId">New</div></td>
+                </tr>
+                <tr>
+                    <td>Allergen Name</td>
+                    <td><input class="form-control" type="text" id="allergenName" name="allergenName" value="N/A" /></td>
+                </tr>
+            </table>
+        }
+    </div>
+</aside>
+
+
+
+

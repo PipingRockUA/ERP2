@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac93178409564b688d701f316811202c" Name="Diagram1">
+        <EntityTypeShape EntityType="PipingRockModel.Screen" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.sysdiagram" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.Allergen" Width="1.5" PointX="10" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.Bottle" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.Brand" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.Bulk" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.FinishedGood" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.ItemForm" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.ItemStatu" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.ItemSubType" Width="1.5" PointX="0.75" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.ItemType" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.MasterCaseOrTray" Width="1.5" PointX="3" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.PackagingLevel" Width="1.5" PointX="3" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.QcTest" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.Quarantine" Width="1.5" PointX="0.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.RawMaterial" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.Ref_GDSN_UoM" Width="1.5" PointX="12.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.ReportSort" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.StorageCondition" Width="1.5" PointX="0.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.UnitOfMeasure" Width="1.5" PointX="15" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.Vendor" Width="1.5" PointX="7.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.Vendor_RawMaterial" Width="1.5" PointX="10" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.Vendor_RawMaterial_Allergen" Width="1.5" PointX="12.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.User" Width="1.5" PointX="12" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.User_UserRole" Width="1.5" PointX="14.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.UserRole" Width="1.5" PointX="12" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.UserRole_UserRoleAuthority" Width="1.5" PointX="14.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.UserRoleAuthority" Width="1.5" PointX="12" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.vBatchMaster_BOM" Width="1.5" PointX="7.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.vBatchMaster_Item" Width="1.5" PointX="16.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.vBatchMaster_Location" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.ItemView" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.QcTestView" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="PipingRockModel.FK_UserRoleAuthority_Screen" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_Vendor_RawMaterial_Allergen_Allergen" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_FinishedGood_Bottle" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_FinishedGood_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_ReportSort_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_Bulk_ItemForm" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_Bulk_ItemStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_Bulk_ItemType" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_Bulk_QcTest" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_Bulk_Quarantine" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_Bulk_StorageCondition" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_FinishedGood_Bulk" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_FinishedGood_ItemStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_FinishedGood_MasterCaseOrTray" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_FinishedGood_PackagingLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_FinishedGood_QcTest" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_ItemSubType_ItemType" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_MasterCaseOrTray_ItemSubType" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_QcTest_QcTest" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_Vendor_RawMaterial_RawMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_UnitOfMeasure_Ref_GDSN_UoM" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_Vendor_RawMaterial_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_Vendor_RawMaterial_Allergen_Vendor_RawMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_User_UserRole_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_User_UserRole_UserRole" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_UserRole_UserRoleAuthority_UserRole" ManuallyRouted="false" />
+        <AssociationConnector Association="PipingRockModel.FK_UserRole_UserRoleAuthority_UserRoleAuthority" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

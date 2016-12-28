@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+</head>
+<aside style="margin-top:10px">
+    <div class="panel" style="background-color:#f7f7f7; border:1px solid">
+        <div style="margin-left: 20px">
+            <h4>Maintenance > Add New User</h4>
+        </div>
+        @using (Html.BeginForm("AddSubmit", "Home"))
+        {
+        <table style="width:95%; background-color:white; margin-left: 20px; margin-bottom:20px" border="1">
+            <tr style="background-color:#b0c3f4">
+                <th>User Name</th>
+                <th>User Role</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="txtName" name="txtName" value="" /></td>
+                <td><input type="text" id="txtRole" name="txtRole" value="" /></td>
+            </tr>
+        </table>
+        <input type="submit" id="AddSubmit" value="Add" />
+        }
+    </div>
+</aside>
+

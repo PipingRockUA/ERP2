@@ -1,0 +1,32 @@
+﻿@model List<User>
+
+@{
+    ViewBag.Title = "Users";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+</head>
+<aside style="margin-top:10px">
+    <div class="panel" style="background-color:#f7f7f7; border:1px solid">
+        <div style="margin-left: 20px">
+            <h4>Maintenance > List of Users</h4>
+        </div>
+        <table style="width:95%; background-color:white; margin-left: 20px; margin-bottom:20px" border="1">
+            <tr style="background-color:#b0c3f4">
+                <th>ID</th>
+                <th>User Name</th>
+                <th>Action</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td width="20%">@item.UserId</td>
+                    <td>@item.UserName</td>
+                    <td>@Html.ActionLink("Edit","Edit","Home", new { userId = item.UserId.ToString() },null)</td>
+                    @*<td width="5%"><input class="btn-edit" type="button" value="Edit" onclick="location.href='@Url.Action("Edit", "Home")'" /></td>*@
+                </tr>
+            }
+        </table>
+        @Html.ActionLink("Add","Add","Home")
+    </div>
+</aside>

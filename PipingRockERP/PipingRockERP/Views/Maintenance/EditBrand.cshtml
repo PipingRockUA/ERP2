@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "EditBrand";
+}
+@Html.Partial("_MaintenancePartial")
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+</head>
+<aside style="margin-top:10px">
+    <div class="panel" @*style="border:1px solid"*@>
+        <div style="margin-left: 20px">
+            <h4>Maintenance > Edit Brand</h4>
+        </div>
+        @using (Html.BeginForm("SubmitBrandUpdate", "Maintenance", new { brandId = @ViewBag.Brand[0].BrandID }, FormMethod.Post, null))
+        {
+            <input style="margin-left:18px; max-width:90px" class="btn btn-success" type="submit" id="SubmitBrandUpdate" value="Update" />
+            <table>
+                <tr>
+                    <td>Brand ID</td>
+                    <td><div id="brandId" name="brandId">@ViewBag.Brand[0].BrandID</div></td>
+                </tr>
+                <tr>
+                    <td>Brand Name</td>
+                    <td><input class="form-control" type="text" id="brandName" name="brandName" value="@ViewBag.Brand[0].Brand1" /></td>
+                </tr>
+                <tr>
+                    <td>Brand Code</td>
+                    <td><input class="form-control" type="text" id="brandCode" name="brandCode" value="@ViewBag.Brand[0].BrandCode" /></td>
+                </tr>
+            </table>
+        }
+    </div>
+</aside>
+

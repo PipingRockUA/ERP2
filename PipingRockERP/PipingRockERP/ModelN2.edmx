@@ -1,0 +1,2345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PipingRockModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alergen">
+          <Key>
+            <PropertyRef Name="AlergenID" />
+          </Key>
+          <Property Name="AlergenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Alergen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AlergenAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="AlergenChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="AlergenDeletedDate" Type="datetime" />
+          <Property Name="AlergenModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bottle">
+          <Key>
+            <PropertyRef Name="BottleId" />
+          </Key>
+          <Property Name="BottleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="BottleLength" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleWidth" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleHieght" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleCubicInches" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleLengthWrapped" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleWidthWrapped" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleDepthWrapped" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleCubicInchWrapped" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottlesLargeTray" Type="int" Nullable="false" />
+          <Property Name="BottlesSmallTray" Type="int" Nullable="false" />
+          <Property Name="WrappedBottlesTrayLarge" Type="int" Nullable="false" />
+          <Property Name="WrappedBottlesTraySmall" Type="int" Nullable="false" />
+          <Property Name="BottleLabelSquareInches" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="BottleChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="BottleDeletedDate" Type="datetime" />
+          <Property Name="BottleModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandCode" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrandAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="BrandChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="BrandDeletedDate" Type="datetime" />
+          <Property Name="BrandModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FinishedGood">
+          <Key>
+            <PropertyRef Name="FinishedGoodId" />
+          </Key>
+          <Property Name="FinishedGoodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="BrandId" Type="int" Nullable="false" />
+          <Property Name="BulkItemId" Type="int" Nullable="false" />
+          <Property Name="ReportSortId" Type="int" Nullable="false" />
+          <Property Name="PackagingLevelId" Type="int" Nullable="false" />
+          <Property Name="IsPurchasable" Type="bit" Nullable="false" />
+          <Property Name="ChainPrice" Type="money" />
+          <Property Name="SRP" Type="money" />
+          <Property Name="MasterCaseCost" Type="money" />
+          <Property Name="EachUPC" Type="nvarchar" MaxLength="20" />
+          <Property Name="MasterCaseUPC" Type="nvarchar" MaxLength="20" />
+          <Property Name="InnerUPC" Type="nvarchar" MaxLength="20" />
+          <Property Name="EachHeightInches" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="EachWidthInches" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="EachDepthInches" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="EachWeightOz" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="EachWeightGrams" Type="numeric" Precision="26" Scale="8" StoreGeneratedPattern="Computed" />
+          <Property Name="MasterCaseQuantity" Type="int" />
+          <Property Name="MasterCaseHightInches" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="MasterCaseWidthInches" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="MasterCaseDepthInches" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="MasterCaseCubicFeet" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="MasterCaseWeightLbs" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="MasterCaseWeightKg" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="MasterCaseCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="InnerQuantity" Type="int" />
+          <Property Name="InnerHeightInches" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="InnerWidthInches" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="InnerDepthInches" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="InnerWeightOz" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="InnerWeightGrams" Type="numeric" Precision="26" Scale="8" StoreGeneratedPattern="Computed" />
+          <Property Name="Tie" Type="int" />
+          <Property Name="High" Type="int" />
+          <Property Name="CasesPerPallet" Type="int" />
+          <Property Name="PalletCubicFeet" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="PalletHeightInches" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="PalletWidthInches" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="PalletDepthInches" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="FinishedGoodMakeBuy" Type="char" MaxLength="1" />
+          <Property Name="isTaxableNYS" Type="bit" Nullable="false" />
+          <Property Name="isTaxableCanada" Type="bit" Nullable="false" />
+          <Property Name="FinishedGoodAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="FinishedGoodChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="FinishedGoodDeletedDate" Type="datetime" />
+          <Property Name="FinishedGoodModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemKey" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ItemTypeId" Type="int" Nullable="false" />
+          <Property Name="ItemTypeDetailId" Type="int" Nullable="false" />
+          <Property Name="ItemDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemDescriptionShort" Type="nvarchar" MaxLength="25" />
+          <Property Name="ItemDescriptionLong" Type="nvarchar" MaxLength="100" />
+          <Property Name="ItemStatusId" Type="int" Nullable="false" />
+          <Property Name="PurchaseUnitOfMeasureId" Type="int" Nullable="false" />
+          <Property Name="StockUnitOfMeasureId" Type="int" Nullable="false" />
+          <Property Name="ProductionUnitOfMeasureId" Type="int" Nullable="false" />
+          <Property Name="SaleUnitOfMeasureId" Type="int" Nullable="false" />
+          <Property Name="ItemFormId" Type="int" Nullable="false" />
+          <Property Name="ReceivingBoxLabelsRequired" Type="bit" Nullable="false" />
+          <Property Name="StorageConditionId" Type="int" Nullable="false" />
+          <Property Name="QcTestId" Type="int" Nullable="false" />
+          <Property Name="ExpirationMonths" Type="int" Nullable="false" />
+          <Property Name="RetestingMonths" Type="int" Nullable="false" />
+          <Property Name="PctOfLifeForRetesting" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="QuarantineTypeId" Type="int" Nullable="false" />
+          <Property Name="ItemAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="ItemChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="ItemDeletedDate" Type="datetime" />
+          <Property Name="ItemModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemForm">
+          <Key>
+            <PropertyRef Name="ItemFormId" />
+          </Key>
+          <Property Name="ItemFormId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemForm" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemFormDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemFormAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="ItemFormChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="ItemFormDeletedDate" Type="datetime" />
+          <Property Name="ItemFormModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemStatus">
+          <Key>
+            <PropertyRef Name="ItemStatusId" />
+          </Key>
+          <Property Name="ItemStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemStatusDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemStatusAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="ItemStatusChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="ItemStatusDeletedDate" Type="datetime" />
+          <Property Name="ItemStatusModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemType">
+          <Key>
+            <PropertyRef Name="ItemTypeId" />
+          </Key>
+          <Property Name="ItemTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemTypeCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="ItemTypeDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="ItemTypeAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="ItemTypeChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="ItemTypeDeletedDate" Type="datetime" />
+          <Property Name="ItemTypeModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemTypeDetail">
+          <Key>
+            <PropertyRef Name="ItemTypeDetailId" />
+          </Key>
+          <Property Name="ItemTypeDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemTypeId" Type="int" Nullable="false" />
+          <Property Name="ItemTypeDetail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemTypeDetailDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LossFactorInventory" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="LossFactorCost" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="ItemTypeDetailAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="ItemTypeDetailChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="ItemTypeDetailDeletedDate" Type="datetime" />
+          <Property Name="ItemTypeDetailModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PackagingLevel">
+          <Key>
+            <PropertyRef Name="PackagingLevelId" />
+          </Key>
+          <Property Name="PackagingLevelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackagingLevel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PackagingLevelAbbreviation" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="PackagingLevelDesc" Type="nvarchar" MaxLength="500" />
+          <Property Name="PackagingLevelAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="PackagingLevelChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="PackagingLevelDeletedDate" Type="datetime" />
+          <Property Name="PackagingLevelModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QcTest">
+          <Key>
+            <PropertyRef Name="QcTestId" />
+          </Key>
+          <Property Name="QcTestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QcTest" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="QcTestParentId" Type="int" Nullable="false" />
+          <Property Name="QcTestAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="QcTestChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="QcTestDeletedDate" Type="datetime" />
+          <Property Name="QcTestModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuarantineType">
+          <Key>
+            <PropertyRef Name="QuarantineTypeId" />
+          </Key>
+          <Property Name="QuarantineTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuarantineType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="QuarantineTypeAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="QuarantineTypeChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="QuarantineTypeDeletedDate" Type="datetime" />
+          <Property Name="QuarantineTypeModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ref_GDSN_UoM">
+          <Key>
+            <PropertyRef Name="Ref_GDSN_UoMId" />
+          </Key>
+          <Property Name="Ref_GDSN_UoMId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="isUsedAtPipingRock" Type="bit" />
+          <Property Name="GDSN_Code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="GDSN_Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GDSN_Definition" Type="nvarchar" MaxLength="1000" />
+          <Property Name="GDSN_Group" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ReportSort">
+          <Key>
+            <PropertyRef Name="ReportSortId" />
+          </Key>
+          <Property Name="ReportSortId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandId" Type="int" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="ReportSortName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReportSortAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="ReportSortChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="ReportSortDeletedDate" Type="datetime" />
+          <Property Name="ReportSortModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StorageCondition">
+          <Key>
+            <PropertyRef Name="StorageConditionId" />
+          </Key>
+          <Property Name="StorageConditionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StorageCondition" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StorageConditionDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StorageConditionAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="StorageConditionChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="StorageConditionDeletedDate" Type="datetime" />
+          <Property Name="StorageConditionModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnitOfMeasure">
+          <Key>
+            <PropertyRef Name="UnitOfMeasureId" />
+          </Key>
+          <Property Name="UnitOfMeasureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitOfMeasure" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnitOfMeasureAbbreviation" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ref_GDSN_UoMId" Type="int" />
+          <Property Name="UnitOfMeasureAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="UnitOfMeasureChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="UnitOfMeasureDeletedDate" Type="datetime" />
+          <Property Name="UnitOfMeasureModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserLastLoginDate" Type="datetime" />
+          <Property Name="UserAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="UserChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="UserDeletedDate" Type="datetime" />
+          <Property Name="UserModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_UserRole">
+          <Key>
+            <PropertyRef Name="User_UserRoleId" />
+          </Key>
+          <Property Name="User_UserRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserRoleId" Type="int" Nullable="false" />
+          <Property Name="User_UserRoleAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="User_UserRoleChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="User_UserRoleDeletedDate" Type="datetime" />
+          <Property Name="User_UserRoleModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserRoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserRoleAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="UserRoleChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="UserRoleDeletedDate" Type="datetime" />
+          <Property Name="UserRoleModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRole_UserRoleAuthority">
+          <Key>
+            <PropertyRef Name="UserRole_UserRoleAuthorityId" />
+          </Key>
+          <Property Name="UserRole_UserRoleAuthorityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserRoleId" Type="int" Nullable="false" />
+          <Property Name="UserRoleAuthorityId" Type="int" Nullable="false" />
+          <Property Name="UserRole_UserRoleAuthorityAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="UserRole_UserRoleAuthorityChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="UserRole_UserRoleAuthorityDeletedDate" Type="datetime" />
+          <Property Name="UserRole_UserRoleAuthorityModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoleAuthority">
+          <Key>
+            <PropertyRef Name="UserRoleAuthorityId" />
+          </Key>
+          <Property Name="UserRoleAuthorityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FeatureParentId" Type="int" />
+          <Property Name="FeatureName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FeatureDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CanView" Type="bit" />
+          <Property Name="CanEdit" Type="bit" />
+          <Property Name="CanCreate" Type="bit" />
+          <Property Name="CanDelete" Type="bit" />
+          <Property Name="CanUnDelete" Type="bit" />
+          <Property Name="CanDoAll" Type="bit" />
+          <Property Name="UserRoleAuthorityAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="UserRoleAuthorityChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="UserRoleAuthorityDeletedDate" Type="datetime" />
+          <Property Name="UserRoleAuthorityModifiedById" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PipingRock.md.ItemView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ItemView">
+          <Key>
+            <PropertyRef Name="ItemKey" />
+            <PropertyRef Name="ItemType" />
+            <PropertyRef Name="ItemTypeCode" />
+            <PropertyRef Name="ItemTypeDetail" />
+            <PropertyRef Name="ItemStatus" />
+            <PropertyRef Name="ReceivingBoxLabelsRequired" />
+            <PropertyRef Name="ExpirationMonths" />
+            <PropertyRef Name="RetestingMonths" />
+            <PropertyRef Name="PctOfLifeForRetesting" />
+            <PropertyRef Name="Purchase_UnitOfMeasure" />
+            <PropertyRef Name="Purchase_UnitOfMeasureAbbreviation" />
+            <PropertyRef Name="Stock_UnitOfMeasure" />
+            <PropertyRef Name="Stock_UnitOfMeasureAbbreviation" />
+            <PropertyRef Name="Production_UnitOfMeasure" />
+            <PropertyRef Name="Production_UnitOfMeasureAbbreviation" />
+            <PropertyRef Name="Sale_UnitOfMeasure" />
+            <PropertyRef Name="Sale_UnitOfMeasureAbbreviation" />
+            <PropertyRef Name="ItemForm" />
+            <PropertyRef Name="StorageCondition" />
+            <PropertyRef Name="StorageConditionDescription" />
+            <PropertyRef Name="QcTest" />
+          </Key>
+          <Property Name="ItemKey" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ItemType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemTypeCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="ItemTypeDetail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="ItemDescriptionShort" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemDescriptionLong" Type="nvarchar" MaxLength="255" />
+          <Property Name="ReceivingBoxLabelsRequired" Type="bit" Nullable="false" />
+          <Property Name="ExpirationMonths" Type="int" Nullable="false" />
+          <Property Name="RetestingMonths" Type="int" Nullable="false" />
+          <Property Name="PctOfLifeForRetesting" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="Purchase_UnitOfMeasure" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Purchase_UnitOfMeasureAbbreviation" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Stock_UnitOfMeasure" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stock_UnitOfMeasureAbbreviation" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Production_UnitOfMeasure" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Production_UnitOfMeasureAbbreviation" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Sale_UnitOfMeasure" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sale_UnitOfMeasureAbbreviation" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ItemForm" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StorageCondition" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StorageConditionDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="QcTest" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="QcTestView">
+          <Key>
+            <PropertyRef Name="QcTestId" />
+            <PropertyRef Name="QcTestType" />
+            <PropertyRef Name="QcTest" />
+          </Key>
+          <Property Name="QcTestId" Type="int" Nullable="false" />
+          <Property Name="QcTestType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="QcTest" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Bottle_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Bottle" Type="Self.Bottle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="Bottle">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinishedGood_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="FinishedGood" Type="Self.FinishedGood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="FinishedGood">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinishedGood_PackagingLevel">
+          <End Role="PackagingLevel" Type="Self.PackagingLevel" Multiplicity="1" />
+          <End Role="FinishedGood" Type="Self.FinishedGood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackagingLevel">
+              <PropertyRef Name="PackagingLevelId" />
+            </Principal>
+            <Dependent Role="FinishedGood">
+              <PropertyRef Name="PackagingLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinishedGood_ReportSort">
+          <End Role="ReportSort" Type="Self.ReportSort" Multiplicity="1" />
+          <End Role="FinishedGood" Type="Self.FinishedGood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportSort">
+              <PropertyRef Name="ReportSortId" />
+            </Principal>
+            <Dependent Role="FinishedGood">
+              <PropertyRef Name="ReportSortId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_ItemForm">
+          <End Role="ItemForm" Type="Self.ItemForm" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemForm">
+              <PropertyRef Name="ItemFormId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemFormId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_ItemStatus">
+          <End Role="ItemStatus" Type="Self.ItemStatus" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemStatus">
+              <PropertyRef Name="ItemStatusId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_ItemType">
+          <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_QcTest">
+          <End Role="QcTest" Type="Self.QcTest" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QcTest">
+              <PropertyRef Name="QcTestId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="QcTestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_QuarantineType">
+          <End Role="QuarantineType" Type="Self.QuarantineType" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuarantineType">
+              <PropertyRef Name="QuarantineTypeId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="QuarantineTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_StorageCondition">
+          <End Role="StorageCondition" Type="Self.StorageCondition" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StorageCondition">
+              <PropertyRef Name="StorageConditionId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="StorageConditionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemTypeDetail_ItemType">
+          <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+          <End Role="ItemTypeDetail" Type="Self.ItemTypeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="ItemTypeDetail">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QcTest_QcTest">
+          <End Role="QcTest" Type="Self.QcTest" Multiplicity="1" />
+          <End Role="QcTest1" Type="Self.QcTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QcTest">
+              <PropertyRef Name="QcTestId" />
+            </Principal>
+            <Dependent Role="QcTest1">
+              <PropertyRef Name="QcTestParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportSort_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="ReportSort" Type="Self.ReportSort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="ReportSort">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnitOfMeasure_Ref_GDSN_UoM">
+          <End Role="Ref_GDSN_UoM" Type="Self.Ref_GDSN_UoM" Multiplicity="0..1" />
+          <End Role="UnitOfMeasure" Type="Self.UnitOfMeasure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ref_GDSN_UoM">
+              <PropertyRef Name="Ref_GDSN_UoMId" />
+            </Principal>
+            <Dependent Role="UnitOfMeasure">
+              <PropertyRef Name="Ref_GDSN_UoMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserRole_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User_UserRole" Type="Self.User_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="User_UserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserRole_UserRole">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
+          <End Role="User_UserRole" Type="Self.User_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="UserRoleId" />
+            </Principal>
+            <Dependent Role="User_UserRole">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_UserRoleAuthority_UserRole">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
+          <End Role="UserRole_UserRoleAuthority" Type="Self.UserRole_UserRoleAuthority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="UserRoleId" />
+            </Principal>
+            <Dependent Role="UserRole_UserRoleAuthority">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_UserRoleAuthority_UserRoleAuthority">
+          <End Role="UserRoleAuthority" Type="Self.UserRoleAuthority" Multiplicity="1" />
+          <End Role="UserRole_UserRoleAuthority" Type="Self.UserRole_UserRoleAuthority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoleAuthority">
+              <PropertyRef Name="UserRoleAuthorityId" />
+            </Principal>
+            <Dependent Role="UserRole_UserRoleAuthority">
+              <PropertyRef Name="UserRoleAuthorityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AddQuarantineType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="md">
+          <Parameter Name="QuarantineType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AddStorageCondition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="md">
+          <Parameter Name="StorageCondition" Type="nvarchar" Mode="In" />
+          <Parameter Name="StorageConditionDescription" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetAllQuarantineTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="md" />
+        <Function Name="GetAllStorageConditions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="md" />
+        <Function Name="GetQuarantineTypeByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="md">
+          <Parameter Name="QuarantineTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetStorageConditionByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="md">
+          <Parameter Name="StorageConditionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateQuarantineTypeByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="md">
+          <Parameter Name="QuarantineTypeID" Type="int" Mode="In" />
+          <Parameter Name="QuarantineType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateStorageConditionByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="md">
+          <Parameter Name="StorageConditionID" Type="int" Mode="In" />
+          <Parameter Name="StorageCondition" Type="nvarchar" Mode="In" />
+          <Parameter Name="StorageConditionDescription" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AddRoleUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="UserRoleID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetAllNotActiveUserRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person" />
+        <Function Name="GetAllUserRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetUserByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetUserDisabledRolesByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetUserRolesByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RemoveRoleUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="UserRoleID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateUserByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserRoleID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="PipingRockModel1StoreContainer">
+          <EntitySet Name="Alergen" EntityType="Self.Alergen" Schema="md" store:Type="Tables" />
+          <EntitySet Name="Bottle" EntityType="Self.Bottle" Schema="md" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="md" store:Type="Tables" />
+          <EntitySet Name="FinishedGood" EntityType="Self.FinishedGood" Schema="md" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="md" store:Type="Tables" />
+          <EntitySet Name="ItemForm" EntityType="Self.ItemForm" Schema="md" store:Type="Tables" />
+          <EntitySet Name="ItemStatus" EntityType="Self.ItemStatus" Schema="md" store:Type="Tables" />
+          <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="md" store:Type="Tables" />
+          <EntitySet Name="ItemTypeDetail" EntityType="Self.ItemTypeDetail" Schema="md" store:Type="Tables" />
+          <EntitySet Name="PackagingLevel" EntityType="Self.PackagingLevel" Schema="md" store:Type="Tables" />
+          <EntitySet Name="QcTest" EntityType="Self.QcTest" Schema="md" store:Type="Tables" />
+          <EntitySet Name="QuarantineType" EntityType="Self.QuarantineType" Schema="md" store:Type="Tables" />
+          <EntitySet Name="Ref_GDSN_UoM" EntityType="Self.Ref_GDSN_UoM" Schema="md" store:Type="Tables" />
+          <EntitySet Name="ReportSort" EntityType="Self.ReportSort" Schema="md" store:Type="Tables" />
+          <EntitySet Name="StorageCondition" EntityType="Self.StorageCondition" Schema="md" store:Type="Tables" />
+          <EntitySet Name="UnitOfMeasure" EntityType="Self.UnitOfMeasure" Schema="md" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="Person" store:Type="Tables" />
+          <EntitySet Name="User_UserRole" EntityType="Self.User_UserRole" Schema="Person" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="Person" store:Type="Tables" />
+          <EntitySet Name="UserRole_UserRoleAuthority" EntityType="Self.UserRole_UserRoleAuthority" Schema="Person" store:Type="Tables" />
+          <EntitySet Name="UserRoleAuthority" EntityType="Self.UserRoleAuthority" Schema="Person" store:Type="Tables" />
+          <EntitySet Name="ItemView" EntityType="Self.ItemView" store:Type="Views" store:Schema="md">
+            <DefiningQuery>SELECT 
+    [ItemView].[ItemKey] AS [ItemKey], 
+    [ItemView].[ItemType] AS [ItemType], 
+    [ItemView].[ItemTypeCode] AS [ItemTypeCode], 
+    [ItemView].[ItemTypeDetail] AS [ItemTypeDetail], 
+    [ItemView].[ItemStatus] AS [ItemStatus], 
+    [ItemView].[ItemDescription] AS [ItemDescription], 
+    [ItemView].[ItemDescriptionShort] AS [ItemDescriptionShort], 
+    [ItemView].[ItemDescriptionLong] AS [ItemDescriptionLong], 
+    [ItemView].[ReceivingBoxLabelsRequired] AS [ReceivingBoxLabelsRequired], 
+    [ItemView].[ExpirationMonths] AS [ExpirationMonths], 
+    [ItemView].[RetestingMonths] AS [RetestingMonths], 
+    [ItemView].[PctOfLifeForRetesting] AS [PctOfLifeForRetesting], 
+    [ItemView].[Purchase_UnitOfMeasure] AS [Purchase_UnitOfMeasure], 
+    [ItemView].[Purchase_UnitOfMeasureAbbreviation] AS [Purchase_UnitOfMeasureAbbreviation], 
+    [ItemView].[Stock_UnitOfMeasure] AS [Stock_UnitOfMeasure], 
+    [ItemView].[Stock_UnitOfMeasureAbbreviation] AS [Stock_UnitOfMeasureAbbreviation], 
+    [ItemView].[Production_UnitOfMeasure] AS [Production_UnitOfMeasure], 
+    [ItemView].[Production_UnitOfMeasureAbbreviation] AS [Production_UnitOfMeasureAbbreviation], 
+    [ItemView].[Sale_UnitOfMeasure] AS [Sale_UnitOfMeasure], 
+    [ItemView].[Sale_UnitOfMeasureAbbreviation] AS [Sale_UnitOfMeasureAbbreviation], 
+    [ItemView].[ItemForm] AS [ItemForm], 
+    [ItemView].[StorageCondition] AS [StorageCondition], 
+    [ItemView].[StorageConditionDescription] AS [StorageConditionDescription], 
+    [ItemView].[QcTest] AS [QcTest]
+    FROM [md].[ItemView] AS [ItemView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="QcTestView" EntityType="Self.QcTestView" store:Type="Views" store:Schema="md">
+            <DefiningQuery>SELECT 
+    [QcTestView].[QcTestId] AS [QcTestId], 
+    [QcTestView].[QcTestType] AS [QcTestType], 
+    [QcTestView].[QcTest] AS [QcTest]
+    FROM [md].[QcTestView] AS [QcTestView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Bottle_Item" Association="Self.FK_Bottle_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Bottle" EntitySet="Bottle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinishedGood_Item" Association="Self.FK_FinishedGood_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="FinishedGood" EntitySet="FinishedGood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinishedGood_PackagingLevel" Association="Self.FK_FinishedGood_PackagingLevel">
+            <End Role="PackagingLevel" EntitySet="PackagingLevel" />
+            <End Role="FinishedGood" EntitySet="FinishedGood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinishedGood_ReportSort" Association="Self.FK_FinishedGood_ReportSort">
+            <End Role="ReportSort" EntitySet="ReportSort" />
+            <End Role="FinishedGood" EntitySet="FinishedGood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemForm" Association="Self.FK_Item_ItemForm">
+            <End Role="ItemForm" EntitySet="ItemForm" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemStatus" Association="Self.FK_Item_ItemStatus">
+            <End Role="ItemStatus" EntitySet="ItemStatus" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemType" Association="Self.FK_Item_ItemType">
+            <End Role="ItemType" EntitySet="ItemType" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_QcTest" Association="Self.FK_Item_QcTest">
+            <End Role="QcTest" EntitySet="QcTest" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_QuarantineType" Association="Self.FK_Item_QuarantineType">
+            <End Role="QuarantineType" EntitySet="QuarantineType" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_StorageCondition" Association="Self.FK_Item_StorageCondition">
+            <End Role="StorageCondition" EntitySet="StorageCondition" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemTypeDetail_ItemType" Association="Self.FK_ItemTypeDetail_ItemType">
+            <End Role="ItemType" EntitySet="ItemType" />
+            <End Role="ItemTypeDetail" EntitySet="ItemTypeDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QcTest_QcTest" Association="Self.FK_QcTest_QcTest">
+            <End Role="QcTest" EntitySet="QcTest" />
+            <End Role="QcTest1" EntitySet="QcTest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportSort_Brand" Association="Self.FK_ReportSort_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="ReportSort" EntitySet="ReportSort" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnitOfMeasure_Ref_GDSN_UoM" Association="Self.FK_UnitOfMeasure_Ref_GDSN_UoM">
+            <End Role="Ref_GDSN_UoM" EntitySet="Ref_GDSN_UoM" />
+            <End Role="UnitOfMeasure" EntitySet="UnitOfMeasure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserRole_User" Association="Self.FK_User_UserRole_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User_UserRole" EntitySet="User_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserRole_UserRole" Association="Self.FK_User_UserRole_UserRole">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="User_UserRole" EntitySet="User_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_UserRoleAuthority_UserRole" Association="Self.FK_UserRole_UserRoleAuthority_UserRole">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="UserRole_UserRoleAuthority" EntitySet="UserRole_UserRoleAuthority" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_UserRoleAuthority_UserRoleAuthority" Association="Self.FK_UserRole_UserRoleAuthority_UserRoleAuthority">
+            <End Role="UserRoleAuthority" EntitySet="UserRoleAuthority" />
+            <End Role="UserRole_UserRoleAuthority" EntitySet="UserRole_UserRoleAuthority" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PipingRockModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alergen">
+          <Key>
+            <PropertyRef Name="AlergenID" />
+          </Key>
+          <Property Name="AlergenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Alergen1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AlergenAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AlergenChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AlergenDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="AlergenModifiedById" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bottle">
+          <Key>
+            <PropertyRef Name="BottleId" />
+          </Key>
+          <Property Name="BottleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="BottleLength" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleWidth" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleHieght" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleCubicInches" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleLengthWrapped" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleWidthWrapped" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleDepthWrapped" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleCubicInchWrapped" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottlesLargeTray" Type="Int32" Nullable="false" />
+          <Property Name="BottlesSmallTray" Type="Int32" Nullable="false" />
+          <Property Name="WrappedBottlesTrayLarge" Type="Int32" Nullable="false" />
+          <Property Name="WrappedBottlesTraySmall" Type="Int32" Nullable="false" />
+          <Property Name="BottleLabelSquareInches" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="BottleAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BottleChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BottleDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="BottleModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="Self.FK_Bottle_Item" FromRole="Bottle" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Brand1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BrandAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BrandChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BrandDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="BrandModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ReportSorts" Relationship="Self.FK_ReportSort_Brand" FromRole="Brand" ToRole="ReportSort" />
+        </EntityType>
+        <EntityType Name="FinishedGood">
+          <Key>
+            <PropertyRef Name="FinishedGoodId" />
+          </Key>
+          <Property Name="FinishedGoodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="BrandId" Type="Int32" Nullable="false" />
+          <Property Name="BulkItemId" Type="Int32" Nullable="false" />
+          <Property Name="ReportSortId" Type="Int32" Nullable="false" />
+          <Property Name="PackagingLevelId" Type="Int32" Nullable="false" />
+          <Property Name="IsPurchasable" Type="Boolean" Nullable="false" />
+          <Property Name="ChainPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SRP" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MasterCaseCost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EachUPC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MasterCaseUPC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="InnerUPC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EachHeightInches" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="EachWidthInches" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="EachDepthInches" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="EachWeightOz" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="EachWeightGrams" Type="Decimal" Precision="26" Scale="8" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="MasterCaseQuantity" Type="Int32" />
+          <Property Name="MasterCaseHightInches" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="MasterCaseWidthInches" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="MasterCaseDepthInches" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="MasterCaseCubicFeet" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="MasterCaseWeightLbs" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="MasterCaseWeightKg" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="MasterCaseCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="InnerQuantity" Type="Int32" />
+          <Property Name="InnerHeightInches" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="InnerWidthInches" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="InnerDepthInches" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="InnerWeightOz" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="InnerWeightGrams" Type="Decimal" Precision="26" Scale="8" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Tie" Type="Int32" />
+          <Property Name="High" Type="Int32" />
+          <Property Name="CasesPerPallet" Type="Int32" />
+          <Property Name="PalletCubicFeet" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="PalletHeightInches" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="PalletWidthInches" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="PalletDepthInches" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="FinishedGoodMakeBuy" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="isTaxableNYS" Type="Boolean" Nullable="false" />
+          <Property Name="isTaxableCanada" Type="Boolean" Nullable="false" />
+          <Property Name="FinishedGoodAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FinishedGoodChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FinishedGoodDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="FinishedGoodModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="Self.FK_FinishedGood_Item" FromRole="FinishedGood" ToRole="Item" />
+          <NavigationProperty Name="PackagingLevel" Relationship="Self.FK_FinishedGood_PackagingLevel" FromRole="FinishedGood" ToRole="PackagingLevel" />
+          <NavigationProperty Name="ReportSort" Relationship="Self.FK_FinishedGood_ReportSort" FromRole="FinishedGood" ToRole="ReportSort" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemKey" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ItemTypeDetailId" Type="Int32" Nullable="false" />
+          <Property Name="ItemDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescriptionShort" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescriptionLong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ItemStatusId" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseUnitOfMeasureId" Type="Int32" Nullable="false" />
+          <Property Name="StockUnitOfMeasureId" Type="Int32" Nullable="false" />
+          <Property Name="ProductionUnitOfMeasureId" Type="Int32" Nullable="false" />
+          <Property Name="SaleUnitOfMeasureId" Type="Int32" Nullable="false" />
+          <Property Name="ItemFormId" Type="Int32" Nullable="false" />
+          <Property Name="ReceivingBoxLabelsRequired" Type="Boolean" Nullable="false" />
+          <Property Name="StorageConditionId" Type="Int32" Nullable="false" />
+          <Property Name="QcTestId" Type="Int32" Nullable="false" />
+          <Property Name="ExpirationMonths" Type="Int32" Nullable="false" />
+          <Property Name="RetestingMonths" Type="Int32" Nullable="false" />
+          <Property Name="PctOfLifeForRetesting" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="QuarantineTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ItemAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ItemChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ItemDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="ItemModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bottles" Relationship="Self.FK_Bottle_Item" FromRole="Item" ToRole="Bottle" />
+          <NavigationProperty Name="FinishedGoods" Relationship="Self.FK_FinishedGood_Item" FromRole="Item" ToRole="FinishedGood" />
+          <NavigationProperty Name="ItemForm" Relationship="Self.FK_Item_ItemForm" FromRole="Item" ToRole="ItemForm" />
+          <NavigationProperty Name="ItemStatu" Relationship="Self.FK_Item_ItemStatus" FromRole="Item" ToRole="ItemStatus" />
+          <NavigationProperty Name="ItemType" Relationship="Self.FK_Item_ItemType" FromRole="Item" ToRole="ItemType" />
+          <NavigationProperty Name="QcTest" Relationship="Self.FK_Item_QcTest" FromRole="Item" ToRole="QcTest" />
+          <NavigationProperty Name="QuarantineType" Relationship="Self.FK_Item_QuarantineType" FromRole="Item" ToRole="QuarantineType" />
+          <NavigationProperty Name="StorageCondition" Relationship="Self.FK_Item_StorageCondition" FromRole="Item" ToRole="StorageCondition" />
+        </EntityType>
+        <EntityType Name="ItemForm">
+          <Key>
+            <PropertyRef Name="ItemFormId" />
+          </Key>
+          <Property Name="ItemFormId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemForm1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemFormDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemFormAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ItemFormChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ItemFormDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="ItemFormModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_ItemForm" FromRole="ItemForm" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="ItemStatu">
+          <Key>
+            <PropertyRef Name="ItemStatusId" />
+          </Key>
+          <Property Name="ItemStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemStatusDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemStatusAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ItemStatusChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ItemStatusDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="ItemStatusModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_ItemStatus" FromRole="ItemStatus" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="ItemType">
+          <Key>
+            <PropertyRef Name="ItemTypeId" />
+          </Key>
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemTypeCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemTypeDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ItemTypeAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ItemTypeChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ItemTypeDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="ItemTypeModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_ItemType" FromRole="ItemType" ToRole="Item" />
+          <NavigationProperty Name="ItemTypeDetails" Relationship="Self.FK_ItemTypeDetail_ItemType" FromRole="ItemType" ToRole="ItemTypeDetail" />
+        </EntityType>
+        <EntityType Name="ItemTypeDetail">
+          <Key>
+            <PropertyRef Name="ItemTypeDetailId" />
+          </Key>
+          <Property Name="ItemTypeDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ItemTypeDetail1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemTypeDetailDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LossFactorInventory" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="LossFactorCost" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="ItemTypeDetailAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ItemTypeDetailChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ItemTypeDetailDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="ItemTypeDetailModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ItemType" Relationship="Self.FK_ItemTypeDetail_ItemType" FromRole="ItemTypeDetail" ToRole="ItemType" />
+        </EntityType>
+        <EntityType Name="PackagingLevel">
+          <Key>
+            <PropertyRef Name="PackagingLevelId" />
+          </Key>
+          <Property Name="PackagingLevelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackagingLevel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PackagingLevelAbbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PackagingLevelDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PackagingLevelAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PackagingLevelChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PackagingLevelDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="PackagingLevelModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FinishedGoods" Relationship="Self.FK_FinishedGood_PackagingLevel" FromRole="PackagingLevel" ToRole="FinishedGood" />
+        </EntityType>
+        <EntityType Name="QcTest">
+          <Key>
+            <PropertyRef Name="QcTestId" />
+          </Key>
+          <Property Name="QcTestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QcTest1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QcTestParentId" Type="Int32" Nullable="false" />
+          <Property Name="QcTestAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QcTestChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QcTestDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="QcTestModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_QcTest" FromRole="QcTest" ToRole="Item" />
+          <NavigationProperty Name="QcTest11" Relationship="Self.FK_QcTest_QcTest" FromRole="QcTest" ToRole="QcTest1" />
+          <NavigationProperty Name="QcTest2" Relationship="Self.FK_QcTest_QcTest" FromRole="QcTest1" ToRole="QcTest" />
+        </EntityType>
+        <EntityType Name="QuarantineType">
+          <Key>
+            <PropertyRef Name="QuarantineTypeId" />
+          </Key>
+          <Property Name="QuarantineTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuarantineType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuarantineTypeAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QuarantineTypeChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QuarantineTypeDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="QuarantineTypeModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_QuarantineType" FromRole="QuarantineType" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Ref_GDSN_UoM">
+          <Key>
+            <PropertyRef Name="Ref_GDSN_UoMId" />
+          </Key>
+          <Property Name="Ref_GDSN_UoMId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="isUsedAtPipingRock" Type="Boolean" />
+          <Property Name="GDSN_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GDSN_Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GDSN_Definition" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="GDSN_Group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UnitOfMeasures" Relationship="Self.FK_UnitOfMeasure_Ref_GDSN_UoM" FromRole="Ref_GDSN_UoM" ToRole="UnitOfMeasure" />
+        </EntityType>
+        <EntityType Name="ReportSort">
+          <Key>
+            <PropertyRef Name="ReportSortId" />
+          </Key>
+          <Property Name="ReportSortId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandId" Type="Int32" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="ReportSortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReportSortAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReportSortChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReportSortDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="ReportSortModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_ReportSort_Brand" FromRole="ReportSort" ToRole="Brand" />
+          <NavigationProperty Name="FinishedGoods" Relationship="Self.FK_FinishedGood_ReportSort" FromRole="ReportSort" ToRole="FinishedGood" />
+        </EntityType>
+        <EntityType Name="StorageCondition">
+          <Key>
+            <PropertyRef Name="StorageConditionId" />
+          </Key>
+          <Property Name="StorageConditionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StorageCondition1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StorageConditionDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StorageConditionAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StorageConditionChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StorageConditionDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="StorageConditionModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_StorageCondition" FromRole="StorageCondition" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="UnitOfMeasure">
+          <Key>
+            <PropertyRef Name="UnitOfMeasureId" />
+          </Key>
+          <Property Name="UnitOfMeasureId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitOfMeasure1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitOfMeasureAbbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ref_GDSN_UoMId" Type="Int32" />
+          <Property Name="UnitOfMeasureAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UnitOfMeasureChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UnitOfMeasureDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="UnitOfMeasureModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ref_GDSN_UoM" Relationship="Self.FK_UnitOfMeasure_Ref_GDSN_UoM" FromRole="UnitOfMeasure" ToRole="Ref_GDSN_UoM" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserLastLoginDate" Type="DateTime" Precision="3" />
+          <Property Name="UserAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="UserModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User_UserRole" Relationship="Self.FK_User_UserRole_User" FromRole="User" ToRole="User_UserRole" />
+        </EntityType>
+        <EntityType Name="User_UserRole">
+          <Key>
+            <PropertyRef Name="User_UserRoleId" />
+          </Key>
+          <Property Name="User_UserRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" />
+          <Property Name="User_UserRoleAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="User_UserRoleChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="User_UserRoleDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="User_UserRoleModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_UserRole_User" FromRole="User_UserRole" ToRole="User" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK_User_UserRole_UserRole" FromRole="User_UserRole" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserRoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserRoleAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserRoleChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserRoleDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="UserRoleModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User_UserRole" Relationship="Self.FK_User_UserRole_UserRole" FromRole="UserRole" ToRole="User_UserRole" />
+          <NavigationProperty Name="UserRole_UserRoleAuthority" Relationship="Self.FK_UserRole_UserRoleAuthority_UserRole" FromRole="UserRole" ToRole="UserRole_UserRoleAuthority" />
+        </EntityType>
+        <EntityType Name="UserRole_UserRoleAuthority">
+          <Key>
+            <PropertyRef Name="UserRole_UserRoleAuthorityId" />
+          </Key>
+          <Property Name="UserRole_UserRoleAuthorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" />
+          <Property Name="UserRoleAuthorityId" Type="Int32" Nullable="false" />
+          <Property Name="UserRole_UserRoleAuthorityAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserRole_UserRoleAuthorityChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserRole_UserRoleAuthorityDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="UserRole_UserRoleAuthorityModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK_UserRole_UserRoleAuthority_UserRole" FromRole="UserRole_UserRoleAuthority" ToRole="UserRole" />
+          <NavigationProperty Name="UserRoleAuthority" Relationship="Self.FK_UserRole_UserRoleAuthority_UserRoleAuthority" FromRole="UserRole_UserRoleAuthority" ToRole="UserRoleAuthority" />
+        </EntityType>
+        <EntityType Name="UserRoleAuthority">
+          <Key>
+            <PropertyRef Name="UserRoleAuthorityId" />
+          </Key>
+          <Property Name="UserRoleAuthorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FeatureParentId" Type="Int32" />
+          <Property Name="FeatureName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FeatureDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CanView" Type="Boolean" />
+          <Property Name="CanEdit" Type="Boolean" />
+          <Property Name="CanCreate" Type="Boolean" />
+          <Property Name="CanDelete" Type="Boolean" />
+          <Property Name="CanUnDelete" Type="Boolean" />
+          <Property Name="CanDoAll" Type="Boolean" />
+          <Property Name="UserRoleAuthorityAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserRoleAuthorityChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserRoleAuthorityDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="UserRoleAuthorityModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserRole_UserRoleAuthority" Relationship="Self.FK_UserRole_UserRoleAuthority_UserRoleAuthority" FromRole="UserRoleAuthority" ToRole="UserRole_UserRoleAuthority" />
+        </EntityType>
+        <EntityType Name="ItemView">
+          <Key>
+            <PropertyRef Name="ItemKey" />
+            <PropertyRef Name="ItemType" />
+            <PropertyRef Name="ItemTypeCode" />
+            <PropertyRef Name="ItemTypeDetail" />
+            <PropertyRef Name="ItemStatus" />
+            <PropertyRef Name="ReceivingBoxLabelsRequired" />
+            <PropertyRef Name="ExpirationMonths" />
+            <PropertyRef Name="RetestingMonths" />
+            <PropertyRef Name="PctOfLifeForRetesting" />
+            <PropertyRef Name="Purchase_UnitOfMeasure" />
+            <PropertyRef Name="Purchase_UnitOfMeasureAbbreviation" />
+            <PropertyRef Name="Stock_UnitOfMeasure" />
+            <PropertyRef Name="Stock_UnitOfMeasureAbbreviation" />
+            <PropertyRef Name="Production_UnitOfMeasure" />
+            <PropertyRef Name="Production_UnitOfMeasureAbbreviation" />
+            <PropertyRef Name="Sale_UnitOfMeasure" />
+            <PropertyRef Name="Sale_UnitOfMeasureAbbreviation" />
+            <PropertyRef Name="ItemForm" />
+            <PropertyRef Name="StorageCondition" />
+            <PropertyRef Name="StorageConditionDescription" />
+            <PropertyRef Name="QcTest" />
+          </Key>
+          <Property Name="ItemKey" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemTypeCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemTypeDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescriptionShort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescriptionLong" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ReceivingBoxLabelsRequired" Type="Boolean" Nullable="false" />
+          <Property Name="ExpirationMonths" Type="Int32" Nullable="false" />
+          <Property Name="RetestingMonths" Type="Int32" Nullable="false" />
+          <Property Name="PctOfLifeForRetesting" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="Purchase_UnitOfMeasure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Purchase_UnitOfMeasureAbbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Stock_UnitOfMeasure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Stock_UnitOfMeasureAbbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Production_UnitOfMeasure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Production_UnitOfMeasureAbbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sale_UnitOfMeasure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sale_UnitOfMeasureAbbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemForm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StorageCondition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StorageConditionDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QcTest" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QcTestView">
+          <Key>
+            <PropertyRef Name="QcTestId" />
+            <PropertyRef Name="QcTestType" />
+            <PropertyRef Name="QcTest" />
+          </Key>
+          <Property Name="QcTestId" Type="Int32" Nullable="false" />
+          <Property Name="QcTestType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QcTest" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Bottle_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Bottle" Type="Self.Bottle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="Bottle">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportSort_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="ReportSort" Type="Self.ReportSort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="ReportSort">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinishedGood_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="FinishedGood" Type="Self.FinishedGood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="FinishedGood">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinishedGood_PackagingLevel">
+          <End Role="PackagingLevel" Type="Self.PackagingLevel" Multiplicity="1" />
+          <End Role="FinishedGood" Type="Self.FinishedGood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackagingLevel">
+              <PropertyRef Name="PackagingLevelId" />
+            </Principal>
+            <Dependent Role="FinishedGood">
+              <PropertyRef Name="PackagingLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinishedGood_ReportSort">
+          <End Role="ReportSort" Type="Self.ReportSort" Multiplicity="1" />
+          <End Role="FinishedGood" Type="Self.FinishedGood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportSort">
+              <PropertyRef Name="ReportSortId" />
+            </Principal>
+            <Dependent Role="FinishedGood">
+              <PropertyRef Name="ReportSortId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_ItemForm">
+          <End Role="ItemForm" Type="Self.ItemForm" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemForm">
+              <PropertyRef Name="ItemFormId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemFormId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_ItemStatus">
+          <End Role="ItemStatus" Type="Self.ItemStatu" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemStatus">
+              <PropertyRef Name="ItemStatusId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_ItemType">
+          <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_QcTest">
+          <End Role="QcTest" Type="Self.QcTest" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QcTest">
+              <PropertyRef Name="QcTestId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="QcTestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_QuarantineType">
+          <End Role="QuarantineType" Type="Self.QuarantineType" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuarantineType">
+              <PropertyRef Name="QuarantineTypeId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="QuarantineTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_StorageCondition">
+          <End Role="StorageCondition" Type="Self.StorageCondition" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StorageCondition">
+              <PropertyRef Name="StorageConditionId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="StorageConditionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemTypeDetail_ItemType">
+          <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+          <End Role="ItemTypeDetail" Type="Self.ItemTypeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="ItemTypeDetail">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QcTest_QcTest">
+          <End Role="QcTest" Type="Self.QcTest" Multiplicity="1" />
+          <End Role="QcTest1" Type="Self.QcTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QcTest">
+              <PropertyRef Name="QcTestId" />
+            </Principal>
+            <Dependent Role="QcTest1">
+              <PropertyRef Name="QcTestParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnitOfMeasure_Ref_GDSN_UoM">
+          <End Role="Ref_GDSN_UoM" Type="Self.Ref_GDSN_UoM" Multiplicity="0..1" />
+          <End Role="UnitOfMeasure" Type="Self.UnitOfMeasure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ref_GDSN_UoM">
+              <PropertyRef Name="Ref_GDSN_UoMId" />
+            </Principal>
+            <Dependent Role="UnitOfMeasure">
+              <PropertyRef Name="Ref_GDSN_UoMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserRole_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User_UserRole" Type="Self.User_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="User_UserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserRole_UserRole">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
+          <End Role="User_UserRole" Type="Self.User_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="UserRoleId" />
+            </Principal>
+            <Dependent Role="User_UserRole">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_UserRoleAuthority_UserRole">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
+          <End Role="UserRole_UserRoleAuthority" Type="Self.UserRole_UserRoleAuthority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="UserRoleId" />
+            </Principal>
+            <Dependent Role="UserRole_UserRoleAuthority">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_UserRoleAuthority_UserRoleAuthority">
+          <End Role="UserRoleAuthority" Type="Self.UserRoleAuthority" Multiplicity="1" />
+          <End Role="UserRole_UserRoleAuthority" Type="Self.UserRole_UserRoleAuthority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoleAuthority">
+              <PropertyRef Name="UserRoleAuthorityId" />
+            </Principal>
+            <Dependent Role="UserRole_UserRoleAuthority">
+              <PropertyRef Name="UserRoleAuthorityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PipingRockNewEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alergens" EntityType="Self.Alergen" />
+          <EntitySet Name="Bottles" EntityType="Self.Bottle" />
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="FinishedGoods" EntityType="Self.FinishedGood" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="ItemForms" EntityType="Self.ItemForm" />
+          <EntitySet Name="ItemStatus" EntityType="Self.ItemStatu" />
+          <EntitySet Name="ItemTypes" EntityType="Self.ItemType" />
+          <EntitySet Name="ItemTypeDetails" EntityType="Self.ItemTypeDetail" />
+          <EntitySet Name="PackagingLevels" EntityType="Self.PackagingLevel" />
+          <EntitySet Name="QcTests" EntityType="Self.QcTest" />
+          <EntitySet Name="QuarantineTypes" EntityType="Self.QuarantineType" />
+          <EntitySet Name="Ref_GDSN_UoM" EntityType="Self.Ref_GDSN_UoM" />
+          <EntitySet Name="ReportSorts" EntityType="Self.ReportSort" />
+          <EntitySet Name="StorageConditions" EntityType="Self.StorageCondition" />
+          <EntitySet Name="UnitOfMeasures" EntityType="Self.UnitOfMeasure" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="User_UserRole" EntityType="Self.User_UserRole" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="UserRole_UserRoleAuthority" EntityType="Self.UserRole_UserRoleAuthority" />
+          <EntitySet Name="UserRoleAuthorities" EntityType="Self.UserRoleAuthority" />
+          <EntitySet Name="ItemViews" EntityType="Self.ItemView" />
+          <EntitySet Name="QcTestViews" EntityType="Self.QcTestView" />
+          <AssociationSet Name="FK_Bottle_Item" Association="Self.FK_Bottle_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Bottle" EntitySet="Bottles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportSort_Brand" Association="Self.FK_ReportSort_Brand">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="ReportSort" EntitySet="ReportSorts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinishedGood_Item" Association="Self.FK_FinishedGood_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="FinishedGood" EntitySet="FinishedGoods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinishedGood_PackagingLevel" Association="Self.FK_FinishedGood_PackagingLevel">
+            <End Role="PackagingLevel" EntitySet="PackagingLevels" />
+            <End Role="FinishedGood" EntitySet="FinishedGoods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinishedGood_ReportSort" Association="Self.FK_FinishedGood_ReportSort">
+            <End Role="ReportSort" EntitySet="ReportSorts" />
+            <End Role="FinishedGood" EntitySet="FinishedGoods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemForm" Association="Self.FK_Item_ItemForm">
+            <End Role="ItemForm" EntitySet="ItemForms" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemStatus" Association="Self.FK_Item_ItemStatus">
+            <End Role="ItemStatus" EntitySet="ItemStatus" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemType" Association="Self.FK_Item_ItemType">
+            <End Role="ItemType" EntitySet="ItemTypes" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_QcTest" Association="Self.FK_Item_QcTest">
+            <End Role="QcTest" EntitySet="QcTests" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_QuarantineType" Association="Self.FK_Item_QuarantineType">
+            <End Role="QuarantineType" EntitySet="QuarantineTypes" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_StorageCondition" Association="Self.FK_Item_StorageCondition">
+            <End Role="StorageCondition" EntitySet="StorageConditions" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemTypeDetail_ItemType" Association="Self.FK_ItemTypeDetail_ItemType">
+            <End Role="ItemType" EntitySet="ItemTypes" />
+            <End Role="ItemTypeDetail" EntitySet="ItemTypeDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QcTest_QcTest" Association="Self.FK_QcTest_QcTest">
+            <End Role="QcTest" EntitySet="QcTests" />
+            <End Role="QcTest1" EntitySet="QcTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnitOfMeasure_Ref_GDSN_UoM" Association="Self.FK_UnitOfMeasure_Ref_GDSN_UoM">
+            <End Role="Ref_GDSN_UoM" EntitySet="Ref_GDSN_UoM" />
+            <End Role="UnitOfMeasure" EntitySet="UnitOfMeasures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserRole_User" Association="Self.FK_User_UserRole_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="User_UserRole" EntitySet="User_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserRole_UserRole" Association="Self.FK_User_UserRole_UserRole">
+            <End Role="UserRole" EntitySet="UserRoles" />
+            <End Role="User_UserRole" EntitySet="User_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_UserRoleAuthority_UserRole" Association="Self.FK_UserRole_UserRoleAuthority_UserRole">
+            <End Role="UserRole" EntitySet="UserRoles" />
+            <End Role="UserRole_UserRoleAuthority" EntitySet="UserRole_UserRoleAuthority" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_UserRoleAuthority_UserRoleAuthority" Association="Self.FK_UserRole_UserRoleAuthority_UserRoleAuthority">
+            <End Role="UserRoleAuthority" EntitySet="UserRoleAuthorities" />
+            <End Role="UserRole_UserRoleAuthority" EntitySet="UserRole_UserRoleAuthority" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="AddQuarantineType">
+            <Parameter Name="QuarantineType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddStorageCondition">
+            <Parameter Name="StorageCondition" Mode="In" Type="String" />
+            <Parameter Name="StorageConditionDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllQuarantineTypes" ReturnType="Collection(PipingRockModel1.GetAllQuarantineTypes_Result)" />
+          <FunctionImport Name="GetAllStorageConditions" ReturnType="Collection(PipingRockModel1.GetAllStorageConditions_Result)" />
+          <FunctionImport Name="GetQuarantineTypeByID" ReturnType="Collection(PipingRockModel1.GetQuarantineTypeByID_Result)">
+            <Parameter Name="QuarantineTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetStorageConditionByID" ReturnType="Collection(PipingRockModel1.GetStorageConditionByID_Result)">
+            <Parameter Name="StorageConditionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateQuarantineTypeByID">
+            <Parameter Name="QuarantineTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="QuarantineType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateStorageConditionByID">
+            <Parameter Name="StorageConditionID" Mode="In" Type="Int32" />
+            <Parameter Name="StorageCondition" Mode="In" Type="String" />
+            <Parameter Name="StorageConditionDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddRoleUserID">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="UserRoleID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddUser">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllNotActiveUserRoles" ReturnType="Collection(PipingRockModel1.GetAllNotActiveUserRoles_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllRoles" ReturnType="Collection(PipingRockModel1.GetAllRoles_Result)" />
+          <FunctionImport Name="GetAllUserRoles" ReturnType="Collection(PipingRockModel1.GetAllUserRoles_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllUsers" ReturnType="Collection(PipingRockModel1.GetAllUsers_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetUser" ReturnType="Collection(PipingRockModel1.GetUser_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserByID" ReturnType="Collection(PipingRockModel1.GetUserByID_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserDisabledRolesByID" ReturnType="Collection(PipingRockModel1.GetUserDisabledRolesByID_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserRolesByID" ReturnType="Collection(PipingRockModel1.GetUserRolesByID_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveRoleUserID">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="UserRoleID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateUserByID">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="UserRoleID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAllQuarantineTypes_Result">
+          <Property Type="Int32" Name="QuarantineTypeId" Nullable="false" />
+          <Property Type="String" Name="QuarantineType" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="QuarantineTypeAddedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="QuarantineTypeChangedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="QuarantineTypeDeletedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="QuarantineTypeModifiedById" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAllStorageConditions_Result">
+          <Property Type="Int32" Name="StorageConditionId" Nullable="false" />
+          <Property Type="String" Name="StorageCondition" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="StorageConditionDescription" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="StorageConditionAddedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="StorageConditionChangedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="StorageConditionDeletedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="StorageConditionModifiedById" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetQuarantineTypeByID_Result">
+          <Property Type="Int32" Name="QuarantineTypeId" Nullable="false" />
+          <Property Type="String" Name="QuarantineType" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="QuarantineTypeAddedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="QuarantineTypeChangedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="QuarantineTypeDeletedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="QuarantineTypeModifiedById" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetStorageConditionByID_Result">
+          <Property Type="Int32" Name="StorageConditionId" Nullable="false" />
+          <Property Type="String" Name="StorageCondition" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="StorageConditionDescription" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="StorageConditionAddedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="StorageConditionChangedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="StorageConditionDeletedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="StorageConditionModifiedById" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAllNotActiveUserRoles_Result">
+          <Property Type="Int32" Name="RID" Nullable="true" />
+          <Property Type="String" Name="RN" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetAllRoles_Result">
+          <Property Type="Int32" Name="UserRoleId" Nullable="false" />
+          <Property Type="String" Name="UserRoleName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="UserRoleAddedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UserRoleChangedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UserRoleDeletedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="UserRoleModifiedById" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAllUserRoles_Result">
+          <Property Type="Int32" Name="RID" Nullable="true" />
+          <Property Type="String" Name="RN" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="UID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllUsers_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="UserLastLoginDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="UserAddedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UserChangedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UserDeletedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="UserModifiedById" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetUser_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="UserLastLoginDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="UserAddedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UserChangedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UserDeletedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="UserModifiedById" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetUserByID_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="UserLastLoginDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="UserAddedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UserChangedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UserDeletedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="UserModifiedById" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetUserDisabledRolesByID_Result">
+          <Property Type="Int32" Name="UserRoleId" Nullable="false" />
+          <Property Type="String" Name="UserRoleName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="UserRoleAddedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UserRoleChangedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UserRoleDeletedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="UserRoleModifiedById" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetUserRolesByID_Result">
+          <Property Type="Int32" Name="UserRoleId" Nullable="false" />
+          <Property Type="String" Name="UserRoleName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="UserRoleAddedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UserRoleChangedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UserRoleDeletedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="UserRoleModifiedById" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PipingRockModel1StoreContainer" CdmEntityContainer="PipingRockNewEntities">
+          <EntitySetMapping Name="Alergens">
+            <EntityTypeMapping TypeName="PipingRockModel1.Alergen">
+              <MappingFragment StoreEntitySet="Alergen">
+                <ScalarProperty Name="AlergenID" ColumnName="AlergenID" />
+                <ScalarProperty Name="Alergen1" ColumnName="Alergen" />
+                <ScalarProperty Name="AlergenAddedDate" ColumnName="AlergenAddedDate" />
+                <ScalarProperty Name="AlergenChangedDate" ColumnName="AlergenChangedDate" />
+                <ScalarProperty Name="AlergenDeletedDate" ColumnName="AlergenDeletedDate" />
+                <ScalarProperty Name="AlergenModifiedById" ColumnName="AlergenModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bottles">
+            <EntityTypeMapping TypeName="PipingRockModel1.Bottle">
+              <MappingFragment StoreEntitySet="Bottle">
+                <ScalarProperty Name="BottleId" ColumnName="BottleId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="BottleLength" ColumnName="BottleLength" />
+                <ScalarProperty Name="BottleWidth" ColumnName="BottleWidth" />
+                <ScalarProperty Name="BottleHieght" ColumnName="BottleHieght" />
+                <ScalarProperty Name="BottleCubicInches" ColumnName="BottleCubicInches" />
+                <ScalarProperty Name="BottleLengthWrapped" ColumnName="BottleLengthWrapped" />
+                <ScalarProperty Name="BottleWidthWrapped" ColumnName="BottleWidthWrapped" />
+                <ScalarProperty Name="BottleDepthWrapped" ColumnName="BottleDepthWrapped" />
+                <ScalarProperty Name="BottleCubicInchWrapped" ColumnName="BottleCubicInchWrapped" />
+                <ScalarProperty Name="BottlesLargeTray" ColumnName="BottlesLargeTray" />
+                <ScalarProperty Name="BottlesSmallTray" ColumnName="BottlesSmallTray" />
+                <ScalarProperty Name="WrappedBottlesTrayLarge" ColumnName="WrappedBottlesTrayLarge" />
+                <ScalarProperty Name="WrappedBottlesTraySmall" ColumnName="WrappedBottlesTraySmall" />
+                <ScalarProperty Name="BottleLabelSquareInches" ColumnName="BottleLabelSquareInches" />
+                <ScalarProperty Name="BottleAddedDate" ColumnName="BottleAddedDate" />
+                <ScalarProperty Name="BottleChangedDate" ColumnName="BottleChangedDate" />
+                <ScalarProperty Name="BottleDeletedDate" ColumnName="BottleDeletedDate" />
+                <ScalarProperty Name="BottleModifiedById" ColumnName="BottleModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="PipingRockModel1.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="BrandCode" ColumnName="BrandCode" />
+                <ScalarProperty Name="Brand1" ColumnName="Brand" />
+                <ScalarProperty Name="BrandAddedDate" ColumnName="BrandAddedDate" />
+                <ScalarProperty Name="BrandChangedDate" ColumnName="BrandChangedDate" />
+                <ScalarProperty Name="BrandDeletedDate" ColumnName="BrandDeletedDate" />
+                <ScalarProperty Name="BrandModifiedById" ColumnName="BrandModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FinishedGoods">
+            <EntityTypeMapping TypeName="PipingRockModel1.FinishedGood">
+              <MappingFragment StoreEntitySet="FinishedGood">
+                <ScalarProperty Name="FinishedGoodId" ColumnName="FinishedGoodId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="BulkItemId" ColumnName="BulkItemId" />
+                <ScalarProperty Name="ReportSortId" ColumnName="ReportSortId" />
+                <ScalarProperty Name="PackagingLevelId" ColumnName="PackagingLevelId" />
+                <ScalarProperty Name="IsPurchasable" ColumnName="IsPurchasable" />
+                <ScalarProperty Name="ChainPrice" ColumnName="ChainPrice" />
+                <ScalarProperty Name="SRP" ColumnName="SRP" />
+                <ScalarProperty Name="MasterCaseCost" ColumnName="MasterCaseCost" />
+                <ScalarProperty Name="EachUPC" ColumnName="EachUPC" />
+                <ScalarProperty Name="MasterCaseUPC" ColumnName="MasterCaseUPC" />
+                <ScalarProperty Name="InnerUPC" ColumnName="InnerUPC" />
+                <ScalarProperty Name="EachHeightInches" ColumnName="EachHeightInches" />
+                <ScalarProperty Name="EachWidthInches" ColumnName="EachWidthInches" />
+                <ScalarProperty Name="EachDepthInches" ColumnName="EachDepthInches" />
+                <ScalarProperty Name="EachWeightOz" ColumnName="EachWeightOz" />
+                <ScalarProperty Name="EachWeightGrams" ColumnName="EachWeightGrams" />
+                <ScalarProperty Name="MasterCaseQuantity" ColumnName="MasterCaseQuantity" />
+                <ScalarProperty Name="MasterCaseHightInches" ColumnName="MasterCaseHightInches" />
+                <ScalarProperty Name="MasterCaseWidthInches" ColumnName="MasterCaseWidthInches" />
+                <ScalarProperty Name="MasterCaseDepthInches" ColumnName="MasterCaseDepthInches" />
+                <ScalarProperty Name="MasterCaseCubicFeet" ColumnName="MasterCaseCubicFeet" />
+                <ScalarProperty Name="MasterCaseWeightLbs" ColumnName="MasterCaseWeightLbs" />
+                <ScalarProperty Name="MasterCaseWeightKg" ColumnName="MasterCaseWeightKg" />
+                <ScalarProperty Name="MasterCaseCode" ColumnName="MasterCaseCode" />
+                <ScalarProperty Name="InnerQuantity" ColumnName="InnerQuantity" />
+                <ScalarProperty Name="InnerHeightInches" ColumnName="InnerHeightInches" />
+                <ScalarProperty Name="InnerWidthInches" ColumnName="InnerWidthInches" />
+                <ScalarProperty Name="InnerDepthInches" ColumnName="InnerDepthInches" />
+                <ScalarProperty Name="InnerWeightOz" ColumnName="InnerWeightOz" />
+                <ScalarProperty Name="InnerWeightGrams" ColumnName="InnerWeightGrams" />
+                <ScalarProperty Name="Tie" ColumnName="Tie" />
+                <ScalarProperty Name="High" ColumnName="High" />
+                <ScalarProperty Name="CasesPerPallet" ColumnName="CasesPerPallet" />
+                <ScalarProperty Name="PalletCubicFeet" ColumnName="PalletCubicFeet" />
+                <ScalarProperty Name="PalletHeightInches" ColumnName="PalletHeightInches" />
+                <ScalarProperty Name="PalletWidthInches" ColumnName="PalletWidthInches" />
+                <ScalarProperty Name="PalletDepthInches" ColumnName="PalletDepthInches" />
+                <ScalarProperty Name="FinishedGoodMakeBuy" ColumnName="FinishedGoodMakeBuy" />
+                <ScalarProperty Name="isTaxableNYS" ColumnName="isTaxableNYS" />
+                <ScalarProperty Name="isTaxableCanada" ColumnName="isTaxableCanada" />
+                <ScalarProperty Name="FinishedGoodAddedDate" ColumnName="FinishedGoodAddedDate" />
+                <ScalarProperty Name="FinishedGoodChangedDate" ColumnName="FinishedGoodChangedDate" />
+                <ScalarProperty Name="FinishedGoodDeletedDate" ColumnName="FinishedGoodDeletedDate" />
+                <ScalarProperty Name="FinishedGoodModifiedById" ColumnName="FinishedGoodModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="PipingRockModel1.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ItemKey" ColumnName="ItemKey" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="ItemTypeDetailId" ColumnName="ItemTypeDetailId" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="ItemDescriptionShort" ColumnName="ItemDescriptionShort" />
+                <ScalarProperty Name="ItemDescriptionLong" ColumnName="ItemDescriptionLong" />
+                <ScalarProperty Name="ItemStatusId" ColumnName="ItemStatusId" />
+                <ScalarProperty Name="PurchaseUnitOfMeasureId" ColumnName="PurchaseUnitOfMeasureId" />
+                <ScalarProperty Name="StockUnitOfMeasureId" ColumnName="StockUnitOfMeasureId" />
+                <ScalarProperty Name="ProductionUnitOfMeasureId" ColumnName="ProductionUnitOfMeasureId" />
+                <ScalarProperty Name="SaleUnitOfMeasureId" ColumnName="SaleUnitOfMeasureId" />
+                <ScalarProperty Name="ItemFormId" ColumnName="ItemFormId" />
+                <ScalarProperty Name="ReceivingBoxLabelsRequired" ColumnName="ReceivingBoxLabelsRequired" />
+                <ScalarProperty Name="StorageConditionId" ColumnName="StorageConditionId" />
+                <ScalarProperty Name="QcTestId" ColumnName="QcTestId" />
+                <ScalarProperty Name="ExpirationMonths" ColumnName="ExpirationMonths" />
+                <ScalarProperty Name="RetestingMonths" ColumnName="RetestingMonths" />
+                <ScalarProperty Name="PctOfLifeForRetesting" ColumnName="PctOfLifeForRetesting" />
+                <ScalarProperty Name="QuarantineTypeId" ColumnName="QuarantineTypeId" />
+                <ScalarProperty Name="ItemAddedDate" ColumnName="ItemAddedDate" />
+                <ScalarProperty Name="ItemChangedDate" ColumnName="ItemChangedDate" />
+                <ScalarProperty Name="ItemDeletedDate" ColumnName="ItemDeletedDate" />
+                <ScalarProperty Name="ItemModifiedById" ColumnName="ItemModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemForms">
+            <EntityTypeMapping TypeName="PipingRockModel1.ItemForm">
+              <MappingFragment StoreEntitySet="ItemForm">
+                <ScalarProperty Name="ItemFormId" ColumnName="ItemFormId" />
+                <ScalarProperty Name="ItemForm1" ColumnName="ItemForm" />
+                <ScalarProperty Name="ItemFormDescription" ColumnName="ItemFormDescription" />
+                <ScalarProperty Name="ItemFormAddedDate" ColumnName="ItemFormAddedDate" />
+                <ScalarProperty Name="ItemFormChangedDate" ColumnName="ItemFormChangedDate" />
+                <ScalarProperty Name="ItemFormDeletedDate" ColumnName="ItemFormDeletedDate" />
+                <ScalarProperty Name="ItemFormModifiedById" ColumnName="ItemFormModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemStatus">
+            <EntityTypeMapping TypeName="PipingRockModel1.ItemStatu">
+              <MappingFragment StoreEntitySet="ItemStatus">
+                <ScalarProperty Name="ItemStatusId" ColumnName="ItemStatusId" />
+                <ScalarProperty Name="ItemStatus" ColumnName="ItemStatus" />
+                <ScalarProperty Name="ItemStatusDescription" ColumnName="ItemStatusDescription" />
+                <ScalarProperty Name="ItemStatusAddedDate" ColumnName="ItemStatusAddedDate" />
+                <ScalarProperty Name="ItemStatusChangedDate" ColumnName="ItemStatusChangedDate" />
+                <ScalarProperty Name="ItemStatusDeletedDate" ColumnName="ItemStatusDeletedDate" />
+                <ScalarProperty Name="ItemStatusModifiedById" ColumnName="ItemStatusModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemTypes">
+            <EntityTypeMapping TypeName="PipingRockModel1.ItemType">
+              <MappingFragment StoreEntitySet="ItemType">
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="ItemType1" ColumnName="ItemType" />
+                <ScalarProperty Name="ItemTypeCode" ColumnName="ItemTypeCode" />
+                <ScalarProperty Name="ItemTypeDescription" ColumnName="ItemTypeDescription" />
+                <ScalarProperty Name="ItemTypeAddedDate" ColumnName="ItemTypeAddedDate" />
+                <ScalarProperty Name="ItemTypeChangedDate" ColumnName="ItemTypeChangedDate" />
+                <ScalarProperty Name="ItemTypeDeletedDate" ColumnName="ItemTypeDeletedDate" />
+                <ScalarProperty Name="ItemTypeModifiedById" ColumnName="ItemTypeModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemTypeDetails">
+            <EntityTypeMapping TypeName="PipingRockModel1.ItemTypeDetail">
+              <MappingFragment StoreEntitySet="ItemTypeDetail">
+                <ScalarProperty Name="ItemTypeDetailId" ColumnName="ItemTypeDetailId" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="ItemTypeDetail1" ColumnName="ItemTypeDetail" />
+                <ScalarProperty Name="ItemTypeDetailDescription" ColumnName="ItemTypeDetailDescription" />
+                <ScalarProperty Name="LossFactorInventory" ColumnName="LossFactorInventory" />
+                <ScalarProperty Name="LossFactorCost" ColumnName="LossFactorCost" />
+                <ScalarProperty Name="ItemTypeDetailAddedDate" ColumnName="ItemTypeDetailAddedDate" />
+                <ScalarProperty Name="ItemTypeDetailChangedDate" ColumnName="ItemTypeDetailChangedDate" />
+                <ScalarProperty Name="ItemTypeDetailDeletedDate" ColumnName="ItemTypeDetailDeletedDate" />
+                <ScalarProperty Name="ItemTypeDetailModifiedById" ColumnName="ItemTypeDetailModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackagingLevels">
+            <EntityTypeMapping TypeName="PipingRockModel1.PackagingLevel">
+              <MappingFragment StoreEntitySet="PackagingLevel">
+                <ScalarProperty Name="PackagingLevelId" ColumnName="PackagingLevelId" />
+                <ScalarProperty Name="PackagingLevel1" ColumnName="PackagingLevel" />
+                <ScalarProperty Name="PackagingLevelAbbreviation" ColumnName="PackagingLevelAbbreviation" />
+                <ScalarProperty Name="PackagingLevelDesc" ColumnName="PackagingLevelDesc" />
+                <ScalarProperty Name="PackagingLevelAddedDate" ColumnName="PackagingLevelAddedDate" />
+                <ScalarProperty Name="PackagingLevelChangedDate" ColumnName="PackagingLevelChangedDate" />
+                <ScalarProperty Name="PackagingLevelDeletedDate" ColumnName="PackagingLevelDeletedDate" />
+                <ScalarProperty Name="PackagingLevelModifiedById" ColumnName="PackagingLevelModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QcTests">
+            <EntityTypeMapping TypeName="PipingRockModel1.QcTest">
+              <MappingFragment StoreEntitySet="QcTest">
+                <ScalarProperty Name="QcTestId" ColumnName="QcTestId" />
+                <ScalarProperty Name="QcTest1" ColumnName="QcTest" />
+                <ScalarProperty Name="QcTestParentId" ColumnName="QcTestParentId" />
+                <ScalarProperty Name="QcTestAddedDate" ColumnName="QcTestAddedDate" />
+                <ScalarProperty Name="QcTestChangedDate" ColumnName="QcTestChangedDate" />
+                <ScalarProperty Name="QcTestDeletedDate" ColumnName="QcTestDeletedDate" />
+                <ScalarProperty Name="QcTestModifiedById" ColumnName="QcTestModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuarantineTypes">
+            <EntityTypeMapping TypeName="PipingRockModel1.QuarantineType">
+              <MappingFragment StoreEntitySet="QuarantineType">
+                <ScalarProperty Name="QuarantineTypeId" ColumnName="QuarantineTypeId" />
+                <ScalarProperty Name="QuarantineType1" ColumnName="QuarantineType" />
+                <ScalarProperty Name="QuarantineTypeAddedDate" ColumnName="QuarantineTypeAddedDate" />
+                <ScalarProperty Name="QuarantineTypeChangedDate" ColumnName="QuarantineTypeChangedDate" />
+                <ScalarProperty Name="QuarantineTypeDeletedDate" ColumnName="QuarantineTypeDeletedDate" />
+                <ScalarProperty Name="QuarantineTypeModifiedById" ColumnName="QuarantineTypeModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ref_GDSN_UoM">
+            <EntityTypeMapping TypeName="PipingRockModel1.Ref_GDSN_UoM">
+              <MappingFragment StoreEntitySet="Ref_GDSN_UoM">
+                <ScalarProperty Name="Ref_GDSN_UoMId" ColumnName="Ref_GDSN_UoMId" />
+                <ScalarProperty Name="isUsedAtPipingRock" ColumnName="isUsedAtPipingRock" />
+                <ScalarProperty Name="GDSN_Code" ColumnName="GDSN_Code" />
+                <ScalarProperty Name="GDSN_Value" ColumnName="GDSN_Value" />
+                <ScalarProperty Name="GDSN_Definition" ColumnName="GDSN_Definition" />
+                <ScalarProperty Name="GDSN_Group" ColumnName="GDSN_Group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportSorts">
+            <EntityTypeMapping TypeName="PipingRockModel1.ReportSort">
+              <MappingFragment StoreEntitySet="ReportSort">
+                <ScalarProperty Name="ReportSortId" ColumnName="ReportSortId" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="ReportSortName" ColumnName="ReportSortName" />
+                <ScalarProperty Name="ReportSortAddedDate" ColumnName="ReportSortAddedDate" />
+                <ScalarProperty Name="ReportSortChangedDate" ColumnName="ReportSortChangedDate" />
+                <ScalarProperty Name="ReportSortDeletedDate" ColumnName="ReportSortDeletedDate" />
+                <ScalarProperty Name="ReportSortModifiedById" ColumnName="ReportSortModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StorageConditions">
+            <EntityTypeMapping TypeName="PipingRockModel1.StorageCondition">
+              <MappingFragment StoreEntitySet="StorageCondition">
+                <ScalarProperty Name="StorageConditionId" ColumnName="StorageConditionId" />
+                <ScalarProperty Name="StorageCondition1" ColumnName="StorageCondition" />
+                <ScalarProperty Name="StorageConditionDescription" ColumnName="StorageConditionDescription" />
+                <ScalarProperty Name="StorageConditionAddedDate" ColumnName="StorageConditionAddedDate" />
+                <ScalarProperty Name="StorageConditionChangedDate" ColumnName="StorageConditionChangedDate" />
+                <ScalarProperty Name="StorageConditionDeletedDate" ColumnName="StorageConditionDeletedDate" />
+                <ScalarProperty Name="StorageConditionModifiedById" ColumnName="StorageConditionModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitOfMeasures">
+            <EntityTypeMapping TypeName="PipingRockModel1.UnitOfMeasure">
+              <MappingFragment StoreEntitySet="UnitOfMeasure">
+                <ScalarProperty Name="UnitOfMeasureId" ColumnName="UnitOfMeasureId" />
+                <ScalarProperty Name="UnitOfMeasure1" ColumnName="UnitOfMeasure" />
+                <ScalarProperty Name="UnitOfMeasureAbbreviation" ColumnName="UnitOfMeasureAbbreviation" />
+                <ScalarProperty Name="Ref_GDSN_UoMId" ColumnName="Ref_GDSN_UoMId" />
+                <ScalarProperty Name="UnitOfMeasureAddedDate" ColumnName="UnitOfMeasureAddedDate" />
+                <ScalarProperty Name="UnitOfMeasureChangedDate" ColumnName="UnitOfMeasureChangedDate" />
+                <ScalarProperty Name="UnitOfMeasureDeletedDate" ColumnName="UnitOfMeasureDeletedDate" />
+                <ScalarProperty Name="UnitOfMeasureModifiedById" ColumnName="UnitOfMeasureModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PipingRockModel1.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserLastLoginDate" ColumnName="UserLastLoginDate" />
+                <ScalarProperty Name="UserAddedDate" ColumnName="UserAddedDate" />
+                <ScalarProperty Name="UserChangedDate" ColumnName="UserChangedDate" />
+                <ScalarProperty Name="UserDeletedDate" ColumnName="UserDeletedDate" />
+                <ScalarProperty Name="UserModifiedById" ColumnName="UserModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_UserRole">
+            <EntityTypeMapping TypeName="PipingRockModel1.User_UserRole">
+              <MappingFragment StoreEntitySet="User_UserRole">
+                <ScalarProperty Name="User_UserRoleId" ColumnName="User_UserRoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="User_UserRoleAddedDate" ColumnName="User_UserRoleAddedDate" />
+                <ScalarProperty Name="User_UserRoleChangedDate" ColumnName="User_UserRoleChangedDate" />
+                <ScalarProperty Name="User_UserRoleDeletedDate" ColumnName="User_UserRoleDeletedDate" />
+                <ScalarProperty Name="User_UserRoleModifiedById" ColumnName="User_UserRoleModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="PipingRockModel1.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserRoleName" ColumnName="UserRoleName" />
+                <ScalarProperty Name="UserRoleAddedDate" ColumnName="UserRoleAddedDate" />
+                <ScalarProperty Name="UserRoleChangedDate" ColumnName="UserRoleChangedDate" />
+                <ScalarProperty Name="UserRoleDeletedDate" ColumnName="UserRoleDeletedDate" />
+                <ScalarProperty Name="UserRoleModifiedById" ColumnName="UserRoleModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRole_UserRoleAuthority">
+            <EntityTypeMapping TypeName="PipingRockModel1.UserRole_UserRoleAuthority">
+              <MappingFragment StoreEntitySet="UserRole_UserRoleAuthority">
+                <ScalarProperty Name="UserRole_UserRoleAuthorityId" ColumnName="UserRole_UserRoleAuthorityId" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserRoleAuthorityId" ColumnName="UserRoleAuthorityId" />
+                <ScalarProperty Name="UserRole_UserRoleAuthorityAddedDate" ColumnName="UserRole_UserRoleAuthorityAddedDate" />
+                <ScalarProperty Name="UserRole_UserRoleAuthorityChangedDate" ColumnName="UserRole_UserRoleAuthorityChangedDate" />
+                <ScalarProperty Name="UserRole_UserRoleAuthorityDeletedDate" ColumnName="UserRole_UserRoleAuthorityDeletedDate" />
+                <ScalarProperty Name="UserRole_UserRoleAuthorityModifiedById" ColumnName="UserRole_UserRoleAuthorityModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleAuthorities">
+            <EntityTypeMapping TypeName="PipingRockModel1.UserRoleAuthority">
+              <MappingFragment StoreEntitySet="UserRoleAuthority">
+                <ScalarProperty Name="UserRoleAuthorityId" ColumnName="UserRoleAuthorityId" />
+                <ScalarProperty Name="FeatureParentId" ColumnName="FeatureParentId" />
+                <ScalarProperty Name="FeatureName" ColumnName="FeatureName" />
+                <ScalarProperty Name="FeatureDescription" ColumnName="FeatureDescription" />
+                <ScalarProperty Name="CanView" ColumnName="CanView" />
+                <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+                <ScalarProperty Name="CanCreate" ColumnName="CanCreate" />
+                <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+                <ScalarProperty Name="CanUnDelete" ColumnName="CanUnDelete" />
+                <ScalarProperty Name="CanDoAll" ColumnName="CanDoAll" />
+                <ScalarProperty Name="UserRoleAuthorityAddedDate" ColumnName="UserRoleAuthorityAddedDate" />
+                <ScalarProperty Name="UserRoleAuthorityChangedDate" ColumnName="UserRoleAuthorityChangedDate" />
+                <ScalarProperty Name="UserRoleAuthorityDeletedDate" ColumnName="UserRoleAuthorityDeletedDate" />
+                <ScalarProperty Name="UserRoleAuthorityModifiedById" ColumnName="UserRoleAuthorityModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemViews">
+            <EntityTypeMapping TypeName="PipingRockModel1.ItemView">
+              <MappingFragment StoreEntitySet="ItemView">
+                <ScalarProperty Name="ItemKey" ColumnName="ItemKey" />
+                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+                <ScalarProperty Name="ItemTypeCode" ColumnName="ItemTypeCode" />
+                <ScalarProperty Name="ItemTypeDetail" ColumnName="ItemTypeDetail" />
+                <ScalarProperty Name="ItemStatus" ColumnName="ItemStatus" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="ItemDescriptionShort" ColumnName="ItemDescriptionShort" />
+                <ScalarProperty Name="ItemDescriptionLong" ColumnName="ItemDescriptionLong" />
+                <ScalarProperty Name="ReceivingBoxLabelsRequired" ColumnName="ReceivingBoxLabelsRequired" />
+                <ScalarProperty Name="ExpirationMonths" ColumnName="ExpirationMonths" />
+                <ScalarProperty Name="RetestingMonths" ColumnName="RetestingMonths" />
+                <ScalarProperty Name="PctOfLifeForRetesting" ColumnName="PctOfLifeForRetesting" />
+                <ScalarProperty Name="Purchase_UnitOfMeasure" ColumnName="Purchase_UnitOfMeasure" />
+                <ScalarProperty Name="Purchase_UnitOfMeasureAbbreviation" ColumnName="Purchase_UnitOfMeasureAbbreviation" />
+                <ScalarProperty Name="Stock_UnitOfMeasure" ColumnName="Stock_UnitOfMeasure" />
+                <ScalarProperty Name="Stock_UnitOfMeasureAbbreviation" ColumnName="Stock_UnitOfMeasureAbbreviation" />
+                <ScalarProperty Name="Production_UnitOfMeasure" ColumnName="Production_UnitOfMeasure" />
+                <ScalarProperty Name="Production_UnitOfMeasureAbbreviation" ColumnName="Production_UnitOfMeasureAbbreviation" />
+                <ScalarProperty Name="Sale_UnitOfMeasure" ColumnName="Sale_UnitOfMeasure" />
+                <ScalarProperty Name="Sale_UnitOfMeasureAbbreviation" ColumnName="Sale_UnitOfMeasureAbbreviation" />
+                <ScalarProperty Name="ItemForm" ColumnName="ItemForm" />
+                <ScalarProperty Name="StorageCondition" ColumnName="StorageCondition" />
+                <ScalarProperty Name="StorageConditionDescription" ColumnName="StorageConditionDescription" />
+                <ScalarProperty Name="QcTest" ColumnName="QcTest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QcTestViews">
+            <EntityTypeMapping TypeName="PipingRockModel1.QcTestView">
+              <MappingFragment StoreEntitySet="QcTestView">
+                <ScalarProperty Name="QcTestId" ColumnName="QcTestId" />
+                <ScalarProperty Name="QcTestType" ColumnName="QcTestType" />
+                <ScalarProperty Name="QcTest" ColumnName="QcTest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PipingRockModel1.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PipingRockModel1.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PipingRockModel1.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PipingRockModel1.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PipingRockModel1.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PipingRockModel1.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PipingRockModel1.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="AddQuarantineType" FunctionName="PipingRockModel1.Store.AddQuarantineType" />
+          <FunctionImportMapping FunctionImportName="AddStorageCondition" FunctionName="PipingRockModel1.Store.AddStorageCondition" />
+          <FunctionImportMapping FunctionImportName="GetAllQuarantineTypes" FunctionName="PipingRockModel1.Store.GetAllQuarantineTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PipingRockModel1.GetAllQuarantineTypes_Result">
+                <ScalarProperty Name="QuarantineTypeId" ColumnName="QuarantineTypeId" />
+                <ScalarProperty Name="QuarantineType" ColumnName="QuarantineType" />
+                <ScalarProperty Name="QuarantineTypeAddedDate" ColumnName="QuarantineTypeAddedDate" />
+                <ScalarProperty Name="QuarantineTypeChangedDate" ColumnName="QuarantineTypeChangedDate" />
+                <ScalarProperty Name="QuarantineTypeDeletedDate" ColumnName="QuarantineTypeDeletedDate" />
+                <ScalarProperty Name="QuarantineTypeModifiedById" ColumnName="QuarantineTypeModifiedById" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllStorageConditions" FunctionName="PipingRockModel1.Store.GetAllStorageConditions">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PipingRockModel1.GetAllStorageConditions_Result">
+                <ScalarProperty Name="StorageConditionId" ColumnName="StorageConditionId" />
+                <ScalarProperty Name="StorageCondition" ColumnName="StorageCondition" />
+                <ScalarProperty Name="StorageConditionDescription" ColumnName="StorageConditionDescription" />
+                <ScalarProperty Name="StorageConditionAddedDate" ColumnName="StorageConditionAddedDate" />
+                <ScalarProperty Name="StorageConditionChangedDate" ColumnName="StorageConditionChangedDate" />
+                <ScalarProperty Name="StorageConditionDeletedDate" ColumnName="StorageConditionDeletedDate" />
+                <ScalarProperty Name="StorageConditionModifiedById" ColumnName="StorageConditionModifiedById" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetQuarantineTypeByID" FunctionName="PipingRockModel1.Store.GetQuarantineTypeByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PipingRockModel1.GetQuarantineTypeByID_Result">
+                <ScalarProperty Name="QuarantineTypeId" ColumnName="QuarantineTypeId" />
+                <ScalarProperty Name="QuarantineType" ColumnName="QuarantineType" />
+                <ScalarProperty Name="QuarantineTypeAddedDate" ColumnName="QuarantineTypeAddedDate" />
+                <ScalarProperty Name="QuarantineTypeChangedDate" ColumnName="QuarantineTypeChangedDate" />
+                <ScalarProperty Name="QuarantineTypeDeletedDate" ColumnName="QuarantineTypeDeletedDate" />
+                <ScalarProperty Name="QuarantineTypeModifiedById" ColumnName="QuarantineTypeModifiedById" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetStorageConditionByID" FunctionName="PipingRockModel1.Store.GetStorageConditionByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PipingRockModel1.GetStorageConditionByID_Result">
+                <ScalarProperty Name="StorageConditionId" ColumnName="StorageConditionId" />
+                <ScalarProperty Name="StorageCondition" ColumnName="StorageCondition" />
+                <ScalarProperty Name="StorageConditionDescription" ColumnName="StorageConditionDescription" />
+                <ScalarProperty Name="StorageConditionAddedDate" ColumnName="StorageConditionAddedDate" />
+                <ScalarProperty Name="StorageConditionChangedDate" ColumnName="StorageConditionChangedDate" />
+                <ScalarProperty Name="StorageConditionDeletedDate" ColumnName="StorageConditionDeletedDate" />
+                <ScalarProperty Name="StorageConditionModifiedById" ColumnName="StorageConditionModifiedById" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateQuarantineTypeByID" FunctionName="PipingRockModel1.Store.UpdateQuarantineTypeByID" />
+          <FunctionImportMapping FunctionImportName="UpdateStorageConditionByID" FunctionName="PipingRockModel1.Store.UpdateStorageConditionByID" />
+          <FunctionImportMapping FunctionImportName="AddRoleUserID" FunctionName="PipingRockModel1.Store.AddRoleUserID" />
+          <FunctionImportMapping FunctionImportName="AddUser" FunctionName="PipingRockModel1.Store.AddUser" />
+          <FunctionImportMapping FunctionImportName="GetAllNotActiveUserRoles" FunctionName="PipingRockModel1.Store.GetAllNotActiveUserRoles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PipingRockModel1.GetAllNotActiveUserRoles_Result">
+                <ScalarProperty Name="RID" ColumnName="RID" />
+                <ScalarProperty Name="RN" ColumnName="RN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllRoles" FunctionName="PipingRockModel1.Store.GetAllRoles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PipingRockModel1.GetAllRoles_Result">
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserRoleName" ColumnName="UserRoleName" />
+                <ScalarProperty Name="UserRoleAddedDate" ColumnName="UserRoleAddedDate" />
+                <ScalarProperty Name="UserRoleChangedDate" ColumnName="UserRoleChangedDate" />
+                <ScalarProperty Name="UserRoleDeletedDate" ColumnName="UserRoleDeletedDate" />
+                <ScalarProperty Name="UserRoleModifiedById" ColumnName="UserRoleModifiedById" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllUserRoles" FunctionName="PipingRockModel1.Store.GetAllUserRoles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PipingRockModel1.GetAllUserRoles_Result">
+                <ScalarProperty Name="RID" ColumnName="RID" />
+                <ScalarProperty Name="RN" ColumnName="RN" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllUsers" FunctionName="PipingRockModel1.Store.GetAllUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PipingRockModel1.GetAllUsers_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserLastLoginDate" ColumnName="UserLastLoginDate" />
+                <ScalarProperty Name="UserAddedDate" ColumnName="UserAddedDate" />
+                <ScalarProperty Name="UserChangedDate" ColumnName="UserChangedDate" />
+                <ScalarProperty Name="UserDeletedDate" ColumnName="UserDeletedDate" />
+                <ScalarProperty Name="UserModifiedById" ColumnName="UserModifiedById" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUser" FunctionName="PipingRockModel1.Store.GetUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PipingRockModel1.GetUser_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserLastLoginDate" ColumnName="UserLastLoginDate" />
+                <ScalarProperty Name="UserAddedDate" ColumnName="UserAddedDate" />
+                <ScalarProperty Name="UserChangedDate" ColumnName="UserChangedDate" />
+                <ScalarProperty Name="UserDeletedDate" ColumnName="UserDeletedDate" />
+                <ScalarProperty Name="UserModifiedById" ColumnName="UserModifiedById" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUserByID" FunctionName="PipingRockModel1.Store.GetUserByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PipingRockModel1.GetUserByID_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserLastLoginDate" ColumnName="UserLastLoginDate" />
+                <ScalarProperty Name="UserAddedDate" ColumnName="UserAddedDate" />
+                <ScalarProperty Name="UserChangedDate" ColumnName="UserChangedDate" />
+                <ScalarProperty Name="UserDeletedDate" ColumnName="UserDeletedDate" />
+                <ScalarProperty Name="UserModifiedById" ColumnName="UserModifiedById" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUserDisabledRolesByID" FunctionName="PipingRockModel1.Store.GetUserDisabledRolesByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PipingRockModel1.GetUserDisabledRolesByID_Result">
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserRoleName" ColumnName="UserRoleName" />
+                <ScalarProperty Name="UserRoleAddedDate" ColumnName="UserRoleAddedDate" />
+                <ScalarProperty Name="UserRoleChangedDate" ColumnName="UserRoleChangedDate" />
+                <ScalarProperty Name="UserRoleDeletedDate" ColumnName="UserRoleDeletedDate" />
+                <ScalarProperty Name="UserRoleModifiedById" ColumnName="UserRoleModifiedById" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUserRolesByID" FunctionName="PipingRockModel1.Store.GetUserRolesByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PipingRockModel1.GetUserRolesByID_Result">
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserRoleName" ColumnName="UserRoleName" />
+                <ScalarProperty Name="UserRoleAddedDate" ColumnName="UserRoleAddedDate" />
+                <ScalarProperty Name="UserRoleChangedDate" ColumnName="UserRoleChangedDate" />
+                <ScalarProperty Name="UserRoleDeletedDate" ColumnName="UserRoleDeletedDate" />
+                <ScalarProperty Name="UserRoleModifiedById" ColumnName="UserRoleModifiedById" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RemoveRoleUserID" FunctionName="PipingRockModel1.Store.RemoveRoleUserID" />
+          <FunctionImportMapping FunctionImportName="UpdateUserByID" FunctionName="PipingRockModel1.Store.UpdateUserByID" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

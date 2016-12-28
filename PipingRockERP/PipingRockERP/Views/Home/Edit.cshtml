@@ -1,0 +1,55 @@
+﻿@*@model List<PipingRockERP.Models.UsersRolesModels>*@
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+</head>
+<aside style="margin-top:10px">
+    <div class="panel" style="background-color:#f7f7f7; border:1px solid">
+        <div style="margin-left: 20px">
+            <h4>Maintenance > Users > Edit User Profile</h4>
+        </div>
+        <table style="margin-left: 20px;">
+            <tr>
+                <td><b>UserID:</b></td>
+                <td style="padding-left:15px">@ViewBag.ActiveRoles[0].UserID</td>
+            </tr>
+            <tr>
+                <td><b>User Name:</b></td>
+                <td style="padding-left:15px">@ViewBag.ActiveRoles[0].UserName</td>
+            </tr>
+        </table>
+        <br />
+        <table style="width:95%; background-color:white; margin-left: 20px; margin-bottom:20px" border="1">
+            <tr style="background-color:#b0c3f4">
+
+                <th>RoleID</th>
+                <th>Role Name</th>
+            </tr>
+            @foreach (var item in ViewBag.ActiveRoles)
+            {
+                <tr>
+                    <td width="20%">@item.RoleID</td>
+                    <td>@item.RoleName</td>
+                </tr>
+            }
+        </table>
+        <table style="width:95%; background-color:white; margin-left: 20px; margin-bottom:20px" border="1">
+            <tr style="background-color:#b0c3f4">
+
+                <th>RoleID</th>
+                <th>Role Name</th>
+            </tr>
+            @foreach (var item in ViewBag.OtherRoles)
+            {
+                <tr>
+                    <td width="20%">@item.UserRoleId</td">
+                    <td>@item.UserRoleName</td>
+                </tr>
+            }
+        </table>
+    </div>
+</aside>

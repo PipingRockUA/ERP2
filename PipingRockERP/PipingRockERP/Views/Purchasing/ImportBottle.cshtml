@@ -1,41 +1,53 @@
 ﻿@model System.Data.DataTable
 @using System.Data;
-
-<h2>Upload File</h2>
-
-@using (Html.BeginForm("ImportBottle", "Purchasing", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@if (Request.IsAuthenticated)
 {
+    @Html.Partial("_PurchasingPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Purchasing > Bottle Chart > Import File</h4>
+            </div>
+            @using (Html.BeginForm("ImportBottle", "Purchasing", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
 
-    <div class="form-group">
-        <input type="file" id="dataFile" name="upload" />
-    </div>
+                <div class="form-group">
+                    <input type="file" id="dataFile" name="upload" />
+                </div>
 
-    <div class="form-group">
-        <input type="submit" value="Upload" class="btn btn-default" />
-    </div>
+                <div class="form-group">
+                    <input type="submit" value="Upload" class="btn btn-default" />
+                </div>
 
-    if (Model != null)
-    {
-        <table>
-            <thead>
-                <tr>
-                    @foreach (DataColumn col in Model.Columns)
-                    {
-                        <th>@col.ColumnName</th>
-                    }
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (DataRow row in Model.Rows)
+                if (Model != null)
                 {
-                    <tr>
-                        @foreach (DataColumn col in Model.Columns)
+                    <table>
+                        <thead>
+                            <tr>
+                                @foreach (DataColumn col in Model.Columns)
                         {
-                            <td>@row[col.ColumnName]</td>
-                        }
-                    </tr>
+                                    <th>@col.ColumnName</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DataRow row in Model.Rows)
+                            {
+                                <tr>
+                                    @foreach (DataColumn col in Model.Columns)
+                            {
+                                        <td>@row[col.ColumnName]</td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
                 }
-            </tbody>
-        </table>
-    }
+            }
+        </div>
+    </aside>
 }
