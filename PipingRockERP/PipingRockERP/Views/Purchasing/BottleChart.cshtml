@@ -23,6 +23,7 @@
                 <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Purchasing", new { param = "BottleAdd" })'">Add</button>
                 <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("ExportBottle", "Purchasing")'">Export</button>
                 <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("ImportBottle", "Purchasing")'">Import</button>
+                <input class="search" type="text" name="search" placeholder="Search.." />
                 <p style="text-align:right; font-size:14px">Page:1 Records:@ViewBag.Bottles.Count</p>
             </div>
             <table class="table" id="table1">

@@ -482,6 +482,7 @@
     <Content Include="src\img\bottle.png" />
     <Content Include="src\img\logo.png" />
     <Content Include="src\img\no-image_130px.jpg" />
+    <Content Include="src\img\search-icon.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
