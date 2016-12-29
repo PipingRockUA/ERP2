@@ -393,6 +393,21 @@
     <Property Name="FinishedGoodLocationDeletedDate" Type="datetime" />
     <Property Name="FinishedGoodLocationModifiedById" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="GlobalSettings">
+    <Key>
+      <PropertyRef Name="GlobalSettingsId" />
+    </Key>
+    <Property Name="GlobalSettingsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GlobalSettingsParent" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GlobalSettingsName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GlobalSettingsValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GlobalSettingsDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="GlobalSettingsAddedDate" Type="datetime" Nullable="false" />
+    <Property Name="GlobalSettingsChangedDate" Type="datetime" Nullable="false" />
+    <Property Name="GlobalSettingsDeletedDate" Type="datetime" />
+    <Property Name="GlobalSettingsModifiedById" Type="int" Nullable="false" />
+    <Property Name="isDeleted" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="ItemForm">
     <Key>
       <PropertyRef Name="ItemFormId" />
@@ -1662,6 +1677,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
     <EntitySet Name="FinishedGood_QcTest" EntityType="Self.FinishedGood_QcTest" Schema="md" store:Type="Tables" />
     <EntitySet Name="FinishedGood_Quarantine" EntityType="Self.FinishedGood_Quarantine" Schema="md" store:Type="Tables" />
     <EntitySet Name="FinishedGoodLocation" EntityType="Self.FinishedGoodLocation" Schema="md" store:Type="Tables" />
+    <EntitySet Name="GlobalSettings" EntityType="Self.GlobalSettings" Schema="md" store:Type="Tables" />
     <EntitySet Name="ItemForm" EntityType="Self.ItemForm" Schema="md" store:Type="Tables" />
     <EntitySet Name="ItemStatus" EntityType="Self.ItemStatus" Schema="md" store:Type="Tables" />
     <EntitySet Name="ItemSubType" EntityType="Self.ItemSubType" Schema="md" store:Type="Tables" />

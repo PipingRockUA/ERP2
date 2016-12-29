@@ -429,6 +429,21 @@
     <Property Name="FinishedGoodLocationDeletedDate" Type="DateTime" Precision="3" />
     <Property Name="FinishedGoodLocationModifiedById" Type="Int32" Nullable="false" />
   </EntityType>
+  <EntityType Name="GlobalSetting">
+    <Key>
+      <PropertyRef Name="GlobalSettingsId" />
+    </Key>
+    <Property Name="GlobalSettingsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GlobalSettingsParent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GlobalSettingsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GlobalSettingsValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GlobalSettingsDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GlobalSettingsAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="GlobalSettingsChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="GlobalSettingsDeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="GlobalSettingsModifiedById" Type="Int32" Nullable="false" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+  </EntityType>
   <EntityType Name="ItemForm">
     <Key>
       <PropertyRef Name="ItemFormId" />
@@ -1620,6 +1635,7 @@
     <EntitySet Name="FinishedGood_QcTest" EntityType="Self.FinishedGood_QcTest" />
     <EntitySet Name="FinishedGood_Quarantine" EntityType="Self.FinishedGood_Quarantine" />
     <EntitySet Name="FinishedGoodLocations" EntityType="Self.FinishedGoodLocation" />
+    <EntitySet Name="GlobalSettings" EntityType="Self.GlobalSetting" />
     <EntitySet Name="ItemForms" EntityType="Self.ItemForm" />
     <EntitySet Name="ItemStatus" EntityType="Self.ItemStatu" />
     <EntitySet Name="ItemSubTypes" EntityType="Self.ItemSubType" />

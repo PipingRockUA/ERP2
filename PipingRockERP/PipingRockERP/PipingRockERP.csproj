@@ -322,6 +322,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSetting.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ItemForm.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d7ab1fd196dd4f6d8178b9bf97df304e" Name="Diagram1">
+      <Diagram DiagramId="b6976c8e0b8c43bc99b8dd2013997362" Name="Diagram1">
         <EntityTypeShape EntityType="PipingRockModel.Screen" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PipingRockModel.Bottle" Width="1.5" PointX="17.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PipingRockModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
@@ -22,11 +22,12 @@
         <EntityTypeShape EntityType="PipingRockModel.FinishedGood_QcTest" Width="1.5" PointX="15.75" PointY="19.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PipingRockModel.FinishedGood_Quarantine" Width="1.5" PointX="15.75" PointY="15.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PipingRockModel.FinishedGoodLocation" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.GlobalSetting" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PipingRockModel.ItemForm" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="PipingRockModel.ItemStatu" Width="1.5" PointX="0.75" PointY="21.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PipingRockModel.ItemSubType" Width="1.5" PointX="3" PointY="24" IsExpanded="true" />
         <EntityTypeShape EntityType="PipingRockModel.ItemType" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PipingRockModel.Location" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PipingRockModel.Location" Width="1.5" PointX="19.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PipingRockModel.PackagingComponent" Width="1.5" PointX="5.25" PointY="27.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PipingRockModel.PackagingUOM" Width="1.5" PointX="8.25" PointY="25.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PipingRockModel.QcTest" Width="1.5" PointX="0.75" PointY="25.125" IsExpanded="true" />

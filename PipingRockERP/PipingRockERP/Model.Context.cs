@@ -44,6 +44,7 @@ namespace PipingRockERP
         public virtual DbSet<FinishedGood_QcTest> FinishedGood_QcTest { get; set; }
         public virtual DbSet<FinishedGood_Quarantine> FinishedGood_Quarantine { get; set; }
         public virtual DbSet<FinishedGoodLocation> FinishedGoodLocations { get; set; }
+        public virtual DbSet<GlobalSetting> GlobalSettings { get; set; }
         public virtual DbSet<ItemForm> ItemForms { get; set; }
         public virtual DbSet<ItemStatu> ItemStatus { get; set; }
         public virtual DbSet<ItemSubType> ItemSubTypes { get; set; }

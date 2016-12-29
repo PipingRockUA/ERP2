@@ -410,6 +410,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="GlobalSettings">
+      <EntityTypeMapping TypeName="PipingRockModel.GlobalSetting">
+        <MappingFragment StoreEntitySet="GlobalSettings">
+          <ScalarProperty Name="GlobalSettingsId" ColumnName="GlobalSettingsId" />
+          <ScalarProperty Name="GlobalSettingsParent" ColumnName="GlobalSettingsParent" />
+          <ScalarProperty Name="GlobalSettingsName" ColumnName="GlobalSettingsName" />
+          <ScalarProperty Name="GlobalSettingsValue" ColumnName="GlobalSettingsValue" />
+          <ScalarProperty Name="GlobalSettingsDescription" ColumnName="GlobalSettingsDescription" />
+          <ScalarProperty Name="GlobalSettingsAddedDate" ColumnName="GlobalSettingsAddedDate" />
+          <ScalarProperty Name="GlobalSettingsChangedDate" ColumnName="GlobalSettingsChangedDate" />
+          <ScalarProperty Name="GlobalSettingsDeletedDate" ColumnName="GlobalSettingsDeletedDate" />
+          <ScalarProperty Name="GlobalSettingsModifiedById" ColumnName="GlobalSettingsModifiedById" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ItemForms">
       <EntityTypeMapping TypeName="PipingRockModel.ItemForm">
         <MappingFragment StoreEntitySet="ItemForm">

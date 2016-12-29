@@ -398,6 +398,21 @@
           <Property Name="FinishedGoodLocationDeletedDate" Type="datetime" />
           <Property Name="FinishedGoodLocationModifiedById" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="GlobalSettings">
+          <Key>
+            <PropertyRef Name="GlobalSettingsId" />
+          </Key>
+          <Property Name="GlobalSettingsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GlobalSettingsParent" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GlobalSettingsName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GlobalSettingsValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GlobalSettingsDescription" Type="nvarchar" MaxLength="255" />
+          <Property Name="GlobalSettingsAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="GlobalSettingsChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="GlobalSettingsDeletedDate" Type="datetime" />
+          <Property Name="GlobalSettingsModifiedById" Type="int" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="ItemForm">
           <Key>
             <PropertyRef Name="ItemFormId" />
@@ -1667,6 +1682,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <EntitySet Name="FinishedGood_QcTest" EntityType="Self.FinishedGood_QcTest" Schema="md" store:Type="Tables" />
           <EntitySet Name="FinishedGood_Quarantine" EntityType="Self.FinishedGood_Quarantine" Schema="md" store:Type="Tables" />
           <EntitySet Name="FinishedGoodLocation" EntityType="Self.FinishedGoodLocation" Schema="md" store:Type="Tables" />
+          <EntitySet Name="GlobalSettings" EntityType="Self.GlobalSettings" Schema="md" store:Type="Tables" />
           <EntitySet Name="ItemForm" EntityType="Self.ItemForm" Schema="md" store:Type="Tables" />
           <EntitySet Name="ItemStatus" EntityType="Self.ItemStatus" Schema="md" store:Type="Tables" />
           <EntitySet Name="ItemSubType" EntityType="Self.ItemSubType" Schema="md" store:Type="Tables" />
@@ -2607,6 +2623,21 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <Property Name="FinishedGoodLocationChangedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FinishedGoodLocationDeletedDate" Type="DateTime" Precision="3" />
           <Property Name="FinishedGoodLocationModifiedById" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GlobalSetting">
+          <Key>
+            <PropertyRef Name="GlobalSettingsId" />
+          </Key>
+          <Property Name="GlobalSettingsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GlobalSettingsParent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GlobalSettingsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GlobalSettingsValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GlobalSettingsDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GlobalSettingsAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GlobalSettingsChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GlobalSettingsDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="GlobalSettingsModifiedById" Type="Int32" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="ItemForm">
           <Key>
@@ -3799,6 +3830,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <EntitySet Name="FinishedGood_QcTest" EntityType="Self.FinishedGood_QcTest" />
           <EntitySet Name="FinishedGood_Quarantine" EntityType="Self.FinishedGood_Quarantine" />
           <EntitySet Name="FinishedGoodLocations" EntityType="Self.FinishedGoodLocation" />
+          <EntitySet Name="GlobalSettings" EntityType="Self.GlobalSetting" />
           <EntitySet Name="ItemForms" EntityType="Self.ItemForm" />
           <EntitySet Name="ItemStatus" EntityType="Self.ItemStatu" />
           <EntitySet Name="ItemSubTypes" EntityType="Self.ItemSubType" />
@@ -4593,6 +4625,22 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
                 <ScalarProperty Name="FinishedGoodLocationChangedDate" ColumnName="FinishedGoodLocationChangedDate" />
                 <ScalarProperty Name="FinishedGoodLocationDeletedDate" ColumnName="FinishedGoodLocationDeletedDate" />
                 <ScalarProperty Name="FinishedGoodLocationModifiedById" ColumnName="FinishedGoodLocationModifiedById" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GlobalSettings">
+            <EntityTypeMapping TypeName="PipingRockModel.GlobalSetting">
+              <MappingFragment StoreEntitySet="GlobalSettings">
+                <ScalarProperty Name="GlobalSettingsId" ColumnName="GlobalSettingsId" />
+                <ScalarProperty Name="GlobalSettingsParent" ColumnName="GlobalSettingsParent" />
+                <ScalarProperty Name="GlobalSettingsName" ColumnName="GlobalSettingsName" />
+                <ScalarProperty Name="GlobalSettingsValue" ColumnName="GlobalSettingsValue" />
+                <ScalarProperty Name="GlobalSettingsDescription" ColumnName="GlobalSettingsDescription" />
+                <ScalarProperty Name="GlobalSettingsAddedDate" ColumnName="GlobalSettingsAddedDate" />
+                <ScalarProperty Name="GlobalSettingsChangedDate" ColumnName="GlobalSettingsChangedDate" />
+                <ScalarProperty Name="GlobalSettingsDeletedDate" ColumnName="GlobalSettingsDeletedDate" />
+                <ScalarProperty Name="GlobalSettingsModifiedById" ColumnName="GlobalSettingsModifiedById" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

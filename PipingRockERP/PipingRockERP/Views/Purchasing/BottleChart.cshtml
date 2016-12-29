@@ -14,6 +14,27 @@
                     var t = $(this).text().replace(',', '.');
                     $(this).text(t);
                 })});
+            function myFunction() {
+                // Declare variables 
+                var input, filter, table, tr, td, i;
+                input = document.getElementById("inputSearch");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("table1");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td1 = tr[i].getElementsByTagName("td")[1];
+                    td2 = tr[i].getElementsByTagName("td")[2];
+                    if (td1 || td2) {
+                        if (td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    } 
+                }
+            }
         </script>
     </head>
     <aside style="margin-top:10px">
@@ -23,7 +44,7 @@
                 <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Purchasing", new { param = "BottleAdd" })'">Add</button>
                 <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("ExportBottle", "Purchasing")'">Export</button>
                 <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("ImportBottle", "Purchasing")'">Import</button>
-                <input class="search" type="text" name="search" placeholder="Search.." />
+                <input class="search" type="text" name="search" id="inputSearch" onkeyup="myFunction()" placeholder="Search.." />
                 <p style="text-align:right; font-size:14px">Page:1 Records:@ViewBag.Bottles.Count</p>
             </div>
             <table class="table" id="table1">
@@ -40,7 +61,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in ViewBag.Bottles)
+                @foreach (var item in ViewBag.Bottles)
                 {
                         <tr style="font-size:14px">
                             <td>@item.BottleId</td>
