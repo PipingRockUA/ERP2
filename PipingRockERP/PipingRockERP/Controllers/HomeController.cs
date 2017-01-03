@@ -24,7 +24,17 @@ namespace PipingRockERP.Controllers
         /// <returns>Returns - Index view</returns>  
         public ActionResult Index()
         {
+
             return this.View();
+        }
+
+        public void LanguageSettingsCookie(string option)
+        {
+            HttpCookie myCookie = new HttpCookie("Selection1");
+            myCookie.Value = option;
+            myCookie.Expires = DateTime.Now.AddDays(365);
+
+            Response.Cookies.Add(myCookie);
         }
         #endregion
     }
