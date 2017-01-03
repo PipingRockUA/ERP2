@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<GlobalSetting>
+
+@{
     ViewBag.Title = "Settings";
 }
 @if (Request.IsAuthenticated)
@@ -15,15 +17,24 @@
             @using (Html.BeginForm())
             {
                 <input style="margin-left:18px; margin-top:2px; width:90px" class="btn btn-success" type="submit" id="SubmitSettings" value="Submit" />
-                <table>
-                    <tr>
-                        <td>Max Cubic Inches</td>
-                        <td><input class="form-control" type="number" id="mci" name="mci" value="0"/></td>
-                    </tr>
-                    <tr>
-                        <td>Number of Decimals</td>
-                        <td><input class="form-control" type="number" id="nod" name="nod" value="2"/></td>
-                    </tr>
+                <table class="table">
+                    <thead>
+                        <tr style="font-size:14px">
+                            <th>Setting</th>
+                            <th>Description</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr style="font-size:14px">
+                                <td width="10%">@item.GlobalSettingsName</td>
+                                <td width="50%">@item.GlobalSettingsDescription</td>
+                                <td width="20%"><input class="form-control" type="number" value=@item.GlobalSettingsValue /></td>
+                            </tr>
+                        }
+                    </tbody>
                 </table>
             }
         </div>

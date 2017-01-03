@@ -99,6 +99,20 @@ namespace PipingRockERP.Controllers
             return View();
         }
 
+        public ActionResult BottleView(string bottleId)
+        {
+            PipingRockEntities db = new PipingRockEntities();
+            int ID = Int32.Parse(bottleId);
+
+            var bottle = (from Bottle in db.Bottle2
+                          where Bottle.BottleId == ID
+                          select Bottle).ToList();
+
+            ViewBag.Bottle = bottle;
+
+            return View();
+        }
+
         public ActionResult BottleEdit(string bottleId)
         {
             PipingRockEntities db = new PipingRockEntities();

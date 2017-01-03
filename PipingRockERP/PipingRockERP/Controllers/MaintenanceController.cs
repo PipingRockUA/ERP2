@@ -136,7 +136,11 @@ namespace PipingRockERP.Controllers
         #region Settings
         public ActionResult Settings()
         {
-            return View();
+            PipingRockEntities db = new PipingRockEntities();
+
+            var settings = (from GlobalSetting in db.GlobalSettings select GlobalSetting).ToList();
+
+            return View(settings);
         }
         #endregion
     }

@@ -1,0 +1,168 @@
+﻿@{
+    ViewBag.Title = "BottleView";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_PurchasingPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+        <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="~/App/Scripts/DimensionsUtils.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                handleDimensionsUpdate($("#BottleLengthInches"), $("#BottleWidthInches"), $("#BottleHieghtInches"), $("#BottleCubicInches"), $("#BottleLengthCm"), $("#BottleWidthCm"), $("#BottleHieghtCm"), $("#BottleCubicCm"));
+                handleDimensionsUpdate($("#BottleLengthWrappedInches"), $("#BottleWidthWrappedInches"), $("#BottleDepthWrappedInches"), $("#BottleCubicInchWrappedInches"), $("#BottleLengthWrappedCm"), $("#BottleWidthWrappedCm"), $("#BottleDepthWrappedCm"), $("#BottleCubicInchWrappedCm"));
+                //handleDimensionsUpdate($("#BottleLengthInches"), $("#BottleWidthInches"), $("#BottleHieghtInches"), $("#BottleCubicInches"));
+                //handleDimensionsUpdate($("#BottleLengthWrappedInches"), $("#BottleWidthWrappedInches"), $("#BottleDepthWrappedInches"), $("#BottleCubicInchWrappedInches"));
+                //handleDimensionsUpdate($("#BottleLengthCm"), $("#BottleWidthCm"), $("#BottleHieghtCm"), $("#BottleCubicCm"));
+                //handleDimensionsUpdate($("#BottleLengthWrappedCm"), $("#BottleWidthWrappedCm"), $("#BottleDepthWrappedCm"), $("#BottleCubicInchWrappedCm"));
+
+                handleDimensionsInput($("#LabelSquareInches"), $("#LabelSquareCm"));
+            });
+            $(document).ready(function () {
+                $('.tt').each(function () {
+                    $(this).attr('value', $(this).attr('value').replace(',', '.'));
+                })
+            });
+            function checkInt(input) {
+                var value = input.value;
+                var rep = /[-\,\.;":'a-zA-Zа-яА-Я]/;
+                if (rep.test(value)) {
+                    value = value.replace(rep, '');
+                    input.value = value;
+                }
+            }
+            function checkDec(input) {
+                var value = input.value;
+                var rep = /[-;":'a-zA-Zа-яА-Я]/;
+                if (rep.test(value)) {
+                    value = value.replace(rep, '');
+                    input.value = value;
+                }
+            }
+        </script>
+    </head>
+    <style>
+        input[type="text"] {
+            font-size: 16px;
+        }
+    </style>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Purchasing > Edit Bottle</h4>
+            </div>
+            <button style="margin-left:18px; max-width:90px;" class="btn btn-success1" onclick="location.href='@Url.Action("BottleChart", "Purchasing")'">Back</button>
+            @using (Html.BeginForm("SubmitBottleUpdate", "Purchasing", new { bottleId = @ViewBag.Bottle[0].BottleId }, FormMethod.Post, null))
+            {
+                <table>
+                    <tr>
+                        <td>Bottle ID</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleId</div></td>
+                        <td colspan="2" rowspan="7" align="center"><img src="~/src/img/no-image_130px.jpg" height="55%"/></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Item Key</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleItemKey</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Description</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleDescription</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottles Small Tray</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottlesSmallTray</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottles Large Tray</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottlesLargeTray</div></td>
+                    </tr>
+                    <tr>
+                        <td>Wrapped Bottles Tray Small</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].WrappedBottlesTraySmall</div></td>
+                    </tr>
+                    <tr>
+                        <td>Wrapped Bottles Tray Large</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].WrappedBottlesTrayLarge</div></td>
+                    </tr>
+                    <tr>
+                        <td>Layers Unwrapped</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].LayersUnWrapped</div></td>
+                        <td>Layers Wrapped</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].LayersWrapped</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Length</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleLengthInches</div></td>
+                        <td>Bottle Length Cm</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleLengthCm</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Width</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleWidthInches</div></td>
+                        <td>Bottle Length Cm</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleWidthCm</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Hieght</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleHieghtInches</div></td>
+                        <td>Bottle Hieght Cm</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleHieghtCm</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Cubic Inches</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleCubicInches</div></td>
+                        <td>Bottle Cubic Cm</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleCubicCm</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Length Wrapped</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleLengthWrappedInches</div></td>
+                        <td>Bottle Length Wrapped Cm</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleLengthWrappedCm</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Width Wrapped</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleWidthWrappedInches</div></td>
+                        <td>Bottle Width Wrapped Cm</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleWidthWrappedCm</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Depth Wrapped</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleDepthWrappedInches</div></td>
+                        <td>Bottle Depth Wrapped Cm</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleDepthWrappedCm</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Cubic Inch Wrapped</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleCubicInchWrappedInches</div></td>
+                        <td>Bottle Cubic Wrapped Cm</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleCubicInchWrappedCm</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Label Square Inches</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleLabelSquareInches</div></td>
+                    </tr>
+                    <tr>
+                        <td>Label Square In</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].LabelSquareInches</div></td>
+                        <td>Label Square Cm</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].LabelSquareCm</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Size</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleSize</div></td>
+                    </tr>
+                    <tr>
+                        <td>Print Frames</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].PrintFrames</div></td>
+                    </tr>
+                    <tr>
+                        <td>Number of Print Position</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].NumberOfPrintingPositions</div></td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </aside>
+}
