@@ -269,7 +269,7 @@ namespace PipingRockERP.Controllers
                         for (int i = 0; i < result.Tables[0].Rows.Count; i++)
                         {
                             data.BottleId = Int32.Parse(result.Tables[0].Rows[i][0].ToString().Trim());
-                            data.BottleItemKey = result.Tables[0].Rows[i][1].ToString().Trim();
+                            data.BottleItemKey = result.Tables[0].Rows[i][0].ToString().Trim();
                             data.BottleDescription = result.Tables[0].Rows[i][2].ToString().Trim();
                             data.BottlesSmallTray = Int32.Parse(result.Tables[0].Rows[i][3].ToString().Trim());
                             data.BottlesLargeTray = Int32.Parse(result.Tables[0].Rows[i][4].ToString().Trim()); 
@@ -278,33 +278,30 @@ namespace PipingRockERP.Controllers
                             data.BottleLengthInches = Decimal.Parse(result.Tables[0].Rows[i][7].ToString().Trim());
                             data.BottleWidthInches = Decimal.Parse(result.Tables[0].Rows[i][8].ToString().Trim());
                             data.BottleHieghtInches = Decimal.Parse(result.Tables[0].Rows[i][9].ToString().Trim());
-                            data.BottleCubicInches = Decimal.Parse(result.Tables[0].Rows[i][10].ToString().Trim());
-                            data.ItemStatusId = 3; 
-                            data.ItemTypeId = 2; 
-                            data.ItemSubTypeId = 1;
-                            data.BottleLengthCm = Decimal.Parse(result.Tables[0].Rows[i][11].ToString().Trim());
-                            data.BottleWidthCm = Decimal.Parse(result.Tables[0].Rows[i][12].ToString().Trim());
-                            data.BottleHieghtCm = Decimal.Parse(result.Tables[0].Rows[i][13].ToString().Trim());
-                            data.BottleCubicCm = Decimal.Parse(result.Tables[0].Rows[i][14].ToString().Trim());
-                            data.BottleLengthWrappedInches = Decimal.Parse(result.Tables[0].Rows[i][15].ToString().Trim());
-                            data.BottleWidthWrappedInches = Decimal.Parse(result.Tables[0].Rows[i][16].ToString().Trim());
-                            data.BottleDepthWrappedInches = Decimal.Parse(result.Tables[0].Rows[i][17].ToString().Trim());
-                            data.BottleCubicInchWrappedInches = Decimal.Parse(result.Tables[0].Rows[i][18].ToString().Trim());
-                            data.BottleLengthWrappedCm = Decimal.Parse(result.Tables[0].Rows[i][19].ToString().Trim());
-                            data.BottleWidthWrappedCm = Decimal.Parse(result.Tables[0].Rows[i][20].ToString().Trim());
-                            data.BottleDepthWrappedCm = Decimal.Parse(result.Tables[0].Rows[i][21].ToString().Trim()); ;
-                            data.BottleCubicInchWrappedCm = Decimal.Parse(result.Tables[0].Rows[i][22].ToString().Trim());
-                            data.BottleLabelSquareInches = Decimal.Parse(result.Tables[0].Rows[i][23].ToString().Trim());
-                            data.LayersUnWrapped = Int32.Parse(result.Tables[0].Rows[i][24].ToString().Trim());
-                            data.LayersWrapped = Int32.Parse(result.Tables[0].Rows[i][25].ToString().Trim());
-                            data.LabelSquareInches = 0;
-                            data.LabelSquareCm = 0;
+
+                            data.BottleCubicInches = data.BottleLengthInches* data.BottleWidthInches* data.BottleHieghtInches;
+                            data.BottleLengthCm = (decimal)((double)data.BottleLengthInches / 2.54);
+                            data.BottleWidthCm = (decimal)((double)data.BottleWidthInches / 2.54); 
+                            data.BottleHieghtCm = (decimal)((double)data.BottleHieghtInches / 2.54); 
+                            data.BottleCubicCm = data.BottleLengthCm * data.BottleWidthCm * data.BottleHieghtCm;
+
+                            data.BottleLengthWrappedInches = Decimal.Parse(result.Tables[0].Rows[i][10].ToString().Trim());
+                            data.BottleWidthWrappedInches = Decimal.Parse(result.Tables[0].Rows[i][11].ToString().Trim());
+                            data.BottleDepthWrappedInches = Decimal.Parse(result.Tables[0].Rows[i][12].ToString().Trim());
+
+                            data.BottleCubicInchWrappedInches = data.BottleLengthWrappedInches * data.BottleWidthWrappedInches * data.BottleDepthWrappedInches;
+                            data.BottleLengthWrappedCm = (decimal)((double)data.BottleLengthWrappedCm / 2.54);
+                            data.BottleWidthWrappedCm = (decimal)((double)data.BottleWidthWrappedCm / 2.54);
+                            data.BottleDepthWrappedCm = (decimal)((double)data.BottleDepthWrappedCm / 2.54);
+                            data.BottleCubicInchWrappedCm = data.BottleLengthWrappedCm * data.BottleWidthWrappedCm * data.BottleDepthWrappedCm;
+
+                            data.BottleLabelSquareInches = Decimal.Parse(result.Tables[0].Rows[i][13].ToString().Trim());
                             data.BottleSize = ""; 
-                            data.PrintFrames = Int32.Parse(result.Tables[0].Rows[i][27].ToString().Trim()); 
-                            data.NumberOfPrintingPositions = Int32.Parse(result.Tables[0].Rows[i][28].ToString().Trim());
+                            data.PrintFrames = Int32.Parse(result.Tables[0].Rows[i][15].ToString().Trim()); 
+                            data.NumberOfPrintingPositions = Int32.Parse(result.Tables[0].Rows[i][16].ToString().Trim());
                             //data.BottleAddedDate = DateTime.Now;
                             //data.BottleChangedDate = DateTime.Now;
-                            data.BottleModifiedById = 1;
+                            //data.BottleModifiedById = 1;
 
                             add(data);
                             //db.Bottle1.Add(data);
@@ -439,39 +436,37 @@ namespace PipingRockERP.Controllers
                           ID = Bottle.BottleId,
                           ItemKey = Bottle.BottleItemKey,
                           Description = Bottle.BottleDescription,
-                          BottlesSmallTray = Bottle.BottlesSmallTray,
-                          BottlesLargeTray = Bottle.BottlesLargeTray,
-                          WrappedBottlesTraySmall = Bottle.WrappedBottlesTraySmall,
-                          WrappedBottlesTrayLarge = Bottle.WrappedBottlesTrayLarge,
-                          ItemStatusId = Bottle.ItemStatusId,
-                          ItemTypeId = Bottle.ItemTypeId,
-                          ItemSubTypeId = Bottle.ItemSubTypeId,
-                          BottleLengthInches = Bottle.BottleLengthInches,
-                          BottleWidthInches = Bottle.BottleWidthInches,
-                          BottleHieghtInches = Bottle.BottleHieghtInches,
-                          BottleCubicInches = Bottle.BottleCubicInches,
-                          BottleLengthCm = Bottle.BottleLengthCm,
-                          BottleWidthCm = Bottle.BottleWidthCm,
-                          BottleHieghtCm = Bottle.BottleHieghtCm,
-                          BottleCubicCm = Bottle.BottleCubicCm,
-                          BottleLengthWrappedInches = Bottle.BottleLengthWrappedInches,
-                          BottleWidthWrappedInches = Bottle.BottleWidthWrappedInches,
-                          BottleDepthWrappedInches = Bottle.BottleDepthWrappedInches,
-                          BottleCubicInchWrappedInches = Bottle.BottleCubicInchWrappedInches,
-                          BottleLengthWrappedCm = Bottle.BottleLengthWrappedCm,
-                          BottleWidthWrappedCm = Bottle.BottleWidthWrappedCm,
-                          BottleDepthWrappedCm = Bottle.BottleDepthWrappedCm,
-                          BottleCubicInchWrappedCm = Bottle.BottleCubicInchWrappedCm,
-                          BottleLabelSquareInches = Bottle.BottleLabelSquareInches,
-                          LabelSquareInches = Bottle.LabelSquareInches,
-                          LabelSquareCm = Bottle.LabelSquareCm,
+                          SMTrayQty = Bottle.BottlesSmallTray,
+                          LGTrayQty = Bottle.BottlesLargeTray,
+                          WRSMQty = Bottle.WrappedBottlesTraySmall,
+                          WRLGQty = Bottle.WrappedBottlesTrayLarge,
+                          //ItemStatusId = Bottle.ItemStatusId,
+                          //ItemTypeId = Bottle.ItemTypeId,
+                          //ItemSubTypeId = Bottle.ItemSubTypeId,
+                          LengthIN = Bottle.BottleLengthInches,
+                          WidthIN = Bottle.BottleWidthInches,
+                          HieghtIN = Bottle.BottleHieghtInches,
+                          //BottleCubicInches = Bottle.BottleCubicInches,
+                          //BottleLengthCm = Bottle.BottleLengthCm,
+                          //BottleWidthCm = Bottle.BottleWidthCm,
+                          //BottleHieghtCm = Bottle.BottleHieghtCm,
+                          //BottleCubicCm = Bottle.BottleCubicCm,
+                          WRINLength = Bottle.BottleLengthWrappedInches,
+                          WRINWidth = Bottle.BottleWidthWrappedInches,
+                          WRINDepth = Bottle.BottleDepthWrappedInches,
+                          //BottleCubicInchWrappedInches = Bottle.BottleCubicInchWrappedInches,
+                          //BottleLengthWrappedCm = Bottle.BottleLengthWrappedCm,
+                          //BottleWidthWrappedCm = Bottle.BottleWidthWrappedCm,
+                          //BottleDepthWrappedCm = Bottle.BottleDepthWrappedCm,
+                          //BottleCubicInchWrappedCm = Bottle.BottleCubicInchWrappedCm,
+                          LabelSqIN = Bottle.BottleLabelSquareInches,
                           BottleSize = Bottle.BottleSize,
                           PrintFrames = Bottle.PrintFrames,
-                          NumberOfPrintingPositions = Bottle.NumberOfPrintingPositions,
-                          AddedDate = Bottle.BottleAddedDate,
-                          ChangedDate = Bottle.BottleChangedDate,
-                          DeletedDate = Bottle.BottleDeletedDate,
-                          ModifiedById = Bottle.BottleModifiedById
+                          PrintPositions = Bottle.NumberOfPrintingPositions
+                          //AddedDate = Bottle.BottleAddedDate,
+                          //ChangedDate = Bottle.BottleChangedDate,
+                          //DeletedDate = Bottle.BottleDeletedDate,
+                          //ModifiedById = Bottle.BottleModifiedById
                       }).AsEnumerable();
             DataTable dt = new DataTable();
             dt.TableName = "Bottles";
@@ -482,6 +477,10 @@ namespace PipingRockERP.Controllers
                 wb.AddWorksheet("Bottles");
                 wb.Worksheet(1).Cell(1, 1).InsertTable(dt);
                 wb.Worksheet(1).Rows().AdjustToContents();
+                wb.Worksheet(1).Column(1).Hide();
+                wb.Worksheet(1).Column(2).AdjustToContents();
+                wb.Worksheet(1).Column(3).AdjustToContents();
+
                 wb.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 wb.Style.Font.Bold = true;
                 wb.Style.DateFormat.Format = "MM/dd/yyyy";
