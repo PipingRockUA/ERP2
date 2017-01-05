@@ -15,19 +15,45 @@
                     var t = $(this).text().replace(',', '.');
                     $(this).text(t);
                 })});
+            function myFunction() {
+                // Declare variables 
+                var input, filter, table, tr, td1, td2, i;
+                input = document.getElementById("inputSearch");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("table1");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td1 = tr[i].getElementsByTagName("td")[0];
+                    td2 = tr[i].getElementsByTagName("td")[1];
+                    if (td1 || td2) {
+                        if (td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    } 
+                }
+                document.getElementById("searchIdT").innerHTML = "Total Pages:1 Records:" + parseInt($('tr:visible').length - 1);
+                document.getElementById("searchIdB").innerHTML = "Total Pages:1 Records:" + parseInt($('tr:visible').length - 1);
+            }
+            var numOfVisibleRows = $('tr').filter(function () {
+                return $(this).css('display') === '';
+            }).length;
         </script>
     </head>
     <aside style="margin-top:10px">
         <div class="panel" @*style="border:1px solid"*@>
             <div style="margin-left: 20px">
                 <h4>Nutrition > Raw Material</h4>
-                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Nutrition", new { param = "AddRawMaterial" })'">Add</button>
-                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("ExportRawMaterial", "Nutrition")'">Export</button>
+                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Purchasing", new { param = "AddRawMaterial" })'">Add</button>
+                <input class="search" type="text" name="search" id="inputSearch" onkeyup="myFunction()" placeholder="Search.." />
+                <p id="searchIdT" style="text-align:right; font-size:14px">Total Pages:1 Records:@Model.Count</p>
             </div>
             <table class="table" id="table1">
                 <thead>
-                    <tr style="font-size:16px">
-                        <th>Id</th>
+                    <tr style="font-size:14px">
                         <th id="hiddingEls">Item Key</th>
                         <th id="hiddingElm">Description (S)</th>
                         <th>Expiration Months</th>
@@ -39,14 +65,13 @@
                 <tbody>
                     @foreach (var item in Model)
                 {
-                        <tr style="font-size:16px">
-                            <td>@item.RawMaterialId</td>
+                        <tr style="font-size:14px">
                             <td id="hiddingEls">@item.RawMaterialItemKey</td>
                             <td id="hiddingElm">@item.RawMaterialDescriptionShort</td>
                             <td>@item.ExpirationMonths</td>
-                            <td id="hiddingEls" class="tt">@item.RetestingMonths</td>
+                            <td id="hiddingEls">@item.RetestingMonths</td>
                             <td id="hiddingEll">@item.RawMaterialChangedDate.ToString("MM'/'dd'/'yyyy")</td>
-                            <td>@Html.ActionLink("Edit", "EditRawMaterial", "Nutrition", new { rawMaterialId = item.RawMaterialId.ToString() }, null)</td>
+                            <td>@Html.ActionLink("Select", "MaterialsForVendor", "Nutrition", new { rawMaterialId = item.RawMaterialId }, null)</td>
                         </tr>
                     }
                 </tbody>
@@ -54,6 +79,6 @@
         </div>
     </aside>
     <footer>
-        <p style="text-align:center; font-size:16px">Total Pages:1 Records:@ViewBag.RawMaterial.Count</p>
+        <p id="searchIdB" style="text-align:right; font-size:14px">Total Pages:1 Records:@Model.Count</p>
     </footer>
 }

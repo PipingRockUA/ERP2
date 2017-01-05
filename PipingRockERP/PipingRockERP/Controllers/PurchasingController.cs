@@ -77,23 +77,12 @@ namespace PipingRockERP.Controllers
             return View(param);
         }
 
-        #region Units of Measures
-        public ActionResult UnitOfMeasures()
-        {
-            PipingRockEntities db = new PipingRockEntities();
-
-            var measures = (from UnitOfMeasure in db.UnitOfMeasures select UnitOfMeasure).ToList();
-
-            return View(measures);
-        }
-        #endregion
-
         #region Bottle Chart
         public ActionResult BottleChart()
         {
             PipingRockEntities db = new PipingRockEntities();
             var bottles = (from Bottle in db.Bottle2 select Bottle).ToList();
-
+            
             ViewBag.Bottles = bottles;
 
             return View();
@@ -121,8 +110,11 @@ namespace PipingRockERP.Controllers
             var bottle = (from Bottle in db.Bottle2
                           where Bottle.BottleId == ID
                           select Bottle).ToList();
+            var neckSize = (from NeckSize in db.NeckSizes
+                            select NeckSize.NeckSize1).ToList();
 
             ViewBag.Bottle = bottle;
+            ViewBag.NeckSize = neckSize;
 
             return View();
         }
@@ -161,11 +153,15 @@ namespace PipingRockERP.Controllers
                                               string LabelSquareInches,
                                               string LabelSquareCm,
 
+                                              string BottleColor,
                                               string BottleSize,
+                                              string NeckSizeId,
+                                              string BottleMaterial,
                                               int PrintFrames,
                                               int NumberOfPrintingPositions)
         {
             PipingRockEntities db = new PipingRockEntities();
+            int neckID = Int32.Parse((from NeckSize in db.NeckSizes where NeckSize.NeckSize1 == NeckSizeId select NeckSize.NeckSizeId).ToString());
 
             var bottle = new Bottle2()
             {
@@ -206,7 +202,10 @@ namespace PipingRockERP.Controllers
                 LabelSquareInches = Convert.ToDecimal(LabelSquareInches.Replace(".", ",")),
                 LabelSquareCm = Convert.ToDecimal(LabelSquareCm.Replace(".", ",")),
 
+                BottleColor = BottleColor,
                 BottleSize = BottleSize,
+                NeckSizeId = neckID,
+                BottleMaterial = BottleMaterial,
                 PrintFrames = PrintFrames,
                 NumberOfPrintingPositions = NumberOfPrintingPositions,
 
@@ -303,7 +302,7 @@ namespace PipingRockERP.Controllers
                             //data.BottleChangedDate = DateTime.Now;
                             //data.BottleModifiedById = 1;
 
-                            add(data);
+                            addBot(data);
                             //db.Bottle1.Add(data);
                             //db.SaveChanges();
                         }
@@ -325,7 +324,7 @@ namespace PipingRockERP.Controllers
             return View();
         }
 
-        public void add(Bottle1 b)
+        public void addBot(Bottle1 b)
         {
             PipingRockEntities db = new PipingRockEntities();
             db.Bottle1.Add(b);
@@ -367,15 +366,20 @@ namespace PipingRockERP.Controllers
                                               string LabelSquareInches,
                                               string LabelSquareCm,
 
+                                              string BottleColor,
                                               string BottleSize,
+                                              string NeckSizeId,
+                                              string BottleMaterial,
                                               int PrintFrames,
                                               int NumberOfPrintingPositions)
         {
             PipingRockEntities db = new PipingRockEntities();
+
             int ID = Int32.Parse(bottleId);
             var bottle = (from Bottle in db.Bottle2
                           where Bottle.BottleId == ID
                           select Bottle).Single();
+            int neckID = Int32.Parse((from NeckSize in db.NeckSizes where NeckSize.NeckSize1 == NeckSizeId select NeckSize.NeckSizeId).ToString());
 
             bottle.BottleItemKey = BottleItemKey;
             bottle.BottleDescription = BottleDescription;
@@ -414,6 +418,10 @@ namespace PipingRockERP.Controllers
             bottle.LabelSquareInches = Convert.ToDecimal(LabelSquareInches.Replace(".", ","));
             bottle.LabelSquareCm = Convert.ToDecimal(LabelSquareCm.Replace(".", ","));
 
+            bottle.BottleColor = BottleColor;
+            bottle.BottleSize = BottleSize;
+            bottle.NeckSizeId = neckID;
+            bottle.BottleMaterial = BottleMaterial;
             bottle.BottleSize = BottleSize;
             bottle.PrintFrames = PrintFrames;
             bottle.NumberOfPrintingPositions = NumberOfPrintingPositions;
@@ -503,6 +511,67 @@ namespace PipingRockERP.Controllers
         }
         #endregion
 
+        #region Brands
+        public ActionResult Brands()
+        {
+            PipingRockEntities db = new PipingRockEntities();
+
+            var brands = (from Brand in db.Brands select Brand).ToList();
+
+            return View(brands);
+        }
+
+        public ActionResult BrandEdit(string brandId)
+        {
+            PipingRockEntities db = new PipingRockEntities();
+            int ID = Int32.Parse(brandId);
+
+            var brand = (from Brand in db.Brands
+                         where Brand.BrandID == ID
+                         select Brand).ToList();
+
+            ViewBag.Brand = brand;
+
+            return View();
+        }
+
+        public ActionResult SubmitBrandAdd(string brandName, string brandCode)
+        {
+            PipingRockEntities db = new PipingRockEntities();
+
+            var brand = new Brand()
+            {
+                Brand1 = brandName,
+                BrandCode = brandCode,
+                BrandAddedDate = DateTime.Now,
+                BrandChangedDate = DateTime.Now,
+                BrandModifiedById = 0,
+                isDeleted = false
+            };
+            db.Brands.Add(brand);
+            db.SaveChanges();
+            return RedirectToAction("Brands");
+        }
+
+        public ActionResult SubmitBrandUpdate(string brandId, string brandName, string brandCode)
+        {
+            PipingRockEntities db = new PipingRockEntities();
+
+            int ID = Int32.Parse(brandId);
+            var brand = (from Brand in db.Brands
+                         where Brand.BrandID == ID
+                         select Brand).Single();
+
+            brand.Brand1 = brandName;
+            brand.BrandCode = brandCode;
+            brand.BrandChangedDate = DateTime.Now;
+
+            db.Entry(brand).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("BrandEdit", new { brandId = brandId });
+        }
+        #endregion
+        
         #region Quarantine Types
         public ActionResult Quarantines()
         {
@@ -664,64 +733,14 @@ namespace PipingRockERP.Controllers
         }
         #endregion
 
-        #region Brands
-        public ActionResult Brands()
+        #region Units of Measures
+        public ActionResult UnitOfMeasures()
         {
             PipingRockEntities db = new PipingRockEntities();
 
-            var brands = (from Brand in db.Brands select Brand).ToList();
+            var measures = (from UnitOfMeasure in db.UnitOfMeasures select UnitOfMeasure).ToList();
 
-            return View(brands);
-        }
-
-        public ActionResult BrandEdit(string brandId)
-        {
-            PipingRockEntities db = new PipingRockEntities();
-            int ID = Int32.Parse(brandId);
-
-            var brand = (from Brand in db.Brands
-                         where Brand.BrandID == ID
-                         select Brand).ToList();
-
-            ViewBag.Brand = brand;
-
-            return View();
-        }
-
-        public ActionResult SubmitBrandAdd(string brandName, string brandCode)
-        {
-            PipingRockEntities db = new PipingRockEntities();
-
-            var brand = new Brand()
-            {
-                Brand1 = brandName,
-                BrandCode = brandCode,
-                BrandAddedDate = DateTime.Now,
-                BrandChangedDate = DateTime.Now,
-                BrandModifiedById = 0,
-                isDeleted = false
-            };
-            db.Brands.Add(brand);
-            db.SaveChanges();
-            return RedirectToAction("Brands");
-        }
-
-        public ActionResult SubmitBrandUpdate(string brandId, string brandName, string brandCode)
-        {
-            PipingRockEntities db = new PipingRockEntities();
-
-            int ID = Int32.Parse(brandId);
-            var brand = (from Brand in db.Brands
-                         where Brand.BrandID == ID
-                         select Brand).Single();
-
-            brand.Brand1 = brandName;
-            brand.BrandCode = brandCode;
-            brand.BrandChangedDate = DateTime.Now;
-
-            db.Entry(brand).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("BrandEdit", new { brandId = brandId });
+            return View(measures);
         }
         #endregion
     }

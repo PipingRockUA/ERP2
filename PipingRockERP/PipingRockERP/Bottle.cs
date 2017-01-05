@@ -17,6 +17,7 @@ namespace PipingRockERP
         public int BackupNumber { get; set; }
         public System.DateTime BackupDate { get; set; }
         public int BottleId { get; set; }
+        public System.Guid ItemGUID { get; set; }
         public string BottleItemKey { get; set; }
         public string BottleDescription { get; set; }
         public int BottlesSmallTray { get; set; }
@@ -48,6 +49,9 @@ namespace PipingRockERP
         public decimal LabelSquareInches { get; set; }
         public decimal LabelSquareCm { get; set; }
         public string BottleSize { get; set; }
+        public int NeckSizeId { get; set; }
+        public string BottleColor { get; set; }
+        public string BottleMaterial { get; set; }
         public int PrintFrames { get; set; }
         public int NumberOfPrintingPositions { get; set; }
         public System.DateTime BottleAddedDate { get; set; }

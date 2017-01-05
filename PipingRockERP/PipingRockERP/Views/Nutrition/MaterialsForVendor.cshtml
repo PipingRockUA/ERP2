@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "MaterialsForVendor";
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_NutritionPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+        <script type="text/javascript" src="~/Scripts/jquery-3.1.1.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".tt").each(function () {
+                    var t = $(this).text().replace(',', '.');
+                    $(this).text(t);
+                })});
+            function myFunction() {
+                // Declare variables
+                var input, filter, table, tr, td1, td2, i;
+                input = document.getElementById("inputSearch");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("table1");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td1 = tr[i].getElementsByTagName("td")[0];
+                    td2 = tr[i].getElementsByTagName("td")[1];
+                    if (td1 || td2) {
+                        if (td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+                document.getElementById("searchIdT").innerHTML = "Total Pages:1 Records:" + parseInt($('tr:visible').length - 1);
+                document.getElementById("searchIdB").innerHTML = "Total Pages:1 Records:" + parseInt($('tr:visible').length - 1);
+            }
+            var numOfVisibleRows = $('tr').filter(function () {
+                return $(this).css('display') === '';
+            }).length;
+        </script>
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Nutrition > Raw Material > @ViewBag.RawMaterial[0].RawMaterialItemKey</h4>
+                @*<button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Purchasing", new { param = "AddRawMaterial" })'">Add</button>*@
+                
+            </div>
+            <button style="margin-left:18px; max-width:90px;" class="btn btn-success1" onclick="location.href='@Url.Action("RawMaterials", "Nutrition")'">Back</button>
+            <table class="table" id="table1">
+                <thead>
+                    <tr>
+                        <th colspan="6">Current Vendors</th>
+                    </tr>
+                    <tr style="font-size:14px">
+                        <th id="hiddingEls">Vendor Key</th>
+                        <th id="hiddingElm">Name</th>
+                        <th>Addres</th>
+                        <th id="hiddingEls">City</th>
+                        <th id="hiddingEll">Country</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.rawMaterialsVendorsC)
+                    {
+                        <tr style="font-size:14px">
+                            <td id="hiddingEls">@item.VendorKey</td>
+                            <td id="hiddingElm">@item.VendorName</td>
+                            <td>@item.Address1</td>
+                            <td id="hiddingEls">@item.City</td>
+                            <td id="hiddingEll">@item.Country</td>
+                            <td>@Html.ActionLink("Select", "AllergensForVendor", "Nutrition", new { rawVendorId = item.VendorId, rawMaterialId = ViewBag.RawMaterial[0].RawMaterialId }, null)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            <table class="table" id="table1">
+                <thead>
+                    <tr>
+                        <th colspan="5">Rejected Vendors</th>
+                    </tr>
+                    <tr style="font-size:14px">
+                        <th id="hiddingEls">Vendor Key</th>
+                        <th id="hiddingElm">Name</th>
+                        <th>Addres</th>
+                        <th id="hiddingEls">City</th>
+                        <th id="hiddingEll">Country</th>
+                        @*<th>Action</th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.rawMaterialsVendorsR)
+                    {
+                        <tr style="font-size:14px">
+                            <td id="hiddingEls">@item.VendorKey</td>
+                            <td id="hiddingElm">@item.VendorName</td>
+                            <td>@item.Address1</td>
+                            <td id="hiddingEls">@item.City</td>
+                            <td id="hiddingEll">@item.Country</td>
+                            @*<td>@Html.ActionLink("Select", "AllergensForVendor", "Purchasing", new { rawMaterialId = item.VendorId }, null)</td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </aside>
+    <footer>
+    </footer>
+}

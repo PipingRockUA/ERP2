@@ -25,6 +25,7 @@
           <Property Name="BackupNumber" Type="int" Nullable="false" />
           <Property Name="BackupDate" Type="datetime" Nullable="false" />
           <Property Name="BottleId" Type="int" Nullable="false" />
+          <Property Name="ItemGUID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="BottleItemKey" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="BottleDescription" Type="nvarchar" MaxLength="100" />
           <Property Name="BottlesSmallTray" Type="int" Nullable="false" />
@@ -56,6 +57,9 @@
           <Property Name="LabelSquareInches" Type="decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="LabelSquareCm" Type="decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="BottleSize" Type="nvarchar" MaxLength="20" />
+          <Property Name="NeckSizeId" Type="int" Nullable="false" />
+          <Property Name="BottleColor" Type="nvarchar" MaxLength="20" />
+          <Property Name="BottleMaterial" Type="nvarchar" MaxLength="20" />
           <Property Name="PrintFrames" Type="int" Nullable="false" />
           <Property Name="NumberOfPrintingPositions" Type="int" Nullable="false" />
           <Property Name="BottleAddedDate" Type="datetime" Nullable="false" />
@@ -109,6 +113,9 @@
           <Property Name="LabelSquareInches" Type="decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="LabelSquareCm" Type="decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="BottleSize" Type="nvarchar" MaxLength="20" />
+          <Property Name="NeckSizeId" Type="int" Nullable="false" />
+          <Property Name="BottleColor" Type="nvarchar" MaxLength="20" />
+          <Property Name="BottleMaterial" Type="nvarchar" MaxLength="20" />
           <Property Name="PrintFrames" Type="int" Nullable="false" />
           <Property Name="NumberOfPrintingPositions" Type="int" Nullable="false" />
           <Property Name="BottleModifiedById" Type="int" Nullable="false" />
@@ -162,6 +169,9 @@
           <Property Name="LabelSquareInches" Type="decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="LabelSquareCm" Type="decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="BottleSize" Type="nvarchar" MaxLength="20" />
+          <Property Name="BottleColor" Type="nvarchar" MaxLength="20" />
+          <Property Name="NeckSizeId" Type="int" Nullable="false" />
+          <Property Name="BottleMaterial" Type="nvarchar" MaxLength="20" />
           <Property Name="PrintFrames" Type="int" Nullable="false" />
           <Property Name="NumberOfPrintingPositions" Type="int" Nullable="false" />
           <Property Name="BottleAddedDate" Type="datetime" Nullable="false" />
@@ -175,7 +185,7 @@
           </Key>
           <Property Name="BottlesPerCaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BottleId" Type="int" Nullable="false" />
-          <Property Name="PackagingUnitId" Type="int" Nullable="false" />
+          <Property Name="BoxId" Type="int" Nullable="false" />
           <Property Name="NumberOfBottlesUnWrapped" Type="int" Nullable="false" />
           <Property Name="NumberOfBottlesWrapped" Type="int" Nullable="false" />
           <Property Name="BottlesPerCaseAddedDate" Type="datetime" Nullable="false" />
@@ -276,6 +286,22 @@
           <Property Name="Bulk_QuarantineDeletedDate" Type="datetime" />
           <Property Name="Bulk_QuarantineModifiedById" Type="int" Nullable="false" />
           <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cap">
+          <Key>
+            <PropertyRef Name="CapId" />
+          </Key>
+          <Property Name="CapId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CapItemKey" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CapDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="NeckSize" Type="nvarchar" MaxLength="20" />
+          <Property Name="CapColor" Type="nvarchar" MaxLength="20" />
+          <Property Name="CapLiner" Type="nvarchar" MaxLength="20" />
+          <Property Name="CapAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="CapChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="CapDeletedDate" Type="datetime" />
+          <Property Name="CapModifiedById" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FinishedGood">
           <Key>
@@ -491,6 +517,17 @@
           <Property Name="LocationDeletedDate" Type="datetime" />
           <Property Name="LocationModifiedById" Type="int" Nullable="false" />
           <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NeckSize">
+          <Key>
+            <PropertyRef Name="NeckSizeId" />
+          </Key>
+          <Property Name="NeckSizeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NeckSize" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NeckSizeAddedDate" Type="datetime" Nullable="false" />
+          <Property Name="NeckSizeChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="NeckSizeDeletedDate" Type="datetime" />
+          <Property Name="NeckSizeModifiedById" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PackagingComponent">
           <Key>
@@ -749,7 +786,7 @@
           <Property Name="isDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'PipingRock.dbo.vBatchMaster_BOM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'PipingRock1.dbo.vBatchMaster_BOM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vBatchMaster_BOM">
           <Key>
             <PropertyRef Name="ParentItemKey" />
@@ -782,7 +819,7 @@ warning 6002: The table/view 'PipingRock.dbo.vBatchMaster_BOM' does not have a p
           <Property Name="ItemSubTyp" Type="nvarchar" MaxLength="3" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'PipingRock.dbo.vBatchMaster_Item' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'PipingRock1.dbo.vBatchMaster_Item' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vBatchMaster_Item">
           <Key>
             <PropertyRef Name="Itemkey" />
@@ -959,7 +996,7 @@ warning 6002: The table/view 'PipingRock.dbo.vBatchMaster_Item' does not have a 
           <Property Name="ClassificationID" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'PipingRock.dbo.vBatchMaster_Location' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'PipingRock1.dbo.vBatchMaster_Location' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vBatchMaster_Location">
           <Key>
             <PropertyRef Name="Itemkey" />
@@ -1086,7 +1123,7 @@ warning 6002: The table/view 'PipingRock.dbo.vBatchMaster_Location' does not hav
           <Property Name="CUSTOM10" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'PipingRock.md.ItemView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'PipingRock1.md.ItemView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ItemView">
           <Key>
             <PropertyRef Name="ItemKey" />
@@ -1103,7 +1140,7 @@ warning 6002: The table/view 'PipingRock.md.ItemView' does not have a primary ke
           <Property Name="ItemStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'PipingRock1.md.QcTestView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="QcTestView">
           <Key>
             <PropertyRef Name="QcTestId" />
@@ -1114,6 +1151,18 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <Property Name="QcTestType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="QcTest" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Bottle_NeckSize">
+          <End Role="NeckSize" Type="Self.NeckSize" Multiplicity="1" />
+          <End Role="Bottle2" Type="Self.Bottle2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NeckSize">
+              <PropertyRef Name="NeckSizeId" />
+            </Principal>
+            <Dependent Role="Bottle2">
+              <PropertyRef Name="NeckSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BottlesPerCase_Bottle">
           <End Role="Bottle2" Type="Self.Bottle2" Multiplicity="1" />
           <End Role="BottlesPerCase" Type="Self.BottlesPerCase" Multiplicity="*" />
@@ -1123,6 +1172,18 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
             </Principal>
             <Dependent Role="BottlesPerCase">
               <PropertyRef Name="BottleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BottlesPerCase_Box">
+          <End Role="Box" Type="Self.Box" Multiplicity="1" />
+          <End Role="BottlesPerCase" Type="Self.BottlesPerCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Box">
+              <PropertyRef Name="BoxId" />
+            </Principal>
+            <Dependent Role="BottlesPerCase">
+              <PropertyRef Name="BoxId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1677,6 +1738,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <EntitySet Name="Bulk" EntityType="Self.Bulk" Schema="md" store:Type="Tables" />
           <EntitySet Name="Bulk_QcTest" EntityType="Self.Bulk_QcTest" Schema="md" store:Type="Tables" />
           <EntitySet Name="Bulk_Quarantine" EntityType="Self.Bulk_Quarantine" Schema="md" store:Type="Tables" />
+          <EntitySet Name="Cap" EntityType="Self.Cap" Schema="md" store:Type="Tables" />
           <EntitySet Name="FinishedGood" EntityType="Self.FinishedGood" Schema="md" store:Type="Tables" />
           <EntitySet Name="FinishedGood_BuyItems" EntityType="Self.FinishedGood_BuyItems" Schema="md" store:Type="Tables" />
           <EntitySet Name="FinishedGood_QcTest" EntityType="Self.FinishedGood_QcTest" Schema="md" store:Type="Tables" />
@@ -1688,6 +1750,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <EntitySet Name="ItemSubType" EntityType="Self.ItemSubType" Schema="md" store:Type="Tables" />
           <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="md" store:Type="Tables" />
           <EntitySet Name="Location" EntityType="Self.Location" Schema="md" store:Type="Tables" />
+          <EntitySet Name="NeckSize" EntityType="Self.NeckSize" Schema="md" store:Type="Tables" />
           <EntitySet Name="PackagingComponent" EntityType="Self.PackagingComponent" Schema="md" store:Type="Tables" />
           <EntitySet Name="PackagingUOM" EntityType="Self.PackagingUOM" Schema="md" store:Type="Tables" />
           <EntitySet Name="QcTest" EntityType="Self.QcTest" Schema="md" store:Type="Tables" />
@@ -2041,8 +2104,16 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
     [QcTestView].[QcTest] AS [QcTest]
     FROM [md].[QcTestView] AS [QcTestView]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_Bottle_NeckSize" Association="Self.FK_Bottle_NeckSize">
+            <End Role="NeckSize" EntitySet="NeckSize" />
+            <End Role="Bottle2" EntitySet="Bottle2" />
+          </AssociationSet>
           <AssociationSet Name="FK_BottlesPerCase_Bottle" Association="Self.FK_BottlesPerCase_Bottle">
             <End Role="Bottle2" EntitySet="Bottle2" />
+            <End Role="BottlesPerCase" EntitySet="BottlesPerCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BottlesPerCase_Box" Association="Self.FK_BottlesPerCase_Box">
+            <End Role="Box" EntitySet="Box" />
             <End Role="BottlesPerCase" EntitySet="BottlesPerCase" />
           </AssociationSet>
           <AssociationSet Name="FK_Box_ItemSubType" Association="Self.FK_Box_ItemSubType">
@@ -2216,6 +2287,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <Property Name="BackupNumber" Type="Int32" Nullable="false" />
           <Property Name="BackupDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="BottleId" Type="Int32" Nullable="false" />
+          <Property Name="ItemGUID" Type="Guid" Nullable="false" />
           <Property Name="BottleItemKey" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BottleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="BottlesSmallTray" Type="Int32" Nullable="false" />
@@ -2247,6 +2319,9 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <Property Name="LabelSquareInches" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="LabelSquareCm" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="BottleSize" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NeckSizeId" Type="Int32" Nullable="false" />
+          <Property Name="BottleColor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BottleMaterial" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="PrintFrames" Type="Int32" Nullable="false" />
           <Property Name="NumberOfPrintingPositions" Type="Int32" Nullable="false" />
           <Property Name="BottleAddedDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -2300,6 +2375,9 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <Property Name="LabelSquareInches" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="LabelSquareCm" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="BottleSize" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NeckSizeId" Type="Int32" Nullable="false" />
+          <Property Name="BottleColor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BottleMaterial" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="PrintFrames" Type="Int32" Nullable="false" />
           <Property Name="NumberOfPrintingPositions" Type="Int32" Nullable="false" />
           <Property Name="BottleModifiedById" Type="Int32" Nullable="false" />
@@ -2354,12 +2432,16 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <Property Name="LabelSquareInches" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="LabelSquareCm" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="BottleSize" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BottleColor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NeckSizeId" Type="Int32" Nullable="false" />
+          <Property Name="BottleMaterial" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="PrintFrames" Type="Int32" Nullable="false" />
           <Property Name="NumberOfPrintingPositions" Type="Int32" Nullable="false" />
           <Property Name="BottleAddedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="BottleChangedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="BottleDeletedDate" Type="DateTime" Precision="3" />
           <Property Name="BottleModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NeckSize" Relationship="Self.FK_Bottle_NeckSize" FromRole="Bottle2" ToRole="NeckSize" />
           <NavigationProperty Name="BottlesPerCases" Relationship="Self.FK_BottlesPerCase_Bottle" FromRole="Bottle2" ToRole="BottlesPerCase" />
           <NavigationProperty Name="FinishedGoods" Relationship="Self.FK_FinishedGood_Bottle" FromRole="Bottle2" ToRole="FinishedGood" />
         </EntityType>
@@ -2369,7 +2451,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           </Key>
           <Property Name="BottlesPerCaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BottleId" Type="Int32" Nullable="false" />
-          <Property Name="PackagingUnitId" Type="Int32" Nullable="false" />
+          <Property Name="BoxId" Type="Int32" Nullable="false" />
           <Property Name="NumberOfBottlesUnWrapped" Type="Int32" Nullable="false" />
           <Property Name="NumberOfBottlesWrapped" Type="Int32" Nullable="false" />
           <Property Name="BottlesPerCaseAddedDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -2378,6 +2460,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <Property Name="BottlesPerCaseModifiedById" Type="Int32" Nullable="false" />
           <Property Name="isDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Bottle2" Relationship="Self.FK_BottlesPerCase_Bottle" FromRole="BottlesPerCase" ToRole="Bottle2" />
+          <NavigationProperty Name="Box" Relationship="Self.FK_BottlesPerCase_Box" FromRole="BottlesPerCase" ToRole="Box" />
         </EntityType>
         <EntityType Name="Box">
           <Key>
@@ -2404,6 +2487,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <Property Name="BoxChangedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="BoxDeletedDate" Type="DateTime" Precision="3" />
           <Property Name="BoxModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BottlesPerCases" Relationship="Self.FK_BottlesPerCase_Box" FromRole="Box" ToRole="BottlesPerCase" />
           <NavigationProperty Name="ItemSubType" Relationship="Self.FK_Box_ItemSubType" FromRole="Box" ToRole="ItemSubType" />
           <NavigationProperty Name="FinishedGoods" Relationship="Self.FK_FinishedGood_Box" FromRole="Box" ToRole="FinishedGood" />
         </EntityType>
@@ -2487,6 +2571,22 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <Property Name="isDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Bulk" Relationship="Self.FK_Bulk_Quarantine_Bulk" FromRole="Bulk_Quarantine" ToRole="Bulk" />
           <NavigationProperty Name="Quarantine" Relationship="Self.FK_Bulk_Quarantine_Quarantine" FromRole="Bulk_Quarantine" ToRole="Quarantine" />
+        </EntityType>
+        <EntityType Name="Cap">
+          <Key>
+            <PropertyRef Name="CapId" />
+          </Key>
+          <Property Name="CapId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemGUID" Type="Guid" Nullable="false" />
+          <Property Name="CapItemKey" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CapDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NeckSize" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CapColor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CapLiner" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CapAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CapChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CapDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="CapModifiedById" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="FinishedGood">
           <Key>
@@ -2725,6 +2825,18 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <Property Name="LocationDeletedDate" Type="DateTime" Precision="3" />
           <Property Name="LocationModifiedById" Type="Int32" Nullable="false" />
           <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NeckSize">
+          <Key>
+            <PropertyRef Name="NeckSizeId" />
+          </Key>
+          <Property Name="NeckSizeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NeckSize1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NeckSizeAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NeckSizeChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NeckSizeDeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="NeckSizeModifiedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bottle2" Relationship="Self.FK_Bottle_NeckSize" FromRole="NeckSize" ToRole="Bottle2" />
         </EntityType>
         <EntityType Name="PackagingComponent">
           <Key>
@@ -3392,6 +3504,18 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Bottle_NeckSize">
+          <End Role="NeckSize" Type="Self.NeckSize" Multiplicity="1" />
+          <End Role="Bottle2" Type="Self.Bottle2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NeckSize">
+              <PropertyRef Name="NeckSizeId" />
+            </Principal>
+            <Dependent Role="Bottle2">
+              <PropertyRef Name="NeckSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BottlesPerCase_Bottle">
           <End Role="Bottle2" Type="Self.Bottle2" Multiplicity="1" />
           <End Role="BottlesPerCase" Type="Self.BottlesPerCase" Multiplicity="*" />
@@ -3413,6 +3537,18 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
             </Principal>
             <Dependent Role="FinishedGood">
               <PropertyRef Name="BottleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BottlesPerCase_Box">
+          <End Role="Box" Type="Self.Box" Multiplicity="1" />
+          <End Role="BottlesPerCase" Type="Self.BottlesPerCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Box">
+              <PropertyRef Name="BoxId" />
+            </Principal>
+            <Dependent Role="BottlesPerCase">
+              <PropertyRef Name="BoxId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3825,6 +3961,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <EntitySet Name="Bulks" EntityType="Self.Bulk" />
           <EntitySet Name="Bulk_QcTest" EntityType="Self.Bulk_QcTest" />
           <EntitySet Name="Bulk_Quarantine" EntityType="Self.Bulk_Quarantine" />
+          <EntitySet Name="Caps" EntityType="Self.Cap" />
           <EntitySet Name="FinishedGoods" EntityType="Self.FinishedGood" />
           <EntitySet Name="FinishedGood_BuyItems" EntityType="Self.FinishedGood_BuyItems" />
           <EntitySet Name="FinishedGood_QcTest" EntityType="Self.FinishedGood_QcTest" />
@@ -3836,6 +3973,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <EntitySet Name="ItemSubTypes" EntityType="Self.ItemSubType" />
           <EntitySet Name="ItemTypes" EntityType="Self.ItemType" />
           <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="NeckSizes" EntityType="Self.NeckSize" />
           <EntitySet Name="PackagingComponents" EntityType="Self.PackagingComponent" />
           <EntitySet Name="PackagingUOMs" EntityType="Self.PackagingUOM" />
           <EntitySet Name="QcTests" EntityType="Self.QcTest" />
@@ -3866,6 +4004,10 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
             <End Role="Allergen" EntitySet="Allergens" />
             <End Role="Vendor_RawMaterial_Allergen" EntitySet="Vendor_RawMaterial_Allergen" />
           </AssociationSet>
+          <AssociationSet Name="FK_Bottle_NeckSize" Association="Self.FK_Bottle_NeckSize">
+            <End Role="NeckSize" EntitySet="NeckSizes" />
+            <End Role="Bottle2" EntitySet="Bottle2" />
+          </AssociationSet>
           <AssociationSet Name="FK_BottlesPerCase_Bottle" Association="Self.FK_BottlesPerCase_Bottle">
             <End Role="Bottle2" EntitySet="Bottle2" />
             <End Role="BottlesPerCase" EntitySet="BottlesPerCases" />
@@ -3873,6 +4015,10 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
           <AssociationSet Name="FK_FinishedGood_Bottle" Association="Self.FK_FinishedGood_Bottle">
             <End Role="Bottle2" EntitySet="Bottle2" />
             <End Role="FinishedGood" EntitySet="FinishedGoods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BottlesPerCase_Box" Association="Self.FK_BottlesPerCase_Box">
+            <End Role="Box" EntitySet="Boxes" />
+            <End Role="BottlesPerCase" EntitySet="BottlesPerCases" />
           </AssociationSet>
           <AssociationSet Name="FK_Box_ItemSubType" Association="Self.FK_Box_ItemSubType">
             <End Role="ItemSubType" EntitySet="ItemSubTypes" />
@@ -4238,6 +4384,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
                 <ScalarProperty Name="BackupNumber" ColumnName="BackupNumber" />
                 <ScalarProperty Name="BackupDate" ColumnName="BackupDate" />
                 <ScalarProperty Name="BottleId" ColumnName="BottleId" />
+                <ScalarProperty Name="ItemGUID" ColumnName="ItemGUID" />
                 <ScalarProperty Name="BottleItemKey" ColumnName="BottleItemKey" />
                 <ScalarProperty Name="BottleDescription" ColumnName="BottleDescription" />
                 <ScalarProperty Name="BottlesSmallTray" ColumnName="BottlesSmallTray" />
@@ -4269,6 +4416,9 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
                 <ScalarProperty Name="LabelSquareInches" ColumnName="LabelSquareInches" />
                 <ScalarProperty Name="LabelSquareCm" ColumnName="LabelSquareCm" />
                 <ScalarProperty Name="BottleSize" ColumnName="BottleSize" />
+                <ScalarProperty Name="NeckSizeId" ColumnName="NeckSizeId" />
+                <ScalarProperty Name="BottleColor" ColumnName="BottleColor" />
+                <ScalarProperty Name="BottleMaterial" ColumnName="BottleMaterial" />
                 <ScalarProperty Name="PrintFrames" ColumnName="PrintFrames" />
                 <ScalarProperty Name="NumberOfPrintingPositions" ColumnName="NumberOfPrintingPositions" />
                 <ScalarProperty Name="BottleAddedDate" ColumnName="BottleAddedDate" />
@@ -4324,6 +4474,9 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
                 <ScalarProperty Name="LabelSquareInches" ColumnName="LabelSquareInches" />
                 <ScalarProperty Name="LabelSquareCm" ColumnName="LabelSquareCm" />
                 <ScalarProperty Name="BottleSize" ColumnName="BottleSize" />
+                <ScalarProperty Name="NeckSizeId" ColumnName="NeckSizeId" />
+                <ScalarProperty Name="BottleColor" ColumnName="BottleColor" />
+                <ScalarProperty Name="BottleMaterial" ColumnName="BottleMaterial" />
                 <ScalarProperty Name="PrintFrames" ColumnName="PrintFrames" />
                 <ScalarProperty Name="NumberOfPrintingPositions" ColumnName="NumberOfPrintingPositions" />
                 <ScalarProperty Name="BottleModifiedById" ColumnName="BottleModifiedById" />
@@ -4379,6 +4532,9 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
                 <ScalarProperty Name="LabelSquareInches" ColumnName="LabelSquareInches" />
                 <ScalarProperty Name="LabelSquareCm" ColumnName="LabelSquareCm" />
                 <ScalarProperty Name="BottleSize" ColumnName="BottleSize" />
+                <ScalarProperty Name="BottleColor" ColumnName="BottleColor" />
+                <ScalarProperty Name="NeckSizeId" ColumnName="NeckSizeId" />
+                <ScalarProperty Name="BottleMaterial" ColumnName="BottleMaterial" />
                 <ScalarProperty Name="PrintFrames" ColumnName="PrintFrames" />
                 <ScalarProperty Name="NumberOfPrintingPositions" ColumnName="NumberOfPrintingPositions" />
                 <ScalarProperty Name="BottleAddedDate" ColumnName="BottleAddedDate" />
@@ -4393,7 +4549,7 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
               <MappingFragment StoreEntitySet="BottlesPerCase">
                 <ScalarProperty Name="BottlesPerCaseId" ColumnName="BottlesPerCaseId" />
                 <ScalarProperty Name="BottleId" ColumnName="BottleId" />
-                <ScalarProperty Name="PackagingUnitId" ColumnName="PackagingUnitId" />
+                <ScalarProperty Name="BoxId" ColumnName="BoxId" />
                 <ScalarProperty Name="NumberOfBottlesUnWrapped" ColumnName="NumberOfBottlesUnWrapped" />
                 <ScalarProperty Name="NumberOfBottlesWrapped" ColumnName="NumberOfBottlesWrapped" />
                 <ScalarProperty Name="BottlesPerCaseAddedDate" ColumnName="BottlesPerCaseAddedDate" />
@@ -4499,6 +4655,23 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
                 <ScalarProperty Name="Bulk_QuarantineDeletedDate" ColumnName="Bulk_QuarantineDeletedDate" />
                 <ScalarProperty Name="Bulk_QuarantineModifiedById" ColumnName="Bulk_QuarantineModifiedById" />
                 <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Caps">
+            <EntityTypeMapping TypeName="PipingRockModel.Cap">
+              <MappingFragment StoreEntitySet="Cap">
+                <ScalarProperty Name="CapId" ColumnName="CapId" />
+                <ScalarProperty Name="ItemGUID" ColumnName="ItemGUID" />
+                <ScalarProperty Name="CapItemKey" ColumnName="CapItemKey" />
+                <ScalarProperty Name="CapDescription" ColumnName="CapDescription" />
+                <ScalarProperty Name="NeckSize" ColumnName="NeckSize" />
+                <ScalarProperty Name="CapColor" ColumnName="CapColor" />
+                <ScalarProperty Name="CapLiner" ColumnName="CapLiner" />
+                <ScalarProperty Name="CapAddedDate" ColumnName="CapAddedDate" />
+                <ScalarProperty Name="CapChangedDate" ColumnName="CapChangedDate" />
+                <ScalarProperty Name="CapDeletedDate" ColumnName="CapDeletedDate" />
+                <ScalarProperty Name="CapModifiedById" ColumnName="CapModifiedById" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4725,6 +4898,18 @@ warning 6002: The table/view 'PipingRock.md.QcTestView' does not have a primary 
                 <ScalarProperty Name="LocationDeletedDate" ColumnName="LocationDeletedDate" />
                 <ScalarProperty Name="LocationModifiedById" ColumnName="LocationModifiedById" />
                 <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NeckSizes">
+            <EntityTypeMapping TypeName="PipingRockModel.NeckSize">
+              <MappingFragment StoreEntitySet="NeckSize">
+                <ScalarProperty Name="NeckSizeId" ColumnName="NeckSizeId" />
+                <ScalarProperty Name="NeckSize1" ColumnName="NeckSize" />
+                <ScalarProperty Name="NeckSizeAddedDate" ColumnName="NeckSizeAddedDate" />
+                <ScalarProperty Name="NeckSizeChangedDate" ColumnName="NeckSizeChangedDate" />
+                <ScalarProperty Name="NeckSizeDeletedDate" ColumnName="NeckSizeDeletedDate" />
+                <ScalarProperty Name="NeckSizeModifiedById" ColumnName="NeckSizeModifiedById" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

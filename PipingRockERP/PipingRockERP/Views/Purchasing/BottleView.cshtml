@@ -21,7 +21,7 @@
             });
             $(document).ready(function () {
                 $('.tt').each(function () {
-                    $(this).attr('value', $(this).attr('value').replace(',', '.'));
+                    $(this).text($(this).text().replace(',', '.'));
                 })
             });
             function checkInt(input) {
@@ -50,11 +50,12 @@
     <aside style="margin-top:10px">
         <div class="panel" @*style="border:1px solid"*@>
             <div style="margin-left: 20px">
-                <h4>Purchasing > Edit Bottle</h4>
+                <h4>Purchasing > View Bottle</h4>
             </div>
             <button style="margin-left:18px; max-width:90px;" class="btn btn-success1" onclick="location.href='@Url.Action("BottleChart", "Purchasing")'">Back</button>
             @using (Html.BeginForm("SubmitBottleUpdate", "Purchasing", new { bottleId = @ViewBag.Bottle[0].BottleId }, FormMethod.Post, null))
             {
+                <br />
                 <table>
                     <tr>
                         <td>Bottle ID</td>
@@ -63,15 +64,15 @@
                     </tr>
                     <tr>
                         <td>Bottle Item Key</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleItemKey</div></td>
+                        <td><div id="" name="bottleId">@ViewBag.Bottle[0].BottleItemKey</div></td>
                     </tr>
                     <tr>
                         <td>Bottle Description</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleDescription</div></td>
+                        <td><div id="" name="bottleId">@ViewBag.Bottle[0].BottleDescription</div></td>
                     </tr>
                     <tr>
                         <td>Bottles Small Tray</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottlesSmallTray</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottlesSmallTray</div></td>
                     </tr>
                     <tr>
                         <td>Bottles Large Tray</td>
@@ -79,79 +80,91 @@
                     </tr>
                     <tr>
                         <td>Wrapped Bottles Tray Small</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].WrappedBottlesTraySmall</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].WrappedBottlesTraySmall</div></td>
                     </tr>
                     <tr>
                         <td>Wrapped Bottles Tray Large</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].WrappedBottlesTrayLarge</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].WrappedBottlesTrayLarge</div></td>
                     </tr>
                     <tr>
                         <td>Layers Unwrapped</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].LayersUnWrapped</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].LayersUnWrapped</div></td>
                         <td>Layers Wrapped</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].LayersWrapped</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].LayersWrapped</div></td>
                     </tr>
                     <tr>
                         <td>Bottle Length</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleLengthInches</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleLengthInches</div></td>
                         <td>Bottle Length Cm</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleLengthCm</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleLengthCm</div></td>
                     </tr>
                     <tr>
                         <td>Bottle Width</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleWidthInches</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleWidthInches</div></td>
                         <td>Bottle Length Cm</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleWidthCm</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleWidthCm</div></td>
                     </tr>
                     <tr>
                         <td>Bottle Hieght</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleHieghtInches</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleHieghtInches</div></td>
                         <td>Bottle Hieght Cm</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleHieghtCm</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleHieghtCm</div></td>
                     </tr>
                     <tr>
                         <td>Bottle Cubic Inches</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleCubicInches</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleCubicInches</div></td>
                         <td>Bottle Cubic Cm</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleCubicCm</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleCubicCm</div></td>
                     </tr>
                     <tr>
                         <td>Bottle Length Wrapped</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleLengthWrappedInches</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleLengthWrappedInches</div></td>
                         <td>Bottle Length Wrapped Cm</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleLengthWrappedCm</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleLengthWrappedCm</div></td>
                     </tr>
                     <tr>
                         <td>Bottle Width Wrapped</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleWidthWrappedInches</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleWidthWrappedInches</div></td>
                         <td>Bottle Width Wrapped Cm</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleWidthWrappedCm</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleWidthWrappedCm</div></td>
                     </tr>
                     <tr>
                         <td>Bottle Depth Wrapped</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleDepthWrappedInches</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleDepthWrappedInches</div></td>
                         <td>Bottle Depth Wrapped Cm</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleDepthWrappedCm</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleDepthWrappedCm</div></td>
                     </tr>
                     <tr>
                         <td>Bottle Cubic Inch Wrapped</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleCubicInchWrappedInches</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleCubicInchWrappedInches</div></td>
                         <td>Bottle Cubic Wrapped Cm</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleCubicInchWrappedCm</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleCubicInchWrappedCm</div></td>
                     </tr>
                     <tr>
                         <td>Bottle Label Square Inches</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleLabelSquareInches</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].BottleLabelSquareInches</div></td>
                     </tr>
                     <tr>
                         <td>Label Square In</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].LabelSquareInches</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].LabelSquareInches</div></td>
                         <td>Label Square Cm</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].LabelSquareCm</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].LabelSquareCm</div></td>
                     </tr>
                     <tr>
                         <td>Bottle Size</td>
                         <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleSize</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Material</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleMaterial</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Color</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].BottleColor</div></td>
+                    </tr>
+                    <tr>
+                        <td>Bottleneck Size</td>
+                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].NeckSizeId</div></td>
                     </tr>
                     <tr>
                         <td>Print Frames</td>
@@ -159,10 +172,13 @@
                     </tr>
                     <tr>
                         <td>Number of Print Position</td>
-                        <td><div id="bottleId" name="bottleId">@ViewBag.Bottle[0].NumberOfPrintingPositions</div></td>
+                        <td><div class="tt" name="bottleId">@ViewBag.Bottle[0].NumberOfPrintingPositions</div></td>
                     </tr>
                 </table>
             }
         </div>
     </aside>
+    <footer>
+        <p style="text-align:center; font-size:16px;">Modified by (userID):@ViewBag.Bottle[0].BottleModifiedById</p>
+    </footer>
 }

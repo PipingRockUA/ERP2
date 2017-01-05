@@ -20,6 +20,7 @@
           <ScalarProperty Name="BackupNumber" ColumnName="BackupNumber" />
           <ScalarProperty Name="BackupDate" ColumnName="BackupDate" />
           <ScalarProperty Name="BottleId" ColumnName="BottleId" />
+          <ScalarProperty Name="ItemGUID" ColumnName="ItemGUID" />
           <ScalarProperty Name="BottleItemKey" ColumnName="BottleItemKey" />
           <ScalarProperty Name="BottleDescription" ColumnName="BottleDescription" />
           <ScalarProperty Name="BottlesSmallTray" ColumnName="BottlesSmallTray" />
@@ -51,6 +52,9 @@
           <ScalarProperty Name="LabelSquareInches" ColumnName="LabelSquareInches" />
           <ScalarProperty Name="LabelSquareCm" ColumnName="LabelSquareCm" />
           <ScalarProperty Name="BottleSize" ColumnName="BottleSize" />
+          <ScalarProperty Name="NeckSizeId" ColumnName="NeckSizeId" />
+          <ScalarProperty Name="BottleColor" ColumnName="BottleColor" />
+          <ScalarProperty Name="BottleMaterial" ColumnName="BottleMaterial" />
           <ScalarProperty Name="PrintFrames" ColumnName="PrintFrames" />
           <ScalarProperty Name="NumberOfPrintingPositions" ColumnName="NumberOfPrintingPositions" />
           <ScalarProperty Name="BottleAddedDate" ColumnName="BottleAddedDate" />
@@ -106,6 +110,9 @@
           <ScalarProperty Name="LabelSquareInches" ColumnName="LabelSquareInches" />
           <ScalarProperty Name="LabelSquareCm" ColumnName="LabelSquareCm" />
           <ScalarProperty Name="BottleSize" ColumnName="BottleSize" />
+          <ScalarProperty Name="NeckSizeId" ColumnName="NeckSizeId" />
+          <ScalarProperty Name="BottleColor" ColumnName="BottleColor" />
+          <ScalarProperty Name="BottleMaterial" ColumnName="BottleMaterial" />
           <ScalarProperty Name="PrintFrames" ColumnName="PrintFrames" />
           <ScalarProperty Name="NumberOfPrintingPositions" ColumnName="NumberOfPrintingPositions" />
           <ScalarProperty Name="BottleModifiedById" ColumnName="BottleModifiedById" />
@@ -161,6 +168,9 @@
           <ScalarProperty Name="LabelSquareInches" ColumnName="LabelSquareInches" />
           <ScalarProperty Name="LabelSquareCm" ColumnName="LabelSquareCm" />
           <ScalarProperty Name="BottleSize" ColumnName="BottleSize" />
+          <ScalarProperty Name="BottleColor" ColumnName="BottleColor" />
+          <ScalarProperty Name="NeckSizeId" ColumnName="NeckSizeId" />
+          <ScalarProperty Name="BottleMaterial" ColumnName="BottleMaterial" />
           <ScalarProperty Name="PrintFrames" ColumnName="PrintFrames" />
           <ScalarProperty Name="NumberOfPrintingPositions" ColumnName="NumberOfPrintingPositions" />
           <ScalarProperty Name="BottleAddedDate" ColumnName="BottleAddedDate" />
@@ -175,7 +185,7 @@
         <MappingFragment StoreEntitySet="BottlesPerCase">
           <ScalarProperty Name="BottlesPerCaseId" ColumnName="BottlesPerCaseId" />
           <ScalarProperty Name="BottleId" ColumnName="BottleId" />
-          <ScalarProperty Name="PackagingUnitId" ColumnName="PackagingUnitId" />
+          <ScalarProperty Name="BoxId" ColumnName="BoxId" />
           <ScalarProperty Name="NumberOfBottlesUnWrapped" ColumnName="NumberOfBottlesUnWrapped" />
           <ScalarProperty Name="NumberOfBottlesWrapped" ColumnName="NumberOfBottlesWrapped" />
           <ScalarProperty Name="BottlesPerCaseAddedDate" ColumnName="BottlesPerCaseAddedDate" />
@@ -281,6 +291,23 @@
           <ScalarProperty Name="Bulk_QuarantineDeletedDate" ColumnName="Bulk_QuarantineDeletedDate" />
           <ScalarProperty Name="Bulk_QuarantineModifiedById" ColumnName="Bulk_QuarantineModifiedById" />
           <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Caps">
+      <EntityTypeMapping TypeName="PipingRockModel.Cap">
+        <MappingFragment StoreEntitySet="Cap">
+          <ScalarProperty Name="CapId" ColumnName="CapId" />
+          <ScalarProperty Name="ItemGUID" ColumnName="ItemGUID" />
+          <ScalarProperty Name="CapItemKey" ColumnName="CapItemKey" />
+          <ScalarProperty Name="CapDescription" ColumnName="CapDescription" />
+          <ScalarProperty Name="NeckSize" ColumnName="NeckSize" />
+          <ScalarProperty Name="CapColor" ColumnName="CapColor" />
+          <ScalarProperty Name="CapLiner" ColumnName="CapLiner" />
+          <ScalarProperty Name="CapAddedDate" ColumnName="CapAddedDate" />
+          <ScalarProperty Name="CapChangedDate" ColumnName="CapChangedDate" />
+          <ScalarProperty Name="CapDeletedDate" ColumnName="CapDeletedDate" />
+          <ScalarProperty Name="CapModifiedById" ColumnName="CapModifiedById" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -507,6 +534,18 @@
           <ScalarProperty Name="LocationDeletedDate" ColumnName="LocationDeletedDate" />
           <ScalarProperty Name="LocationModifiedById" ColumnName="LocationModifiedById" />
           <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NeckSizes">
+      <EntityTypeMapping TypeName="PipingRockModel.NeckSize">
+        <MappingFragment StoreEntitySet="NeckSize">
+          <ScalarProperty Name="NeckSizeId" ColumnName="NeckSizeId" />
+          <ScalarProperty Name="NeckSize1" ColumnName="NeckSize" />
+          <ScalarProperty Name="NeckSizeAddedDate" ColumnName="NeckSizeAddedDate" />
+          <ScalarProperty Name="NeckSizeChangedDate" ColumnName="NeckSizeChangedDate" />
+          <ScalarProperty Name="NeckSizeDeletedDate" ColumnName="NeckSizeDeletedDate" />
+          <ScalarProperty Name="NeckSizeModifiedById" ColumnName="NeckSizeModifiedById" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

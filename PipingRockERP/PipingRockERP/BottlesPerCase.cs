@@ -16,7 +16,7 @@ namespace PipingRockERP
     {
         public int BottlesPerCaseId { get; set; }
         public int BottleId { get; set; }
-        public int PackagingUnitId { get; set; }
+        public int BoxId { get; set; }
         public int NumberOfBottlesUnWrapped { get; set; }
         public int NumberOfBottlesWrapped { get; set; }
         public System.DateTime BottlesPerCaseAddedDate { get; set; }
@@ -26,5 +26,6 @@ namespace PipingRockERP
         public bool isDeleted { get; set; }
     
         public virtual Bottle2 Bottle2 { get; set; }
+        public virtual Box Box { get; set; }
     }
 }

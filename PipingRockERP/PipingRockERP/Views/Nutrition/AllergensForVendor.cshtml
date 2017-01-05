@@ -1,12 +1,11 @@
 ﻿@{
-    ViewBag.Title = "BottleChart";
+    ViewBag.Title = "AllergensForVendor";
 }
 @if (Request.IsAuthenticated)
 {
-    @Html.Partial("_PurchasingPartial")
+    @Html.Partial("_NutritionPartial")
     <head>
         <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
-
         <script type="text/javascript" src="~/Scripts/jquery-3.1.1.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -15,7 +14,7 @@
                     $(this).text(t);
                 })});
             function myFunction() {
-                // Declare variables 
+                // Declare variables
                 var input, filter, table, tr, td1, td2, i;
                 input = document.getElementById("inputSearch");
                 filter = input.value.toUpperCase();
@@ -32,7 +31,7 @@
                         } else {
                             tr[i].style.display = "none";
                         }
-                    } 
+                    }
                 }
                 document.getElementById("searchIdT").innerHTML = "Total Pages:1 Records:" + parseInt($('tr:visible').length - 1);
                 document.getElementById("searchIdB").innerHTML = "Total Pages:1 Records:" + parseInt($('tr:visible').length - 1);
@@ -45,43 +44,46 @@
     <aside style="margin-top:10px">
         <div class="panel" @*style="border:1px solid"*@>
             <div style="margin-left: 20px">
-                <h4>Purchasing > Bottle Chart</h4>
-                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Purchasing", new { param = "BottleAdd" })'">Add</button>
-                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("ExportBottle", "Purchasing")'">Export</button>
-                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("ImportBottle", "Purchasing")'">Import</button>
-                <input class="search" type="text" name="search" id="inputSearch" onkeyup="myFunction()" placeholder="Search.." />
-                <p id="searchIdT" style="text-align:right; font-size:14px">Total Pages:1 Records:@ViewBag.Bottles.Count</p>
+                <h4>Nutrition > Raw Material > Vendor > Allergen</h4>
+                @*<button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Purchasing", new { param = "AddRawMaterial" })'">Add</button>*@
+
             </div>
+            <button style="margin-left:18px; max-width:90px;" class="btn btn-success1" onclick="javascript:history.go(-1)">Back</button>
+            <button style="margin-left:18px; max-width:90px;" class="btn btn-success" onclick="location.href='@Url.Action()'">Save</button>
             <table class="table" id="table1">
                 <thead>
                     <tr style="font-size:14px">
+                        <th>Allergen</th>
                         <th>Action</th>
-                        <th id="hiddingEls">Item Key</th>
-                        <th id="hiddingElm">Description</th>
-                        <th>Small Tray</th>
-                        <th id="hiddingEll">Changed Date</th>
-                        <th id="hiddingEls">Bottle Cubic Inches</th>
-                        <th>View</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach (var item in ViewBag.Bottles)
-                {
+                    @foreach (var item in ViewBag.VendorAllergens)
+                    {
                         <tr style="font-size:14px">
-                            <td>@Html.ActionLink("Edit", "BottleEdit", "Purchasing", new { bottleId = item.BottleId.ToString() }, null)</td>
-                            <td id="hiddingEls">@item.BottleItemKey</td>
-                            <td id="hiddingElm">@item.BottleDescription</td>
-                            <td>@item.BottlesSmallTray</td>
-                            <td id="hiddingEll">@item.BottleChangedDate.ToString("MM'/'dd'/'yyyy")</td>
-                            <td id="hiddingEls" class="tt">@item.BottleCubicInches</td>
-                            <td>@Html.ActionLink("View", "BottleView", "Purchasing", new { bottleId = item.BottleId.ToString() }, null)</td>
+                            <td>@item.Allergen1</td>
+                            <td>
+                                <form>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Free of
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Contains
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Exempt
+                                    </label>
+                                    <label class="radio-inline active">
+                                        <input type="radio" name="optradio" checked="">Unknown
+                                    </label>
+                                </form>
+                            </td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
     </aside>
-    <footer>
-        <p id="searchIdB" style="text-align:center; font-size:14px">Total Pages:1 Records:@ViewBag.Bottles.Count</p>
-    </footer>
+    <footer></footer>
 }
+

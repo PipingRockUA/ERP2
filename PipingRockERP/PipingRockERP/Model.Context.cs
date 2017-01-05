@@ -39,6 +39,7 @@ namespace PipingRockERP
         public virtual DbSet<Bulk> Bulks { get; set; }
         public virtual DbSet<Bulk_QcTest> Bulk_QcTest { get; set; }
         public virtual DbSet<Bulk_Quarantine> Bulk_Quarantine { get; set; }
+        public virtual DbSet<Cap> Caps { get; set; }
         public virtual DbSet<FinishedGood> FinishedGoods { get; set; }
         public virtual DbSet<FinishedGood_BuyItems> FinishedGood_BuyItems { get; set; }
         public virtual DbSet<FinishedGood_QcTest> FinishedGood_QcTest { get; set; }
@@ -50,6 +51,7 @@ namespace PipingRockERP
         public virtual DbSet<ItemSubType> ItemSubTypes { get; set; }
         public virtual DbSet<ItemType> ItemTypes { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<NeckSize> NeckSizes { get; set; }
         public virtual DbSet<PackagingComponent> PackagingComponents { get; set; }
         public virtual DbSet<PackagingUOM> PackagingUOMs { get; set; }
         public virtual DbSet<QcTest> QcTests { get; set; }

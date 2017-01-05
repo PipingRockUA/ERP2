@@ -42,7 +42,6 @@
             font-size: 16px;
         }
     </style>
-        </style>
     <aside style="margin-top:10px">
         <div class="panel" @*style="border:1px solid"*@>
             <div style="margin-left: 20px">
@@ -144,6 +143,18 @@
                     <tr>
                         <td>Bottle Size</td>
                         <td><input class="form-control" type="text" id="BottleSize" name="BottleSize" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Material</td>
+                        <td><input class="form-control" type="text" id="BottleMaterial" name="BottleMaterial" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Color</td>
+                        <td><input class="form-control" type="text" id="BottleColor" name="BottleColor" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottleneck Size</td>
+                        <td>@Html.DropDownList("Neck Sise", (SelectList)ViewBag.NeckSize)</td>
                     </tr>
                     <tr>
                         <td>Print Frames</td>

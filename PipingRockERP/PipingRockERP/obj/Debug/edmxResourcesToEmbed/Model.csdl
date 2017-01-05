@@ -21,6 +21,7 @@
     <Property Name="BackupNumber" Type="Int32" Nullable="false" />
     <Property Name="BackupDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="BottleId" Type="Int32" Nullable="false" />
+    <Property Name="ItemGUID" Type="Guid" Nullable="false" />
     <Property Name="BottleItemKey" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="BottleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="BottlesSmallTray" Type="Int32" Nullable="false" />
@@ -52,6 +53,9 @@
     <Property Name="LabelSquareInches" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
     <Property Name="LabelSquareCm" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
     <Property Name="BottleSize" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NeckSizeId" Type="Int32" Nullable="false" />
+    <Property Name="BottleColor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BottleMaterial" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="PrintFrames" Type="Int32" Nullable="false" />
     <Property Name="NumberOfPrintingPositions" Type="Int32" Nullable="false" />
     <Property Name="BottleAddedDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -105,6 +109,9 @@
     <Property Name="LabelSquareInches" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
     <Property Name="LabelSquareCm" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
     <Property Name="BottleSize" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NeckSizeId" Type="Int32" Nullable="false" />
+    <Property Name="BottleColor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BottleMaterial" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="PrintFrames" Type="Int32" Nullable="false" />
     <Property Name="NumberOfPrintingPositions" Type="Int32" Nullable="false" />
     <Property Name="BottleModifiedById" Type="Int32" Nullable="false" />
@@ -159,12 +166,16 @@
     <Property Name="LabelSquareInches" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
     <Property Name="LabelSquareCm" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
     <Property Name="BottleSize" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BottleColor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NeckSizeId" Type="Int32" Nullable="false" />
+    <Property Name="BottleMaterial" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="PrintFrames" Type="Int32" Nullable="false" />
     <Property Name="NumberOfPrintingPositions" Type="Int32" Nullable="false" />
     <Property Name="BottleAddedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="BottleChangedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="BottleDeletedDate" Type="DateTime" Precision="3" />
     <Property Name="BottleModifiedById" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="NeckSize" Relationship="Self.FK_Bottle_NeckSize" FromRole="Bottle2" ToRole="NeckSize" />
     <NavigationProperty Name="BottlesPerCases" Relationship="Self.FK_BottlesPerCase_Bottle" FromRole="Bottle2" ToRole="BottlesPerCase" />
     <NavigationProperty Name="FinishedGoods" Relationship="Self.FK_FinishedGood_Bottle" FromRole="Bottle2" ToRole="FinishedGood" />
   </EntityType>
@@ -174,7 +185,7 @@
     </Key>
     <Property Name="BottlesPerCaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="BottleId" Type="Int32" Nullable="false" />
-    <Property Name="PackagingUnitId" Type="Int32" Nullable="false" />
+    <Property Name="BoxId" Type="Int32" Nullable="false" />
     <Property Name="NumberOfBottlesUnWrapped" Type="Int32" Nullable="false" />
     <Property Name="NumberOfBottlesWrapped" Type="Int32" Nullable="false" />
     <Property Name="BottlesPerCaseAddedDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -183,6 +194,7 @@
     <Property Name="BottlesPerCaseModifiedById" Type="Int32" Nullable="false" />
     <Property Name="isDeleted" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Bottle2" Relationship="Self.FK_BottlesPerCase_Bottle" FromRole="BottlesPerCase" ToRole="Bottle2" />
+    <NavigationProperty Name="Box" Relationship="Self.FK_BottlesPerCase_Box" FromRole="BottlesPerCase" ToRole="Box" />
   </EntityType>
   <EntityType Name="Box">
     <Key>
@@ -209,6 +221,7 @@
     <Property Name="BoxChangedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="BoxDeletedDate" Type="DateTime" Precision="3" />
     <Property Name="BoxModifiedById" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BottlesPerCases" Relationship="Self.FK_BottlesPerCase_Box" FromRole="Box" ToRole="BottlesPerCase" />
     <NavigationProperty Name="ItemSubType" Relationship="Self.FK_Box_ItemSubType" FromRole="Box" ToRole="ItemSubType" />
     <NavigationProperty Name="FinishedGoods" Relationship="Self.FK_FinishedGood_Box" FromRole="Box" ToRole="FinishedGood" />
   </EntityType>
@@ -292,6 +305,22 @@
     <Property Name="isDeleted" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Bulk" Relationship="Self.FK_Bulk_Quarantine_Bulk" FromRole="Bulk_Quarantine" ToRole="Bulk" />
     <NavigationProperty Name="Quarantine" Relationship="Self.FK_Bulk_Quarantine_Quarantine" FromRole="Bulk_Quarantine" ToRole="Quarantine" />
+  </EntityType>
+  <EntityType Name="Cap">
+    <Key>
+      <PropertyRef Name="CapId" />
+    </Key>
+    <Property Name="CapId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemGUID" Type="Guid" Nullable="false" />
+    <Property Name="CapItemKey" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CapDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NeckSize" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CapColor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CapLiner" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CapAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CapChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CapDeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="CapModifiedById" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="FinishedGood">
     <Key>
@@ -530,6 +559,18 @@
     <Property Name="LocationDeletedDate" Type="DateTime" Precision="3" />
     <Property Name="LocationModifiedById" Type="Int32" Nullable="false" />
     <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NeckSize">
+    <Key>
+      <PropertyRef Name="NeckSizeId" />
+    </Key>
+    <Property Name="NeckSizeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NeckSize1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NeckSizeAddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NeckSizeChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NeckSizeDeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="NeckSizeModifiedById" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bottle2" Relationship="Self.FK_Bottle_NeckSize" FromRole="NeckSize" ToRole="Bottle2" />
   </EntityType>
   <EntityType Name="PackagingComponent">
     <Key>
@@ -1197,6 +1238,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Bottle_NeckSize">
+    <End Role="NeckSize" Type="Self.NeckSize" Multiplicity="1" />
+    <End Role="Bottle2" Type="Self.Bottle2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NeckSize">
+        <PropertyRef Name="NeckSizeId" />
+      </Principal>
+      <Dependent Role="Bottle2">
+        <PropertyRef Name="NeckSizeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_BottlesPerCase_Bottle">
     <End Role="Bottle2" Type="Self.Bottle2" Multiplicity="1" />
     <End Role="BottlesPerCase" Type="Self.BottlesPerCase" Multiplicity="*" />
@@ -1218,6 +1271,18 @@
       </Principal>
       <Dependent Role="FinishedGood">
         <PropertyRef Name="BottleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BottlesPerCase_Box">
+    <End Role="Box" Type="Self.Box" Multiplicity="1" />
+    <End Role="BottlesPerCase" Type="Self.BottlesPerCase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Box">
+        <PropertyRef Name="BoxId" />
+      </Principal>
+      <Dependent Role="BottlesPerCase">
+        <PropertyRef Name="BoxId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1630,6 +1695,7 @@
     <EntitySet Name="Bulks" EntityType="Self.Bulk" />
     <EntitySet Name="Bulk_QcTest" EntityType="Self.Bulk_QcTest" />
     <EntitySet Name="Bulk_Quarantine" EntityType="Self.Bulk_Quarantine" />
+    <EntitySet Name="Caps" EntityType="Self.Cap" />
     <EntitySet Name="FinishedGoods" EntityType="Self.FinishedGood" />
     <EntitySet Name="FinishedGood_BuyItems" EntityType="Self.FinishedGood_BuyItems" />
     <EntitySet Name="FinishedGood_QcTest" EntityType="Self.FinishedGood_QcTest" />
@@ -1641,6 +1707,7 @@
     <EntitySet Name="ItemSubTypes" EntityType="Self.ItemSubType" />
     <EntitySet Name="ItemTypes" EntityType="Self.ItemType" />
     <EntitySet Name="Locations" EntityType="Self.Location" />
+    <EntitySet Name="NeckSizes" EntityType="Self.NeckSize" />
     <EntitySet Name="PackagingComponents" EntityType="Self.PackagingComponent" />
     <EntitySet Name="PackagingUOMs" EntityType="Self.PackagingUOM" />
     <EntitySet Name="QcTests" EntityType="Self.QcTest" />
@@ -1671,6 +1738,10 @@
       <End Role="Allergen" EntitySet="Allergens" />
       <End Role="Vendor_RawMaterial_Allergen" EntitySet="Vendor_RawMaterial_Allergen" />
     </AssociationSet>
+    <AssociationSet Name="FK_Bottle_NeckSize" Association="Self.FK_Bottle_NeckSize">
+      <End Role="NeckSize" EntitySet="NeckSizes" />
+      <End Role="Bottle2" EntitySet="Bottle2" />
+    </AssociationSet>
     <AssociationSet Name="FK_BottlesPerCase_Bottle" Association="Self.FK_BottlesPerCase_Bottle">
       <End Role="Bottle2" EntitySet="Bottle2" />
       <End Role="BottlesPerCase" EntitySet="BottlesPerCases" />
@@ -1678,6 +1749,10 @@
     <AssociationSet Name="FK_FinishedGood_Bottle" Association="Self.FK_FinishedGood_Bottle">
       <End Role="Bottle2" EntitySet="Bottle2" />
       <End Role="FinishedGood" EntitySet="FinishedGoods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BottlesPerCase_Box" Association="Self.FK_BottlesPerCase_Box">
+      <End Role="Box" EntitySet="Boxes" />
+      <End Role="BottlesPerCase" EntitySet="BottlesPerCases" />
     </AssociationSet>
     <AssociationSet Name="FK_Box_ItemSubType" Association="Self.FK_Box_ItemSubType">
       <End Role="ItemSubType" EntitySet="ItemSubTypes" />

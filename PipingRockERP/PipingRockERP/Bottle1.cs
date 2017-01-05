@@ -46,6 +46,9 @@ namespace PipingRockERP
         public decimal LabelSquareInches { get; set; }
         public decimal LabelSquareCm { get; set; }
         public string BottleSize { get; set; }
+        public int NeckSizeId { get; set; }
+        public string BottleColor { get; set; }
+        public string BottleMaterial { get; set; }
         public int PrintFrames { get; set; }
         public int NumberOfPrintingPositions { get; set; }
         public int BottleModifiedById { get; set; }

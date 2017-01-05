@@ -156,6 +156,18 @@
                         <td><input class="form-control" type="text" id="BottleSize" name="BottleSize" value="@ViewBag.Bottle[0].BottleSize" /></td>
                     </tr>
                     <tr>
+                        <td>Bottle Material</td>
+                        <td><input class="form-control" type="text" id="BottleMaterial" name="BottleMaterial" value="@ViewBag.Bottle[0].BottleMaterial" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottle Color</td>
+                        <td><input class="form-control" type="text" id="BottleColor" name="BottleColor" value="@ViewBag.Bottle[0].BottleColor" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bottleneck Size</td>
+                        <td>@Html.DropDownList("Neck Sise", new SelectList(ViewBag.NeckSize), new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
                         <td>Print Frames</td>
                         <td><input class="form-control tt" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="PrintFrames" name="PrintFrames" value="@ViewBag.Bottle[0].PrintFrames" /></td>
                     </tr>

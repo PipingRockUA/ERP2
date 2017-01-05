@@ -99,8 +99,8 @@ namespace PipingRockERP.Controllers
             int ID = Int32.Parse(rawMaterialId);
 
             var rawMaterial = (from RawMaterial in db.RawMaterials
-                            where RawMaterial.RawMaterialId == ID
-                            select RawMaterial).ToList();
+                               where RawMaterial.RawMaterialId == ID
+                               select RawMaterial).ToList();
 
             ViewBag.RawMaterial = rawMaterial;
 
@@ -121,7 +121,7 @@ namespace PipingRockERP.Controllers
             };
             db.Allergens.Add(allergen);
             db.SaveChanges();
-            return RedirectToAction("Allergens");
+            return RedirectToAction("RawMaterials");
         }
 
         public ActionResult SubmitRawMaterialUpdate(string allergenId, string allergenName)
@@ -138,7 +138,45 @@ namespace PipingRockERP.Controllers
 
             db.Entry(qt).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Allergens");
+            return RedirectToAction("RawMaterials");
+        }
+
+        public ActionResult MaterialsForVendor(int rawMaterialId)
+        {
+            PipingRockEntities db = new PipingRockEntities();
+
+            ViewBag.RawMaterial = (from RawMaterial in db.RawMaterials
+                                   where RawMaterial.RawMaterialId == rawMaterialId
+                                   select RawMaterial).ToList();
+
+            ViewBag.rawMaterialsVendorsC = (from Vendor in db.Vendors
+                                            join Vendor_RawMaterial in db.Vendor_RawMaterial on Vendor.VendorId equals Vendor_RawMaterial.VendorId
+                                            where Vendor_RawMaterial.RawMaterialId == rawMaterialId && Vendor_RawMaterial.isCurrentVendor == true
+                                            select Vendor).ToList();
+
+            ViewBag.rawMaterialsVendorsR = (from Vendor in db.Vendors
+                                            join Vendor_RawMaterial in db.Vendor_RawMaterial on Vendor.VendorId equals Vendor_RawMaterial.VendorId
+                                            where Vendor_RawMaterial.RawMaterialId == rawMaterialId && Vendor_RawMaterial.isRejectedVendor == true
+                                            select Vendor).ToList();
+
+            return View();
+        }
+
+        public ActionResult AllergensForVendor(int rawVendorId, int rawMaterialId)
+        {
+            PipingRockEntities db = new PipingRockEntities();
+
+            var vendor_rawMaterialId = (from Vendor_RawMaterial in db.Vendor_RawMaterial
+                                        where Vendor_RawMaterial.RawMaterialId == rawMaterialId && Vendor_RawMaterial.VendorId == rawVendorId
+                                        select Vendor_RawMaterial).ToList();
+            int ID = vendor_rawMaterialId[0].Vendor_RawMaterialId;
+
+            ViewBag.VendorAllergens = (from Vendor_RawMaterial_Allergen in db.Vendor_RawMaterial_Allergen
+                                       join Allergen in db.Allergens on Vendor_RawMaterial_Allergen.AllergenId equals Allergen.AllergenId
+                                       where Vendor_RawMaterial_Allergen.Vendor_RawMaterialId == ID
+                                       select Allergen).ToList();
+
+            return View();
         }
         #endregion
     }

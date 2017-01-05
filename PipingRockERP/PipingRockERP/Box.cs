@@ -17,6 +17,7 @@ namespace PipingRockERP
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Box()
         {
+            this.BottlesPerCases = new HashSet<BottlesPerCase>();
             this.FinishedGoods = new HashSet<FinishedGood>();
         }
     
@@ -42,6 +43,8 @@ namespace PipingRockERP
         public Nullable<System.DateTime> BoxDeletedDate { get; set; }
         public int BoxModifiedById { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BottlesPerCase> BottlesPerCases { get; set; }
         public virtual ItemSubType ItemSubType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FinishedGood> FinishedGoods { get; set; }

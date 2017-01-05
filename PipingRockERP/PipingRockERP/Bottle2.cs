@@ -54,6 +54,9 @@ namespace PipingRockERP
         public decimal LabelSquareInches { get; set; }
         public decimal LabelSquareCm { get; set; }
         public string BottleSize { get; set; }
+        public string BottleColor { get; set; }
+        public int NeckSizeId { get; set; }
+        public string BottleMaterial { get; set; }
         public int PrintFrames { get; set; }
         public int NumberOfPrintingPositions { get; set; }
         public System.DateTime BottleAddedDate { get; set; }
@@ -61,6 +64,7 @@ namespace PipingRockERP
         public Nullable<System.DateTime> BottleDeletedDate { get; set; }
         public int BottleModifiedById { get; set; }
     
+        public virtual NeckSize NeckSize { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BottlesPerCase> BottlesPerCases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
