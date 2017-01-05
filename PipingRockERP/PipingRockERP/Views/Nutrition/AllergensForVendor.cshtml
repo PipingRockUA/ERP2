@@ -39,12 +39,21 @@
             var numOfVisibleRows = $('tr').filter(function () {
                 return $(this).css('display') === '';
             }).length;
+            $(document).ready(function () {
+                $('.container').on('click', '.radioBtn a', function () {
+                    var sel = $(this).data('title');
+                    var tog = $(this).data('toggle');
+                    $(this).parent().next('.' + tog).prop('value', sel);
+                    $(this).parent().find('a[data-toggle="' + tog + '"]').not('[data-title="' + sel + '"]').removeClass('active').addClass('notActive');
+                    $(this).parent().find('a[data-toggle="' + tog + '"][data-title="' + sel + '"]').removeClass('notActive').addClass('active');
+                });
+            });
         </script>
     </head>
     <aside style="margin-top:10px">
         <div class="panel" @*style="border:1px solid"*@>
             <div style="margin-left: 20px">
-                <h4>Nutrition > Raw Material > Vendor > Allergen</h4>
+                <h4>Nutrition > Raw Material > Vendor: @ViewBag.VendorKey > Allergens</h4>
                 @*<button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Purchasing", new { param = "AddRawMaterial" })'">Add</button>*@
 
             </div>
@@ -54,7 +63,7 @@
                 <thead>
                     <tr style="font-size:14px">
                         <th>Allergen</th>
-                        <th>Action</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,20 +72,19 @@
                         <tr style="font-size:14px">
                             <td>@item.Allergen1</td>
                             <td>
-                                <form>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="optradio">Free of
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="optradio">Contains
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="optradio">Exempt
-                                    </label>
-                                    <label class="radio-inline active">
-                                        <input type="radio" name="optradio" checked="">Unknown
-                                    </label>
-                                </form>
+                                <div class="form-group">
+                                    <div class="col-sm-7 col-md-7">
+                                        <div class="input-group">
+                                            <div class="radioBtn btn-group">
+                                                <a class="btn btn-primary active" data-toggle="fun" data-title="F">Free of</a>
+                                                <a class="btn btn-primary notActive" data-toggle="fun" data-title="C">Contains</a>
+                                                <a class="btn btn-primary notActive" data-toggle="fun" data-title="E">Exempt</a>
+                                                <a class="btn btn-primary notActive" data-toggle="fun" data-title="U">Unknown</a>
+                                            </div>
+                                            <input type="hidden" name="fun" class="fun">
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     }

@@ -175,6 +175,9 @@ namespace PipingRockERP.Controllers
                                        join Allergen in db.Allergens on Vendor_RawMaterial_Allergen.AllergenId equals Allergen.AllergenId
                                        where Vendor_RawMaterial_Allergen.Vendor_RawMaterialId == ID
                                        select Allergen).ToList();
+            ViewBag.VendorKey = (from Vendor in db.Vendors
+                                  where Vendor.VendorId == rawVendorId
+                                  select Vendor).ToList()[0].VendorKey;
 
             return View();
         }

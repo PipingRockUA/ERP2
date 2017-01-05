@@ -1,4 +1,9 @@
-﻿.btn-success1 {
+﻿#radioBtn .notActive{
+    color: #000000;
+    background-color: #fff;
+}
+
+.btn-success1 {
   color: #fff;
   background-color: #FFB42C;
   border-color: #FFB42C;
@@ -67,7 +72,7 @@ fieldset[disabled] .btn-success1.focus {
     background-image: url('../src/img/search-icon.png');
     background-position: 4px 4px; 
     background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
+    padding: 8px 20px 8px 40px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
