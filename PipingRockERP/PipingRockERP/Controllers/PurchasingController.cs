@@ -454,19 +454,19 @@ namespace PipingRockERP.Controllers
                           LengthIN = Bottle.BottleLengthInches,
                           WidthIN = Bottle.BottleWidthInches,
                           HieghtIN = Bottle.BottleHieghtInches,
-                          //BottleCubicInches = Bottle.BottleCubicInches,
-                          //BottleLengthCm = Bottle.BottleLengthCm,
-                          //BottleWidthCm = Bottle.BottleWidthCm,
-                          //BottleHieghtCm = Bottle.BottleHieghtCm,
-                          //BottleCubicCm = Bottle.BottleCubicCm,
+                          BottleCubicInches = Bottle.BottleCubicInches,
+                          BottleLengthCm = Bottle.BottleLengthCm,
+                          BottleWidthCm = Bottle.BottleWidthCm,
+                          BottleHieghtCm = Bottle.BottleHieghtCm,
+                          BottleCubicCm = Bottle.BottleCubicCm,
                           WRINLength = Bottle.BottleLengthWrappedInches,
                           WRINWidth = Bottle.BottleWidthWrappedInches,
                           WRINDepth = Bottle.BottleDepthWrappedInches,
-                          //BottleCubicInchWrappedInches = Bottle.BottleCubicInchWrappedInches,
-                          //BottleLengthWrappedCm = Bottle.BottleLengthWrappedCm,
-                          //BottleWidthWrappedCm = Bottle.BottleWidthWrappedCm,
-                          //BottleDepthWrappedCm = Bottle.BottleDepthWrappedCm,
-                          //BottleCubicInchWrappedCm = Bottle.BottleCubicInchWrappedCm,
+                          BottleCubicInchWrappedInches = Bottle.BottleCubicInchWrappedInches,
+                          BottleLengthWrappedCm = Bottle.BottleLengthWrappedCm,
+                          BottleWidthWrappedCm = Bottle.BottleWidthWrappedCm,
+                          BottleDepthWrappedCm = Bottle.BottleDepthWrappedCm,
+                          BottleCubicInchWrappedCm = Bottle.BottleCubicInchWrappedCm,
                           LabelSqIN = Bottle.BottleLabelSquareInches,
                           BottleSize = Bottle.BottleSize,
                           PrintFrames = Bottle.PrintFrames,
@@ -480,10 +480,47 @@ namespace PipingRockERP.Controllers
             dt.TableName = "Bottles";
             dt = queryToDataTable(qt);
 
+            dt.Columns["SMTrayQty"].ColumnName = "SM Tray Qty";
+
+            dt.Columns["LGTrayQty"].ColumnName = "LG Tray Qty";
+
+            dt.Columns["WRSMQty"].ColumnName = "WR SM Qty";
+
+            dt.Columns["WRLGQty"].ColumnName = "WR LG Qty";
+            dt.Columns["LengthIN"].ColumnName = "Length IN";
+
+            dt.Columns["WidthIN"].ColumnName = "Width IN";
+            dt.Columns["HieghtIN"].ColumnName = "Hieght IN";
+            dt.Columns["BottleCubicInches"].ColumnName = "Bottle Cubic Inches";
+            dt.Columns["BottleLengthCm"].ColumnName = "Bottle Length Cm";
+
+            dt.Columns["BottleWidthCm"].ColumnName = "Bottle Width Cm";
+            dt.Columns["BottleHieghtCm"].ColumnName = "Bottle Hieght Cm";
+            dt.Columns["BottleCubicCm"].ColumnName = "Bottle Cubic Cm";
+
+
+            dt.Columns["WRINLength"].ColumnName = "WR IN Length";
+            dt.Columns["WRINWidth"].ColumnName = "WR IN Width";
+            dt.Columns["WRINDepth"].ColumnName = "WR IN Depth";
+
+            dt.Columns["BottleCubicInchWrappedInches"].ColumnName = "WR Cubic IN";
+
+            dt.Columns["BottleLengthWrappedCm"].ColumnName = "WR CM Length";
+            dt.Columns["BottleWidthWrappedCm"].ColumnName = "WR CM Width";
+            dt.Columns["BottleDepthWrappedCm"].ColumnName = "WR CM Depth";
+            dt.Columns["BottleCubicInchWrappedCm"].ColumnName = "WR CM Cubic";
+
+
+            dt.Columns["LabelSqIN"].ColumnName = "Label Sq IN";
+
+            dt.Columns["BottleSize"].ColumnName = "Bottle Size";
+            dt.Columns["PrintFrames"].ColumnName = "Print Frames ";
+            dt.Columns["PrintPositions"].ColumnName = "Print Positions";
+
             using (XLWorkbook wb = new XLWorkbook())
             {
                 wb.AddWorksheet("Bottles");
-                wb.Worksheet(1).Cell(1, 1).InsertTable(dt);
+                wb.Worksheet(1).Cell(10, 1).InsertTable(dt);
                 wb.Worksheet(1).Rows().AdjustToContents();
                 wb.Worksheet(1).Column(1).Hide();
                 wb.Worksheet(1).Column(2).AdjustToContents();
