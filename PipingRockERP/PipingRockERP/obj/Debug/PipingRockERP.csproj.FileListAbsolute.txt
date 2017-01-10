@@ -191,6 +191,6 @@ C:\Users\Valeriy\Documents\GitHub\ERP2\PipingRockERP\PipingRockERP\bin\Microsoft
 C:\Users\Valeriy\Documents\GitHub\ERP2\PipingRockERP\PipingRockERP\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Valeriy\Documents\GitHub\ERP2\PipingRockERP\PipingRockERP\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Valeriy\Documents\GitHub\ERP2\PipingRockERP\PipingRockERP\bin\ru\EntityFramework.resources.dll
-C:\Users\Valeriy\Documents\GitHub\ERP2\PipingRockERP\PipingRockERP\obj\Debug\PipingRockERP.csprojResolveAssemblyReference.cache
 C:\Users\Valeriy\Documents\GitHub\ERP2\PipingRockERP\PipingRockERP\obj\Debug\PipingRockERP.dll
 C:\Users\Valeriy\Documents\GitHub\ERP2\PipingRockERP\PipingRockERP\obj\Debug\PipingRockERP.pdb
+C:\Users\Valeriy\Documents\GitHub\ERP2\PipingRockERP\PipingRockERP\obj\Debug\PipingRockERP.csprojResolveAssemblyReference.cache
