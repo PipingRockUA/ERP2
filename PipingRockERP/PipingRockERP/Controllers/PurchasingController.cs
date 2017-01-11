@@ -268,9 +268,9 @@ namespace PipingRockERP.Controllers
                         PipingRockEntities db = new PipingRockEntities();
                         //db.prc_ExcelUpload_Bottle(1);
                         //db.Bottle1.
-                        for (int i = 0; i < result.Tables[0].Rows.Count; i++)
+                        for (int i = 10; i < result.Tables[0].Rows.Count + 10; i++)
                         {
-                            data.BottleId = Int32.Parse(result.Tables[0].Rows[i][0].ToString().Trim());
+                            data.BottleId = Int32.Parse(result.Tables[0].Rows[i][26].ToString().Trim());
                             data.BottleItemKey = result.Tables[0].Rows[i][0].ToString().Trim();
                             data.BottleDescription = result.Tables[0].Rows[i][2].ToString().Trim();
                             data.BottlesSmallTray = Int32.Parse(result.Tables[0].Rows[i][3].ToString().Trim());
