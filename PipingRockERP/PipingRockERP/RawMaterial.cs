@@ -28,22 +28,38 @@ namespace PipingRockERP
         public string RawMaterialDescriptionLong { get; set; }
         public int ItemStatusId { get; set; }
         public int ItemTypeId { get; set; }
+        public int ItemSubTypeId { get; set; }
         public int PurchaseUnitOfMeasureId { get; set; }
         public int StockUnitOfMeasureId { get; set; }
         public int ProductionUnitOfMeasureId { get; set; }
         public int SaleUnitOfMeasureId { get; set; }
         public bool ReceivingBoxLabelsRequired { get; set; }
         public int StorageConditionId { get; set; }
-        public int QcTestId { get; set; }
         public int ExpirationMonths { get; set; }
         public int RetestingMonths { get; set; }
         public decimal PctOfLifeForRetesting { get; set; }
-        public int QuarantineTypeId { get; set; }
+        public string MakeBuy { get; set; }
+        public int AmountPerCase { get; set; }
+        public int ItemFormId { get; set; }
+        public int MakeShelfLifeMonths { get; set; }
+        public int BuyShelfLifeMonths { get; set; }
+        public string OutsideVendorItemNumber { get; set; }
+        public string VendorCaseDimensions { get; set; }
+        public decimal LastCost { get; set; }
+        public decimal StandardCost { get; set; }
+        public decimal AverageCost { get; set; }
+        public decimal FuturePOCost { get; set; }
+        public int MonthlyUsage { get; set; }
+        public decimal GLCodeRevenue { get; set; }
+        public decimal GLCodeCost { get; set; }
         public System.DateTime RawMaterialAddedDate { get; set; }
         public System.DateTime RawMaterialChangedDate { get; set; }
         public Nullable<System.DateTime> RawMaterialDeletedDate { get; set; }
         public int RawMaterialModifiedById { get; set; }
     
+        public virtual ItemStatu ItemStatu { get; set; }
+        public virtual ItemSubType ItemSubType { get; set; }
+        public virtual ItemType ItemType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vendor_RawMaterial> Vendor_RawMaterial { get; set; }
     }

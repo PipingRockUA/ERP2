@@ -501,6 +501,7 @@
     <Property Name="isDeleted" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Bulks" Relationship="Self.FK_Bulk_ItemStatus" FromRole="ItemStatus" ToRole="Bulk" />
     <NavigationProperty Name="FinishedGoods" Relationship="Self.FK_FinishedGood_ItemStatus" FromRole="ItemStatus" ToRole="FinishedGood" />
+    <NavigationProperty Name="RawMaterials" Relationship="Self.FK_RawMaterial_ItemStatus" FromRole="ItemStatus" ToRole="RawMaterial" />
   </EntityType>
   <EntityType Name="ItemSubType">
     <Key>
@@ -521,6 +522,7 @@
     <NavigationProperty Name="Boxes" Relationship="Self.FK_Box_ItemSubType" FromRole="ItemSubType" ToRole="Box" />
     <NavigationProperty Name="ItemType" Relationship="Self.FK_ItemSubType_ItemType" FromRole="ItemSubType" ToRole="ItemType" />
     <NavigationProperty Name="PackagingComponents" Relationship="Self.FK_PackagingComponent_ItemSubType" FromRole="ItemSubType" ToRole="PackagingComponent" />
+    <NavigationProperty Name="RawMaterials" Relationship="Self.FK_RawMaterial_ItemSubType" FromRole="ItemSubType" ToRole="RawMaterial" />
   </EntityType>
   <EntityType Name="ItemType">
     <Key>
@@ -539,6 +541,7 @@
     <Property Name="isDeleted" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Bulks" Relationship="Self.FK_Bulk_ItemType" FromRole="ItemType" ToRole="Bulk" />
     <NavigationProperty Name="ItemSubTypes" Relationship="Self.FK_ItemSubType_ItemType" FromRole="ItemType" ToRole="ItemSubType" />
+    <NavigationProperty Name="RawMaterials" Relationship="Self.FK_RawMaterial_ItemType" FromRole="ItemType" ToRole="RawMaterial" />
   </EntityType>
   <EntityType Name="Location">
     <Key>
@@ -650,21 +653,37 @@
     <Property Name="RawMaterialDescriptionLong" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
     <Property Name="ItemStatusId" Type="Int32" Nullable="false" />
     <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+    <Property Name="ItemSubTypeId" Type="Int32" Nullable="false" />
     <Property Name="PurchaseUnitOfMeasureId" Type="Int32" Nullable="false" />
     <Property Name="StockUnitOfMeasureId" Type="Int32" Nullable="false" />
     <Property Name="ProductionUnitOfMeasureId" Type="Int32" Nullable="false" />
     <Property Name="SaleUnitOfMeasureId" Type="Int32" Nullable="false" />
     <Property Name="ReceivingBoxLabelsRequired" Type="Boolean" Nullable="false" />
     <Property Name="StorageConditionId" Type="Int32" Nullable="false" />
-    <Property Name="QcTestId" Type="Int32" Nullable="false" />
     <Property Name="ExpirationMonths" Type="Int32" Nullable="false" />
     <Property Name="RetestingMonths" Type="Int32" Nullable="false" />
     <Property Name="PctOfLifeForRetesting" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
-    <Property Name="QuarantineTypeId" Type="Int32" Nullable="false" />
+    <Property Name="MakeBuy" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="AmountPerCase" Type="Int32" Nullable="false" />
+    <Property Name="ItemFormId" Type="Int32" Nullable="false" />
+    <Property Name="MakeShelfLifeMonths" Type="Int32" Nullable="false" />
+    <Property Name="BuyShelfLifeMonths" Type="Int32" Nullable="false" />
+    <Property Name="OutsideVendorItemNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VendorCaseDimensions" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastCost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="StandardCost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="AverageCost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="FuturePOCost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="MonthlyUsage" Type="Int32" Nullable="false" />
+    <Property Name="GLCodeRevenue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="GLCodeCost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="RawMaterialAddedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="RawMaterialChangedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="RawMaterialDeletedDate" Type="DateTime" Precision="3" />
     <Property Name="RawMaterialModifiedById" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ItemStatu" Relationship="Self.FK_RawMaterial_ItemStatus" FromRole="RawMaterial" ToRole="ItemStatus" />
+    <NavigationProperty Name="ItemSubType" Relationship="Self.FK_RawMaterial_ItemSubType" FromRole="RawMaterial" ToRole="ItemSubType" />
+    <NavigationProperty Name="ItemType" Relationship="Self.FK_RawMaterial_ItemType" FromRole="RawMaterial" ToRole="ItemType" />
     <NavigationProperty Name="Vendor_RawMaterial" Relationship="Self.FK_Vendor_RawMaterial_RawMaterial" FromRole="RawMaterial" ToRole="Vendor_RawMaterial" />
   </EntityType>
   <EntityType Name="Ref_GDSN_UoM">
@@ -1189,6 +1208,33 @@
     <Property Name="CUSTOM9" Type="Boolean" />
     <Property Name="CUSTOM10" Type="Boolean" />
   </EntityType>
+  <EntityType Name="ItemType_SubTypeView">
+    <Key>
+      <PropertyRef Name="ItemType" />
+      <PropertyRef Name="ItemTypeCode" />
+      <PropertyRef Name="ItemSubType" />
+      <PropertyRef Name="ItemSubTypeCode" />
+      <PropertyRef Name="ItemSubTypeDescription" />
+      <PropertyRef Name="ItemSubTypeLossFactorInventory" />
+      <PropertyRef Name="ItemSubTypeLossFactorCost" />
+      <PropertyRef Name="ItemSubTypeisDeleted" />
+      <PropertyRef Name="ItemTypeLossFactorCost" />
+      <PropertyRef Name="ItemTypeLossFactorInventory" />
+      <PropertyRef Name="ItemTypeisDeleted" />
+    </Key>
+    <Property Name="ItemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ItemTypeCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ItemTypeDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ItemSubType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ItemSubTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ItemSubTypeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ItemSubTypeLossFactorInventory" Type="Decimal" Precision="3" Scale="3" Nullable="false" />
+    <Property Name="ItemSubTypeLossFactorCost" Type="Decimal" Precision="3" Scale="3" Nullable="false" />
+    <Property Name="ItemSubTypeisDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="ItemTypeLossFactorCost" Type="Decimal" Precision="3" Scale="3" Nullable="false" />
+    <Property Name="ItemTypeLossFactorInventory" Type="Decimal" Precision="3" Scale="3" Nullable="false" />
+    <Property Name="ItemTypeisDeleted" Type="Boolean" Nullable="false" />
+  </EntityType>
   <EntityType Name="ItemView">
     <Key>
       <PropertyRef Name="ItemKey" />
@@ -1550,6 +1596,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_RawMaterial_ItemStatus">
+    <End Role="ItemStatus" Type="Self.ItemStatu" Multiplicity="1" />
+    <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemStatus">
+        <PropertyRef Name="ItemStatusId" />
+      </Principal>
+      <Dependent Role="RawMaterial">
+        <PropertyRef Name="ItemStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ItemSubType_ItemType">
     <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
     <End Role="ItemSubType" Type="Self.ItemSubType" Multiplicity="*" />
@@ -1571,6 +1629,30 @@
       </Principal>
       <Dependent Role="PackagingComponent">
         <PropertyRef Name="ItemSubTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RawMaterial_ItemSubType">
+    <End Role="ItemSubType" Type="Self.ItemSubType" Multiplicity="1" />
+    <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemSubType">
+        <PropertyRef Name="ItemSubTypeId" />
+      </Principal>
+      <Dependent Role="RawMaterial">
+        <PropertyRef Name="ItemSubTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RawMaterial_ItemType">
+    <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+    <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemType">
+        <PropertyRef Name="ItemTypeId" />
+      </Principal>
+      <Dependent Role="RawMaterial">
+        <PropertyRef Name="ItemTypeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1728,6 +1810,7 @@
     <EntitySet Name="vBatchMaster_BOM" EntityType="Self.vBatchMaster_BOM" />
     <EntitySet Name="vBatchMaster_Item" EntityType="Self.vBatchMaster_Item" />
     <EntitySet Name="vBatchMaster_Location" EntityType="Self.vBatchMaster_Location" />
+    <EntitySet Name="ItemType_SubTypeView" EntityType="Self.ItemType_SubTypeView" />
     <EntitySet Name="ItemViews" EntityType="Self.ItemView" />
     <EntitySet Name="QcTestViews" EntityType="Self.QcTestView" />
     <AssociationSet Name="FK_UserRoleAuthority_Screen" Association="Self.FK_UserRoleAuthority_Screen">
@@ -1842,6 +1925,10 @@
       <End Role="Quarantine" EntitySet="Quarantines" />
       <End Role="FinishedGood_Quarantine" EntitySet="FinishedGood_Quarantine" />
     </AssociationSet>
+    <AssociationSet Name="FK_RawMaterial_ItemStatus" Association="Self.FK_RawMaterial_ItemStatus">
+      <End Role="ItemStatus" EntitySet="ItemStatus" />
+      <End Role="RawMaterial" EntitySet="RawMaterials" />
+    </AssociationSet>
     <AssociationSet Name="FK_ItemSubType_ItemType" Association="Self.FK_ItemSubType_ItemType">
       <End Role="ItemType" EntitySet="ItemTypes" />
       <End Role="ItemSubType" EntitySet="ItemSubTypes" />
@@ -1849,6 +1936,14 @@
     <AssociationSet Name="FK_PackagingComponent_ItemSubType" Association="Self.FK_PackagingComponent_ItemSubType">
       <End Role="ItemSubType" EntitySet="ItemSubTypes" />
       <End Role="PackagingComponent" EntitySet="PackagingComponents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RawMaterial_ItemSubType" Association="Self.FK_RawMaterial_ItemSubType">
+      <End Role="ItemSubType" EntitySet="ItemSubTypes" />
+      <End Role="RawMaterial" EntitySet="RawMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RawMaterial_ItemType" Association="Self.FK_RawMaterial_ItemType">
+      <End Role="ItemType" EntitySet="ItemTypes" />
+      <End Role="RawMaterial" EntitySet="RawMaterials" />
     </AssociationSet>
     <AssociationSet Name="FK_QcTest_QcTest" Association="Self.FK_QcTest_QcTest">
       <End Role="QcTest" EntitySet="QcTests" />
@@ -1916,6 +2011,9 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="Tool_ScriptDiagram2005">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="prc_ExcelUpload_Bottle">
       <Parameter Name="ModifiedById" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -1942,6 +2040,7 @@
     <FunctionImport Name="GetStorageConditionByID" ReturnType="Collection(PipingRockModel.GetStorageConditionByID_Result)">
       <Parameter Name="StorageConditionID" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="prc_Integrator_RawMaterial" />
     <FunctionImport Name="UpdateBrandByID">
       <Parameter Name="BrandID" Mode="In" Type="Int32" />
       <Parameter Name="BrandCode" Mode="In" Type="String" />

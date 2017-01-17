@@ -1,0 +1,177 @@
+﻿@{
+    PipingRockEntities db = new PipingRockEntities();
+    ViewBag.Title = "RawMaterialAdd";
+    ViewBag.StorageCondition = (from StorageCondition in db.StorageConditions
+                                select StorageCondition.StorageCondition1).ToList();
+    ViewBag.ItemForm = (from ItemForm in db.ItemForms
+                        select ItemForm.ItemFormExternal).ToList();
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_NutritionPartial")
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+        <script type="text/javascript" src="~/Scripts/jquery-3.1.1.js"></script>
+        <script type="text/javascript" src="~/App/Scripts/RadioButtonsUtils.js"></script>
+        <script type="text/javascript" src="~/App/Scripts/DimensionsUtils.js"></script>
+        <script type="text/javascript">
+            function checkInt(input) {
+                var value = input.value;
+                var rep = /[-\,\.;":'a-zA-Zа-яА-Я]/;
+                if (rep.test(value)) {
+                    value = value.replace(rep, '');
+                    input.value = value;
+                }
+            }
+            function checkDec(input) {
+                var value = input.value;
+                var rep = /[-;":'a-zA-Zа-яА-Я]/;
+                if (rep.test(value)) {
+                    value = value.replace(rep, '');
+                    input.value = value;
+                }
+            }
+            function checkTextOnly(input) {
+                var value = input.value;
+                var rep = /[-;":'0-9]/;
+                if (rep.test(value)) {
+                    value = value.replace(rep, '');
+                    input.value = value;
+                }
+            }
+        </script>
+    </head>
+    <aside style="margin-top:10px">
+        <div class="panel" @*style="border:1px solid"*@>
+            <div style="margin-left: 20px">
+                <h4>Maintenance > Add Allergen</h4>
+            </div>
+            <button style="margin-left:18px; max-width:90px" class="btn btn-success1" onclick="location.href='@Url.Action("RawMaterials", "Nutrition")'">Back</button>
+            @using (Html.BeginForm("SubmitRawMaterialAdd", "Nutrition"))
+            {
+                <input style="margin-left:18px; margin-top:2px; width:90px" class="btn btn-success" type="submit" id="SubmitRawMaterialAdd" value="Save" />
+                <table>
+                    <tr>
+                        <td>Item Key</td>
+                        <td><input class="form-control" type="text" id="RawMaterialItemKey" name="RawMaterialItemKey" value="N/A" /></td>
+                    </tr>
+                    @*<tr>
+                        <td>Description S</td>
+                        <td><input class="form-control" type="text" id="RawMaterialDescriptionShort" name="RawMaterialDescriptionShort" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>Description M</td>
+                        <td><input class="form-control" type="text" id="RawMaterialDescriptionMedium" name="RawMaterialDescriptionMedium" value="N/A" /></td>
+                    </tr>*@
+                    <tr>
+                        <td>Description</td>
+                        <td><input class="form-control" type="text" id="RawMaterialDescriptionLong" name="RawMaterialDescriptionLong" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>PurchaseUnitOfMeasureId</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="PurchaseUnitOfMeasureId" name="PurchaseUnitOfMeasureId" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>StockUnitOfMeasureId</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="StockUnitOfMeasureId" name="StockUnitOfMeasureId" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>ProductionUnitOfMeasureId</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="ProductionUnitOfMeasureId" name="ProductionUnitOfMeasureId" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>SaleUnitOfMeasureId</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="SaleUnitOfMeasureId" name="SaleUnitOfMeasureId" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>ReceivingBoxLabelsRequired</td>
+                        <td>
+                            <div class="radioBtn btn-group">
+                                <a style="width:140px" class="btn btn-primary notActive" data-toggle="ReceivingBoxLabels" data-title="true">Yes</a>
+                                <a style="width:140px" class="btn btn-primary notActive" data-toggle="ReceivingBoxLabels" data-title="false">No</a>
+                            </div>
+                            <input id="choosenOption" type="hidden" name="ReceivingBoxLabels" class="ReceivingBoxLabels">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Storage Condition</td>
+                        <td>@Html.DropDownList("Storage Condition", new SelectList(ViewBag.StorageCondition), new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td>ExpirationMonths</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="ExpirationMonths" name="ExpirationMonths" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>RetestingMonths</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="RetestingMonths" name="RetestingMonths" value="0" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>SaleUnitOfMeasureId</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="SaleUnitOfMeasureId" name="SaleUnitOfMeasureId" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>PctOfLifeForRetesting</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.][0-9]{1,3})?" id="PctOfLifeForRetesting" name="PctOfLifeForRetesting" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>MakeBuy</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkTextOnly(this)" maxlength="1" id="MakeBuy" name="MakeBuy" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>AmountPerCase</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="AmountPerCase" name="AmountPerCase" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>Item Form</td>
+                        <td>@Html.DropDownList("Item Form", new SelectList(ViewBag.ItemForm), new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td>MakeShelfLifeMonths</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="MakeShelfLifeMonths" name="MakeShelfLifeMonths" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>BuyShelfLifeMonths</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="BuyShelfLifeMonths" name="BuyShelfLifeMonths" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>OutsideVendorItemNumber</td>
+                        <td><input class="form-control" type="text" id="OutsideVendorItemNumber" name="OutsideVendorItemNumber" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>VendorCaseDimensions</td>
+                        <td><input class="form-control" type="text" id="VendorCaseDimensions" name="VendorCaseDimensions" value="N/A" /></td>
+                    </tr>
+                    <tr>
+                        <td>LastCost</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.][0-9]{1,3})?" id="LastCost" name="LastCost" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>StandardCost</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="StandardCost" name="StandardCost" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>AverageCost</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="AverageCost" name="AverageCost" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>FuturePOCost</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="FuturePOCost" name="FuturePOCost" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>MonthlyUsage</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkInt(this)" required pattern="[0-9]+" id="MonthlyUsage" name="MonthlyUsage" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>GLCodeRevenue</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" step="0.001" id="GLCodeRevenue" name="GLCodeRevenue" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>GLCodeCost</td>
+                        <td><input class="form-control" type="text" onkeyup="return checkDec(this)" required pattern="\d+([\.|\,][0-9]{1,3})?" id="GLCodeCost" name="GLCodeCost" value="0" /></td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </aside>
+}

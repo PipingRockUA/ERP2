@@ -1,4 +1,7 @@
 ﻿@{
+    PipingRockEntities db = new PipingRockEntities();
+    ViewBag.NeckSize = (from NeckSize in db.NeckSizes
+                        select NeckSize.NeckSize1).ToList();
     ViewBag.Title = "BottleAdd";
 }
 @if (Request.IsAuthenticated)
@@ -154,7 +157,7 @@
                     </tr>
                     <tr>
                         <td>Bottleneck Size</td>
-                        <td>@Html.DropDownList("Neck Sise", (SelectList)ViewBag.NeckSize)</td>
+                        <td>@Html.DropDownList("Neck Sise", new SelectList(ViewBag.NeckSize), new { @class = "form-control" })</td>
                     </tr>
                     <tr>
                         <td>Print Frames</td>

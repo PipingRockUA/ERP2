@@ -592,17 +592,30 @@
     <Property Name="RawMaterialDescriptionLong" Type="nvarchar" MaxLength="60" />
     <Property Name="ItemStatusId" Type="int" Nullable="false" />
     <Property Name="ItemTypeId" Type="int" Nullable="false" />
+    <Property Name="ItemSubTypeId" Type="int" Nullable="false" />
     <Property Name="PurchaseUnitOfMeasureId" Type="int" Nullable="false" />
     <Property Name="StockUnitOfMeasureId" Type="int" Nullable="false" />
     <Property Name="ProductionUnitOfMeasureId" Type="int" Nullable="false" />
     <Property Name="SaleUnitOfMeasureId" Type="int" Nullable="false" />
     <Property Name="ReceivingBoxLabelsRequired" Type="bit" Nullable="false" />
     <Property Name="StorageConditionId" Type="int" Nullable="false" />
-    <Property Name="QcTestId" Type="int" Nullable="false" />
     <Property Name="ExpirationMonths" Type="int" Nullable="false" />
     <Property Name="RetestingMonths" Type="int" Nullable="false" />
     <Property Name="PctOfLifeForRetesting" Type="decimal" Precision="18" Scale="1" Nullable="false" />
-    <Property Name="QuarantineTypeId" Type="int" Nullable="false" />
+    <Property Name="MakeBuy" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="AmountPerCase" Type="int" Nullable="false" />
+    <Property Name="ItemFormId" Type="int" Nullable="false" />
+    <Property Name="MakeShelfLifeMonths" Type="int" Nullable="false" />
+    <Property Name="BuyShelfLifeMonths" Type="int" Nullable="false" />
+    <Property Name="OutsideVendorItemNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="VendorCaseDimensions" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastCost" Type="money" Nullable="false" />
+    <Property Name="StandardCost" Type="money" Nullable="false" />
+    <Property Name="AverageCost" Type="money" Nullable="false" />
+    <Property Name="FuturePOCost" Type="money" Nullable="false" />
+    <Property Name="MonthlyUsage" Type="int" Nullable="false" />
+    <Property Name="GLCodeRevenue" Type="money" Nullable="false" />
+    <Property Name="GLCodeCost" Type="money" Nullable="false" />
     <Property Name="RawMaterialAddedDate" Type="datetime" Nullable="false" />
     <Property Name="RawMaterialChangedDate" Type="datetime" Nullable="false" />
     <Property Name="RawMaterialDeletedDate" Type="datetime" />
@@ -1118,6 +1131,35 @@ warning 6002: The table/view 'PipingRock1.dbo.vBatchMaster_Location' does not ha
     <Property Name="CUSTOM10" Type="bit" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'PipingRock1.md.ItemType_SubTypeView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ItemType_SubTypeView">
+    <Key>
+      <PropertyRef Name="ItemType" />
+      <PropertyRef Name="ItemTypeCode" />
+      <PropertyRef Name="ItemSubType" />
+      <PropertyRef Name="ItemSubTypeCode" />
+      <PropertyRef Name="ItemSubTypeDescription" />
+      <PropertyRef Name="ItemSubTypeLossFactorInventory" />
+      <PropertyRef Name="ItemSubTypeLossFactorCost" />
+      <PropertyRef Name="ItemSubTypeisDeleted" />
+      <PropertyRef Name="ItemTypeLossFactorCost" />
+      <PropertyRef Name="ItemTypeLossFactorInventory" />
+      <PropertyRef Name="ItemTypeisDeleted" />
+    </Key>
+    <Property Name="ItemType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ItemTypeCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="ItemTypeDescription" Type="nvarchar" MaxLength="100" />
+    <Property Name="ItemSubType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ItemSubTypeCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="ItemSubTypeDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ItemSubTypeLossFactorInventory" Type="decimal" Precision="3" Scale="3" Nullable="false" />
+    <Property Name="ItemSubTypeLossFactorCost" Type="decimal" Precision="3" Scale="3" Nullable="false" />
+    <Property Name="ItemSubTypeisDeleted" Type="bit" Nullable="false" />
+    <Property Name="ItemTypeLossFactorCost" Type="decimal" Precision="3" Scale="3" Nullable="false" />
+    <Property Name="ItemTypeLossFactorInventory" Type="decimal" Precision="3" Scale="3" Nullable="false" />
+    <Property Name="ItemTypeisDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'PipingRock1.md.ItemView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ItemView">
     <Key>
@@ -1482,6 +1524,42 @@ warning 6002: The table/view 'PipingRock1.md.QcTestView' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_RawMaterial_ItemStatus">
+    <End Role="ItemStatus" Type="Self.ItemStatus" Multiplicity="1" />
+    <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemStatus">
+        <PropertyRef Name="ItemStatusId" />
+      </Principal>
+      <Dependent Role="RawMaterial">
+        <PropertyRef Name="ItemStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RawMaterial_ItemSubType">
+    <End Role="ItemSubType" Type="Self.ItemSubType" Multiplicity="1" />
+    <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemSubType">
+        <PropertyRef Name="ItemSubTypeId" />
+      </Principal>
+      <Dependent Role="RawMaterial">
+        <PropertyRef Name="ItemSubTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RawMaterial_ItemType">
+    <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+    <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemType">
+        <PropertyRef Name="ItemTypeId" />
+      </Principal>
+      <Dependent Role="RawMaterial">
+        <PropertyRef Name="ItemTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ReportSort_Brand">
     <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
     <End Role="ReportSort" Type="Self.ReportSort" Multiplicity="*" />
@@ -1645,6 +1723,12 @@ warning 6002: The table/view 'PipingRock1.md.QcTestView' does not have a primary
     <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Tool_ScriptDiagram2005" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Tool_VarbinaryToVarcharHex" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+    <Parameter Name="VarbinaryValue" Type="varbinary(max)" Mode="In" />
+  </Function>
   <Function Name="prc_ExcelUpload_Bottle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="excel">
     <Parameter Name="ModifiedById" Type="int" Mode="In" />
   </Function>
@@ -1671,6 +1755,7 @@ warning 6002: The table/view 'PipingRock1.md.QcTestView' does not have a primary
   <Function Name="GetStorageConditionByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="md">
     <Parameter Name="StorageConditionID" Type="int" Mode="In" />
   </Function>
+  <Function Name="prc_Integrator_RawMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="md" />
   <Function Name="UpdateBrandByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="md">
     <Parameter Name="BrandID" Type="int" Mode="In" />
     <Parameter Name="BrandCode" Type="nvarchar" Mode="In" />
@@ -2082,6 +2167,22 @@ warning 6002: The table/view 'PipingRock1.md.QcTestView' does not have a primary
     [vBatchMaster_Location].[CUSTOM10] AS [CUSTOM10]
     FROM [dbo].[vBatchMaster_Location] AS [vBatchMaster_Location]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="ItemType_SubTypeView" EntityType="Self.ItemType_SubTypeView" store:Type="Views" store:Schema="md">
+      <DefiningQuery>SELECT 
+    [ItemType_SubTypeView].[ItemType] AS [ItemType], 
+    [ItemType_SubTypeView].[ItemTypeCode] AS [ItemTypeCode], 
+    [ItemType_SubTypeView].[ItemTypeDescription] AS [ItemTypeDescription], 
+    [ItemType_SubTypeView].[ItemSubType] AS [ItemSubType], 
+    [ItemType_SubTypeView].[ItemSubTypeCode] AS [ItemSubTypeCode], 
+    [ItemType_SubTypeView].[ItemSubTypeDescription] AS [ItemSubTypeDescription], 
+    [ItemType_SubTypeView].[ItemSubTypeLossFactorInventory] AS [ItemSubTypeLossFactorInventory], 
+    [ItemType_SubTypeView].[ItemSubTypeLossFactorCost] AS [ItemSubTypeLossFactorCost], 
+    [ItemType_SubTypeView].[ItemSubTypeisDeleted] AS [ItemSubTypeisDeleted], 
+    [ItemType_SubTypeView].[ItemTypeLossFactorCost] AS [ItemTypeLossFactorCost], 
+    [ItemType_SubTypeView].[ItemTypeLossFactorInventory] AS [ItemTypeLossFactorInventory], 
+    [ItemType_SubTypeView].[ItemTypeisDeleted] AS [ItemTypeisDeleted]
+    FROM [md].[ItemType_SubTypeView] AS [ItemType_SubTypeView]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="ItemView" EntityType="Self.ItemView" store:Type="Views" store:Schema="md">
       <DefiningQuery>SELECT 
     [ItemView].[ItemKey] AS [ItemKey], 
@@ -2210,6 +2311,18 @@ warning 6002: The table/view 'PipingRock1.md.QcTestView' does not have a primary
     <AssociationSet Name="FK_QcTest_QcTest" Association="Self.FK_QcTest_QcTest">
       <End Role="QcTest" EntitySet="QcTest" />
       <End Role="QcTest1" EntitySet="QcTest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RawMaterial_ItemStatus" Association="Self.FK_RawMaterial_ItemStatus">
+      <End Role="ItemStatus" EntitySet="ItemStatus" />
+      <End Role="RawMaterial" EntitySet="RawMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RawMaterial_ItemSubType" Association="Self.FK_RawMaterial_ItemSubType">
+      <End Role="ItemSubType" EntitySet="ItemSubType" />
+      <End Role="RawMaterial" EntitySet="RawMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RawMaterial_ItemType" Association="Self.FK_RawMaterial_ItemType">
+      <End Role="ItemType" EntitySet="ItemType" />
+      <End Role="RawMaterial" EntitySet="RawMaterial" />
     </AssociationSet>
     <AssociationSet Name="FK_ReportSort_Brand" Association="Self.FK_ReportSort_Brand">
       <End Role="Brand" EntitySet="Brand" />

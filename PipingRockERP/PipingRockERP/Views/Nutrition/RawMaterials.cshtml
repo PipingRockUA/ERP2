@@ -47,7 +47,7 @@
         <div class="panel" @*style="border:1px solid"*@>
             <div style="margin-left: 20px">
                 <h4>Nutrition > Raw Material</h4>
-                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action()'">Add</button>
+                <button style="max-width:90px" class="btn btn-success" onclick="location.href='@Url.Action("Add", "Nutrition", new { param = "RawMaterialAdd" })'">Add</button>
                 <input class="search" type="text" name="search" id="inputSearch" onkeyup="myFunction()" placeholder="Search.." />
                 <p id="searchIdT" style="text-align:right; font-size:14px">Total Pages:1 Records:@Model.Count</p>
             </div>

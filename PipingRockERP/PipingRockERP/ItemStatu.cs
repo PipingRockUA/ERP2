@@ -19,6 +19,7 @@ namespace PipingRockERP
         {
             this.Bulks = new HashSet<Bulk>();
             this.FinishedGoods = new HashSet<FinishedGood>();
+            this.RawMaterials = new HashSet<RawMaterial>();
         }
     
         public int ItemStatusId { get; set; }
@@ -34,5 +35,7 @@ namespace PipingRockERP
         public virtual ICollection<Bulk> Bulks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FinishedGood> FinishedGoods { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RawMaterial> RawMaterials { get; set; }
     }
 }

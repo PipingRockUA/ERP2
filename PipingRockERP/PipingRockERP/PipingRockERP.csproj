@@ -342,6 +342,9 @@
     <Compile Include="ItemType.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ItemType_SubTypeView.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ItemView.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -442,6 +445,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Scripts\DimensionsUtils.js" />
+    <Content Include="App\Scripts\RadioButtonsUtils.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -514,6 +518,7 @@
     <Content Include="src\img\search-icon.png" />
     <Content Include="Views\Nutrition\MaterialsForVendor.cshtml" />
     <Content Include="Views\Nutrition\AllergensForVendor.cshtml" />
+    <Content Include="Views\Nutrition\RawMaterialAdd.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
