@@ -161,7 +161,7 @@ namespace PipingRockERP.Controllers
                                               int NumberOfPrintingPositions)
         {
             PipingRockEntities db = new PipingRockEntities();
-            //int neckID = Int32.Parse((from NeckSize in db.NeckSizes where NeckSize.NeckSize1 == NeckSizeId select NeckSize.NeckSizeId).ToString());
+            int neckID = Int32.Parse((from NeckSize in db.NeckSizes where NeckSize.NeckSize1 == NeckSizeId select NeckSize.NeckSizeId).ToString());
 
             var bottle = new Bottle2()
             {
@@ -204,7 +204,7 @@ namespace PipingRockERP.Controllers
 
                 BottleColor = BottleColor,
                 BottleSize = BottleSize,
-                NeckSizeId = 0,
+                NeckSizeId = neckID,
                 BottleMaterial = BottleMaterial,
                 PrintFrames = PrintFrames,
                 NumberOfPrintingPositions = NumberOfPrintingPositions,
@@ -379,7 +379,7 @@ namespace PipingRockERP.Controllers
             var bottle = (from Bottle in db.Bottle2
                           where Bottle.BottleId == ID
                           select Bottle).Single();
-            //int neckID = Int32.Parse((from NeckSize in db.NeckSizes where NeckSize.NeckSize1 == NeckSizeId select NeckSize.NeckSizeId).ToString());
+            int neckID = Int32.Parse((from NeckSize in db.NeckSizes where NeckSize.NeckSize1 == NeckSizeId select NeckSize.NeckSizeId).ToString());
 
             bottle.BottleItemKey = BottleItemKey;
             bottle.BottleDescription = BottleDescription;
@@ -420,7 +420,7 @@ namespace PipingRockERP.Controllers
 
             bottle.BottleColor = BottleColor;
             bottle.BottleSize = BottleSize;
-            bottle.NeckSizeId = 0;
+            bottle.NeckSizeId = neckID;
             bottle.BottleMaterial = BottleMaterial;
             bottle.BottleSize = BottleSize;
             bottle.PrintFrames = PrintFrames;
@@ -480,31 +480,14 @@ namespace PipingRockERP.Controllers
             dt.TableName = "Bottles";
             dt = queryToDataTable(qt);
 
-            dt.Columns["ItemKey"].ColumnName = "Item Key";
-            dt.Columns["Description"].ColumnName = "Description";
-            dt.Columns["SMTrayQty"].ColumnName = "SM Tray Qty";
-            dt.Columns["LGTrayQty"].ColumnName = "LG Tray Qty";
-            dt.Columns["WRSMQty"].ColumnName = "WR SM Qty";
-            dt.Columns["WRLGQty"].ColumnName = "WR LG Qty";
-            dt.Columns["LengthIN"].ColumnName = "Length IN";
-            dt.Columns["WidthIN"].ColumnName = "Width IN";
-            dt.Columns["HieghtIN"].ColumnName = "Hieght IN";
-            dt.Columns["WRINLength"].ColumnName = "WR IN Length";
-            dt.Columns["WRINWidth"].ColumnName = "WR IN Width";
-            dt.Columns["WRINDepth"].ColumnName = "WR IN Depth";
-            dt.Columns["LabelSqIN"].ColumnName = "Label Sq IN";
-            dt.Columns["BottleSize"].ColumnName = "Bottle Size";
-            dt.Columns["PrintFrames"].ColumnName = "Print Frames";
-            dt.Columns["PrintPositions"].ColumnName = "Print Positions";
-
             using (XLWorkbook wb = new XLWorkbook())
             {
                 wb.AddWorksheet("Bottles");
                 wb.Worksheet(1).Cell(1, 1).InsertTable(dt);
                 wb.Worksheet(1).Rows().AdjustToContents();
                 wb.Worksheet(1).Column(1).Hide();
-                wb.Worksheet(1).Columns().AdjustToContents();
-                //wb.Worksheet(1).Column(3).AdjustToContents();
+                wb.Worksheet(1).Column(2).AdjustToContents();
+                wb.Worksheet(1).Column(3).AdjustToContents();
 
                 wb.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 wb.Style.Font.Bold = true;

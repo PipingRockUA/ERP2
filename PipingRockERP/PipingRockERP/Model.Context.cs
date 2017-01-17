@@ -72,7 +72,6 @@ namespace PipingRockERP
         public virtual DbSet<vBatchMaster_BOM> vBatchMaster_BOM { get; set; }
         public virtual DbSet<vBatchMaster_Item> vBatchMaster_Item { get; set; }
         public virtual DbSet<vBatchMaster_Location> vBatchMaster_Location { get; set; }
-        public virtual DbSet<ItemType_SubTypeView> ItemType_SubTypeView { get; set; }
         public virtual DbSet<ItemView> ItemViews { get; set; }
         public virtual DbSet<QcTestView> QcTestViews { get; set; }
     
@@ -179,15 +178,6 @@ namespace PipingRockERP
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
-        public virtual int Tool_ScriptDiagram2005(string name)
-        {
-            var nameParameter = name != null ?
-                new ObjectParameter("name", name) :
-                new ObjectParameter("name", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Tool_ScriptDiagram2005", nameParameter);
-        }
-    
         public virtual int prc_ExcelUpload_Bottle(Nullable<int> modifiedById)
         {
             var modifiedByIdParameter = modifiedById.HasValue ?
@@ -272,11 +262,6 @@ namespace PipingRockERP
                 new ObjectParameter("StorageConditionID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStorageConditionByID_Result>("GetStorageConditionByID", storageConditionIDParameter);
-        }
-    
-        public virtual int prc_Integrator_RawMaterial()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("prc_Integrator_RawMaterial");
         }
     
         public virtual int UpdateBrandByID(Nullable<int> brandID, string brandCode, string brand)

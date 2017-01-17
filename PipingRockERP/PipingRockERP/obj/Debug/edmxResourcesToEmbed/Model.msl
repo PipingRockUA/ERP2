@@ -620,30 +620,17 @@
           <ScalarProperty Name="RawMaterialDescriptionLong" ColumnName="RawMaterialDescriptionLong" />
           <ScalarProperty Name="ItemStatusId" ColumnName="ItemStatusId" />
           <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
-          <ScalarProperty Name="ItemSubTypeId" ColumnName="ItemSubTypeId" />
           <ScalarProperty Name="PurchaseUnitOfMeasureId" ColumnName="PurchaseUnitOfMeasureId" />
           <ScalarProperty Name="StockUnitOfMeasureId" ColumnName="StockUnitOfMeasureId" />
           <ScalarProperty Name="ProductionUnitOfMeasureId" ColumnName="ProductionUnitOfMeasureId" />
           <ScalarProperty Name="SaleUnitOfMeasureId" ColumnName="SaleUnitOfMeasureId" />
           <ScalarProperty Name="ReceivingBoxLabelsRequired" ColumnName="ReceivingBoxLabelsRequired" />
           <ScalarProperty Name="StorageConditionId" ColumnName="StorageConditionId" />
+          <ScalarProperty Name="QcTestId" ColumnName="QcTestId" />
           <ScalarProperty Name="ExpirationMonths" ColumnName="ExpirationMonths" />
           <ScalarProperty Name="RetestingMonths" ColumnName="RetestingMonths" />
           <ScalarProperty Name="PctOfLifeForRetesting" ColumnName="PctOfLifeForRetesting" />
-          <ScalarProperty Name="MakeBuy" ColumnName="MakeBuy" />
-          <ScalarProperty Name="AmountPerCase" ColumnName="AmountPerCase" />
-          <ScalarProperty Name="ItemFormId" ColumnName="ItemFormId" />
-          <ScalarProperty Name="MakeShelfLifeMonths" ColumnName="MakeShelfLifeMonths" />
-          <ScalarProperty Name="BuyShelfLifeMonths" ColumnName="BuyShelfLifeMonths" />
-          <ScalarProperty Name="OutsideVendorItemNumber" ColumnName="OutsideVendorItemNumber" />
-          <ScalarProperty Name="VendorCaseDimensions" ColumnName="VendorCaseDimensions" />
-          <ScalarProperty Name="LastCost" ColumnName="LastCost" />
-          <ScalarProperty Name="StandardCost" ColumnName="StandardCost" />
-          <ScalarProperty Name="AverageCost" ColumnName="AverageCost" />
-          <ScalarProperty Name="FuturePOCost" ColumnName="FuturePOCost" />
-          <ScalarProperty Name="MonthlyUsage" ColumnName="MonthlyUsage" />
-          <ScalarProperty Name="GLCodeRevenue" ColumnName="GLCodeRevenue" />
-          <ScalarProperty Name="GLCodeCost" ColumnName="GLCodeCost" />
+          <ScalarProperty Name="QuarantineTypeId" ColumnName="QuarantineTypeId" />
           <ScalarProperty Name="RawMaterialAddedDate" ColumnName="RawMaterialAddedDate" />
           <ScalarProperty Name="RawMaterialChangedDate" ColumnName="RawMaterialChangedDate" />
           <ScalarProperty Name="RawMaterialDeletedDate" ColumnName="RawMaterialDeletedDate" />
@@ -1160,24 +1147,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ItemType_SubTypeView">
-      <EntityTypeMapping TypeName="PipingRockModel.ItemType_SubTypeView">
-        <MappingFragment StoreEntitySet="ItemType_SubTypeView">
-          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
-          <ScalarProperty Name="ItemTypeCode" ColumnName="ItemTypeCode" />
-          <ScalarProperty Name="ItemTypeDescription" ColumnName="ItemTypeDescription" />
-          <ScalarProperty Name="ItemSubType" ColumnName="ItemSubType" />
-          <ScalarProperty Name="ItemSubTypeCode" ColumnName="ItemSubTypeCode" />
-          <ScalarProperty Name="ItemSubTypeDescription" ColumnName="ItemSubTypeDescription" />
-          <ScalarProperty Name="ItemSubTypeLossFactorInventory" ColumnName="ItemSubTypeLossFactorInventory" />
-          <ScalarProperty Name="ItemSubTypeLossFactorCost" ColumnName="ItemSubTypeLossFactorCost" />
-          <ScalarProperty Name="ItemSubTypeisDeleted" ColumnName="ItemSubTypeisDeleted" />
-          <ScalarProperty Name="ItemTypeLossFactorCost" ColumnName="ItemTypeLossFactorCost" />
-          <ScalarProperty Name="ItemTypeLossFactorInventory" ColumnName="ItemTypeLossFactorInventory" />
-          <ScalarProperty Name="ItemTypeisDeleted" ColumnName="ItemTypeisDeleted" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ItemViews">
       <EntityTypeMapping TypeName="PipingRockModel.ItemView">
         <MappingFragment StoreEntitySet="ItemView">
@@ -1206,7 +1175,6 @@
     <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PipingRockModel.Store.sp_helpdiagrams" />
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PipingRockModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PipingRockModel.Store.sp_upgraddiagrams" />
-    <FunctionImportMapping FunctionImportName="Tool_ScriptDiagram2005" FunctionName="PipingRockModel.Store.Tool_ScriptDiagram2005" />
     <FunctionImportMapping FunctionImportName="prc_ExcelUpload_Bottle" FunctionName="PipingRockModel.Store.prc_ExcelUpload_Bottle" />
     <FunctionImportMapping FunctionImportName="AddBrand" FunctionName="PipingRockModel.Store.AddBrand" />
     <FunctionImportMapping FunctionImportName="AddQuarantineType" FunctionName="PipingRockModel.Store.AddQuarantineType" />
@@ -1269,7 +1237,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="prc_Integrator_RawMaterial" FunctionName="PipingRockModel.Store.prc_Integrator_RawMaterial" />
     <FunctionImportMapping FunctionImportName="UpdateBrandByID" FunctionName="PipingRockModel.Store.UpdateBrandByID" />
     <FunctionImportMapping FunctionImportName="UpdateQuarantineTypeByID" FunctionName="PipingRockModel.Store.UpdateQuarantineTypeByID" />
     <FunctionImportMapping FunctionImportName="UpdateStorageConditionByID" FunctionName="PipingRockModel.Store.UpdateStorageConditionByID" />

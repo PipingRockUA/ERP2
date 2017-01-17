@@ -19,7 +19,6 @@ namespace PipingRockERP
         {
             this.Boxes = new HashSet<Box>();
             this.PackagingComponents = new HashSet<PackagingComponent>();
-            this.RawMaterials = new HashSet<RawMaterial>();
         }
     
         public int ItemSubTypeId { get; set; }
@@ -40,7 +39,5 @@ namespace PipingRockERP
         public virtual ItemType ItemType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PackagingComponent> PackagingComponents { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RawMaterial> RawMaterials { get; set; }
     }
 }

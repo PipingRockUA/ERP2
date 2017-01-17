@@ -58,7 +58,7 @@
 
             </div>
             <button style="margin-left:18px; max-width:90px;" class="btn btn-success1" onclick="javascript:history.go(-1)">Back</button>
-            <button style="margin-left:18px; max-width:90px;" class="btn btn-success" onclick="location.href='@Url.Action("SubmitAllergensForVendor","Nutrition", new { vendorID = ViewBag.VendorRawMaterialID })'">Save</button>
+            <button style="margin-left:18px; max-width:90px;" class="btn btn-success" onclick="location.href='@Url.Action()'">Save</button>
             <table class="table" id="table1">
                 <thead>
                     <tr style="font-size:14px">
@@ -81,7 +81,7 @@
                                                 <a class="btn btn-primary notActive" data-toggle="fun" data-title="E">Exempt</a>
                                                 <a class="btn btn-primary notActive" data-toggle="fun" data-title="U">Unknown</a>
                                             </div>
-                                            <input id="choosenOption @item.Allergen1" type="hidden" name="fun" class="fun">
+                                            <input type="hidden" name="fun" class="fun">
                                         </div>
                                     </div>
                                 </div>

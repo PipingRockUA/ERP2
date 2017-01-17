@@ -141,7 +141,6 @@ namespace PipingRockERP.Controllers
             return RedirectToAction("RawMaterials");
         }
 
-        #region Busssines Process for Editing Allergerns to Vendor
         public ActionResult MaterialsForVendor(int rawMaterialId)
         {
             PipingRockEntities db = new PipingRockEntities();
@@ -172,7 +171,6 @@ namespace PipingRockERP.Controllers
                                         select Vendor_RawMaterial).ToList();
             int ID = vendor_rawMaterialId[0].Vendor_RawMaterialId;
 
-            ViewBag.VendorRawMaterialID = ID;
             ViewBag.VendorAllergens = (from Vendor_RawMaterial_Allergen in db.Vendor_RawMaterial_Allergen
                                        join Allergen in db.Allergens on Vendor_RawMaterial_Allergen.AllergenId equals Allergen.AllergenId
                                        where Vendor_RawMaterial_Allergen.Vendor_RawMaterialId == ID
@@ -183,12 +181,6 @@ namespace PipingRockERP.Controllers
 
             return View();
         }
-
-        public ActionResult SubmitAllergensForVendor(int vendorID, string choosenOption)
-        {
-            return RedirectToAction("RawMaterials");
-        }
-        #endregion
         #endregion
     }
 }
