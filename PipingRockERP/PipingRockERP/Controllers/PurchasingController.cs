@@ -16,6 +16,7 @@ using Excel;
 using System.Data.SqlClient;
 using System.Configuration;
 using ClosedXML.Excel;
+//using libxl;
 
 namespace PipingRockERP.Controllers
 {
@@ -234,6 +235,8 @@ namespace PipingRockERP.Controllers
 
                     if (upload != null && upload.ContentLength > 0)
                     {
+
+
                         // ExcelDataReader works with the binary Excel file, so it needs a FileStream
                         // to get started. This is how we avoid dependencies on ACE or Interop:
                         Stream stream = upload.InputStream;
@@ -265,9 +268,9 @@ namespace PipingRockERP.Controllers
                         PipingRockEntities db = new PipingRockEntities();
                         //db.prc_ExcelUpload_Bottle(1);
                         //db.Bottle1.
-                        for (int i = 0; i < result.Tables[0].Rows.Count; i++)
+                        for (int i = 10; i < result.Tables[0].Rows.Count + 10; i++)
                         {
-                            data.BottleId = Int32.Parse(result.Tables[0].Rows[i][0].ToString().Trim());
+                            data.BottleId = Int32.Parse(result.Tables[0].Rows[i][26].ToString().Trim());
                             data.BottleItemKey = result.Tables[0].Rows[i][0].ToString().Trim();
                             data.BottleDescription = result.Tables[0].Rows[i][2].ToString().Trim();
                             data.BottlesSmallTray = Int32.Parse(result.Tables[0].Rows[i][3].ToString().Trim());
@@ -316,7 +319,7 @@ namespace PipingRockERP.Controllers
                     }
                 }
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 // Info    
                 Console.Write(ex);
@@ -435,13 +438,22 @@ namespace PipingRockERP.Controllers
             return RedirectToAction("BottleEdit", new { bottleId = bottleId });
         }
 
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
         public ActionResult ExportBottle()
         {
+
+
             PipingRockEntities db = new PipingRockEntities();
             var qt = (from Bottle in db.Bottle2
                       select new
                       {
-                          ID = Bottle.BottleId,
                           ItemKey = Bottle.BottleItemKey,
                           Description = Bottle.BottleDescription,
                           SMTrayQty = Bottle.BottlesSmallTray,
@@ -454,44 +466,175 @@ namespace PipingRockERP.Controllers
                           LengthIN = Bottle.BottleLengthInches,
                           WidthIN = Bottle.BottleWidthInches,
                           HieghtIN = Bottle.BottleHieghtInches,
-                          //BottleCubicInches = Bottle.BottleCubicInches,
-                          //BottleLengthCm = Bottle.BottleLengthCm,
-                          //BottleWidthCm = Bottle.BottleWidthCm,
-                          //BottleHieghtCm = Bottle.BottleHieghtCm,
-                          //BottleCubicCm = Bottle.BottleCubicCm,
+                          BottleCubicInches = Bottle.BottleCubicInches,
+                          BottleLengthCm = Bottle.BottleLengthCm,
+                          BottleWidthCm = Bottle.BottleWidthCm,
+                          BottleHieghtCm = Bottle.BottleHieghtCm,
+                          BottleCubicCm = Bottle.BottleCubicCm,
                           WRINLength = Bottle.BottleLengthWrappedInches,
                           WRINWidth = Bottle.BottleWidthWrappedInches,
                           WRINDepth = Bottle.BottleDepthWrappedInches,
-                          //BottleCubicInchWrappedInches = Bottle.BottleCubicInchWrappedInches,
-                          //BottleLengthWrappedCm = Bottle.BottleLengthWrappedCm,
-                          //BottleWidthWrappedCm = Bottle.BottleWidthWrappedCm,
-                          //BottleDepthWrappedCm = Bottle.BottleDepthWrappedCm,
-                          //BottleCubicInchWrappedCm = Bottle.BottleCubicInchWrappedCm,
+                          BottleCubicInchWrappedInches = Bottle.BottleCubicInchWrappedInches,
+                          BottleLengthWrappedCm = Bottle.BottleLengthWrappedCm,
+                          BottleWidthWrappedCm = Bottle.BottleWidthWrappedCm,
+                          BottleDepthWrappedCm = Bottle.BottleDepthWrappedCm,
+                          BottleCubicInchWrappedCm = Bottle.BottleCubicInchWrappedCm,
                           LabelSqIN = Bottle.BottleLabelSquareInches,
                           BottleSize = Bottle.BottleSize,
                           PrintFrames = Bottle.PrintFrames,
-                          PrintPositions = Bottle.NumberOfPrintingPositions
+                          PrintPositions = Bottle.NumberOfPrintingPositions,
                           //AddedDate = Bottle.BottleAddedDate,
                           //ChangedDate = Bottle.BottleChangedDate,
                           //DeletedDate = Bottle.BottleDeletedDate,
                           //ModifiedById = Bottle.BottleModifiedById
+                          ID = Bottle.BottleId,
                       }).AsEnumerable();
             DataTable dt = new DataTable();
             dt.TableName = "Bottles";
             dt = queryToDataTable(qt);
 
+
+            dt.Columns["ItemKey"].ColumnName = "Item Key";
+            dt.Columns["SMTrayQty"].ColumnName = "SM Tray Qty";
+            dt.Columns["LGTrayQty"].ColumnName = "LG Tray Qty";
+
+            dt.Columns["WRSMQty"].ColumnName = "WR SM Qty";
+
+            dt.Columns["WRLGQty"].ColumnName = "WR LG Qty";
+            dt.Columns["LengthIN"].ColumnName = "Length IN";
+
+            dt.Columns["WidthIN"].ColumnName = "Width IN";
+            dt.Columns["HieghtIN"].ColumnName = "Hieght IN";
+            dt.Columns["BottleCubicInches"].ColumnName = "Bottle Cubic Inches";
+            dt.Columns["BottleLengthCm"].ColumnName = "Bottle Length Cm";
+
+            dt.Columns["BottleWidthCm"].ColumnName = "Bottle Width Cm";
+            dt.Columns["BottleHieghtCm"].ColumnName = "Bottle Hieght Cm";
+            dt.Columns["BottleCubicCm"].ColumnName = "Bottle Cubic Cm";
+
+
+            dt.Columns["WRINLength"].ColumnName = "WR IN Length";
+            dt.Columns["WRINWidth"].ColumnName = "WR IN Width";
+            dt.Columns["WRINDepth"].ColumnName = "WR IN Depth";
+
+            dt.Columns["BottleCubicInchWrappedInches"].ColumnName = "WR Cubic IN";
+
+            dt.Columns["BottleLengthWrappedCm"].ColumnName = "WR CM Length";
+            dt.Columns["BottleWidthWrappedCm"].ColumnName = "WR CM Width";
+            dt.Columns["BottleDepthWrappedCm"].ColumnName = "WR CM Depth";
+            dt.Columns["BottleCubicInchWrappedCm"].ColumnName = "WR CM Cubic";
+
+
+            dt.Columns["LabelSqIN"].ColumnName = "Label Sq IN";
+
+            dt.Columns["BottleSize"].ColumnName = "Bottle Size";
+            dt.Columns["PrintFrames"].ColumnName = "Print Frames ";
+            dt.Columns["PrintPositions"].ColumnName = "Print Positions";
+
+            //--------------------------------------------------------- 
+           // Book book = new XmlBook();
+
+            //Font boldFont = book.addFont();
+           // boldFont.bold = true;
+
+           // Font titleFont = book.addFont();
+           // titleFont.name = "Arial Black";
+          //  titleFont.size = 16;
+
+           // Format titleFormat = book.addFormat();
+           // titleFormat.font = titleFont;
+
+            //Format headerFormat = book.addFormat();
+            //headerFormat.alignH = AlignH.ALIGNH_CENTER;
+
+            //headerFormat.font = boldFont;
+            //headerFormat.fillPattern = FillPattern.FILLPATTERN_SOLID;
+           // headerFormat.patternForegroundColor = Color.COLOR_TAN;
+
+            //Format descriptionFormat = book.addFormat();
+
+            //Format amountFormat = book.addFormat();
+            //amountFormat.setNumFormat(NumFormat.NUMFORMAT_CURRENCY_NEGBRA);
+
+            //Format totalLabelFormat = book.addFormat();
+
+            //totalLabelFormat.alignH = AlignH.ALIGNH_RIGHT;
+            //totalLabelFormat.font = boldFont;
+
+            //Format totalFormat = book.addFormat();
+            //totalFormat.setNumFormat(NumFormat.NUMFORMAT_CURRENCY_NEGBRA);
+
+            //totalFormat.font = boldFont;
+            //totalFormat.fillPattern = FillPattern.FILLPATTERN_SOLID;
+            // totalFormat.patternForegroundColor = Color.COLOR_YELLOW;
+
+            //Format signatureFormat = book.addFormat();
+            //signatureFormat.alignH = AlignH.ALIGNH_CENTER;
+
+           // Sheet sheet = book.addSheet("Bottles");
+
+            // Examples:
+            //sheet.writeStr(2, 1, "Invoice No. 3568", titleFormat);
+            //sheet.writeNum(8, 2, 85, amountFormat);
+            //sheet.writeFormula(11, 2, "=SUM(C9:C11)", totalFormat);
+            //sheet.setCol(1, 1, 40);
+
+
+           // for (int i = 0; i < dt.Rows.Count; i++)
+           //     for (int j = 0; j < dt.Columns.Count; j++)
+            //    {
+            //        object o = dt.Rows[i].ItemArray[j];
+           //         string s = dt.Rows[i].ItemArray[j].ToString();
+            //        sheet.writeStr(i+1, j+1, s, descriptionFormat);
+            //    }
+
+            //string FileName = RandomString(8);
+
+           // book.save("c:\\Temp\\" + FileName + ".xlsx");
+
+            //System.Diagnostics.Process.Start("invoice.xlsx");
+
+           // byte[] fileBytes = System.IO.File.ReadAllBytes(@"c:\Temp\" + FileName + ".xlsx");
+           // string fileName = "Bottles.xlsx";
+            
+            
+            //return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+
+
+            //--------------------------------------------------
+
+
+
             using (XLWorkbook wb = new XLWorkbook())
             {
                 wb.AddWorksheet("Bottles");
-                wb.Worksheet(1).Cell(1, 1).InsertTable(dt);
+
+                wb.Worksheet(1).Cell(10, 1).InsertTable(dt);
                 wb.Worksheet(1).Rows().AdjustToContents();
-                wb.Worksheet(1).Column(1).Hide();
+                wb.Worksheet(1).Column(27).Hide();
                 wb.Worksheet(1).Column(2).AdjustToContents();
                 wb.Worksheet(1).Column(3).AdjustToContents();
+
+                wb.Worksheet(1).Cell(1, 1).SetValue("Bottles List Export");
+
+                wb.Worksheet(1).Cell(1, 1).Style.Fill.SetBackgroundColor(XLColor.FromArgb(0, 132, 63));
+                wb.Worksheet(1).Cell(1, 2).Style.Fill.SetBackgroundColor(XLColor.FromArgb(0, 132, 63));
+                string today = DateTime.Today.ToString("dd/MM/yyyy");
+                wb.Worksheet(1).Cell(2, 1).SetValue("Date exported: "+ DateTime.Today.ToString("MM/dd/yyyy"));
+
+                wb.Worksheet(1).Cell(4, 1).SetValue("Export parameters");
+                wb.Worksheet(1).Cell(4, 1).Style.Fill.SetBackgroundColor(XLColor.FromArgb(0, 132, 63));
+                wb.Worksheet(1).Cell(4, 2).Style.Fill.SetBackgroundColor(XLColor.FromArgb(0, 132, 63));
+
+                wb.Worksheet(1).Cell(5, 1).SetValue("Section: [ALL]" );
+                wb.Worksheet(1).Cell(6, 1).SetValue("Containing: [EMPTY]" );
+                wb.Worksheet(1).Cell(7, 1).SetValue("Limit to: [ALL]");
 
                 wb.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 wb.Style.Font.Bold = true;
                 wb.Style.DateFormat.Format = "MM/dd/yyyy";
+
+                wb.Worksheet(1).SheetView.FreezeRows(10);
 
                 Response.Clear();
                 Response.Buffer = true;
